@@ -23,24 +23,22 @@
     <div
       x-on:click.stop
       x-trap.noscroll.inert="open"
-      class="relative w-full max-w-2xl overflow-y-auto dark:border-zinc-900 bg-white dark:bg-black border p-12 shadow-lg">
+      class="relative w-full max-w-2xl overflow-y-auto bg-white border p-12 shadow-lg">
       <!-- Title -->
       <h2
-        class="text-xl tracking-tighter text-black dark:text-white font-medium"
+        class="text-xl tracking-tighter text-black font-medium"
         :id="$id('modal-title')">
         Create collection
       </h2>
 
       <!-- Content -->
       <p class="mt-2 text-zinc-500">Edit your collection.</p>
-      <div class="divide-y mt-8 dark:divide-zinc-900">
+      <div class="divide-y mt-8">
         <div class="flex flex-col gap-1 mt-4 pt-4">
-          <span class="uppercase text-sm text-black dark:text-white"
-            >Name your collection</span
-          >
+          <span class="uppercase text-sm text-black">Name your collection</span>
           <div class="flex flex-col gap-2 mt-2">
             <input
-              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent dark:bg-zinc-900 dark:ring-zinc-800 py-1.5 pr-14 text-black dark:text-white ring-0 ring-inset border-b border-zinc-900 dark:border-zinc-500 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-600 sm:text-sm sm:leading-6"
+              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-600 sm:text-sm sm:leading-6"
               placeholder="Title"
               maxlength="255"
               id="#"
@@ -52,7 +50,7 @@
                 id="#"
                 name="#"
                 type="checkbox"
-                class="h-4 w-4 text-500 focus:ring-zinc-600 text-black dark:text-white"
+                class="h-4 w-4 text-500 focus:ring-zinc-600 text-black"
               /><label for="#" class="ml-2 block text-sm text-zinc-500"
                 >Allow others to view this collection
               </label>

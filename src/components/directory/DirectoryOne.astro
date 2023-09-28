@@ -4,20 +4,19 @@ import FiltersOne from "./FiltersOne.astro";
 ---
 
 <section x-data="{ open: false }">
-  <div
-    class="w-full mx-auto bg-white dark:bg-black max-w-screen-2xl px-8 py-12">
+  <div class="w-full mx-auto bg-white max-w-screen-2xl px-8 py-12">
     <div class="relative">
       <div class="absolute inset-0 flex items-center" aria-hidden="true">
-        <div class="w-full border-t dark:border-zinc-900"></div>
+        <div class="w-full border-t"></div>
       </div>
       <div class="relative flex justify-between">
         <span
-          class="bg-white dark:bg-black pr-2 uppercase texts-m tracking-tighter font-medium text-black dark:text-white"
+          class="bg-white pr-2 uppercase texts-m tracking-tighter font-medium text-black"
           >Full directory</span
         >
         <div>
           <button
-            class="bg-white dark:bg-black pl-2 uppercase texts-m tracking-tighter font-medium text-black dark:text-white"
+            class="bg-white pl-2 uppercase texts-m tracking-tighter font-medium text-black"
             @click="open = ! open">Filters</button
           >
         </div>
@@ -38,17 +37,15 @@ import FiltersOne from "./FiltersOne.astro";
           <>
             <div>
               <a href={template.link} class="hover:opacity-80 duration-200">
-                <div class="border dark:border-zinc-900">
+                <div class="border   ">
                   <img src={template.img} alt="#" />
                 </div>
               </a>
               <div class="inline-flex items-center justify-between w-full">
-                <p class="text-black dark:text-white text-sm mt-2">
-                  {template.title}
-                </p>
+                <p class="text-black    text-sm mt-2">{template.title}</p>
                 <a
                   href="#_"
-                  class=" bg-black text-white dark:bg-white dark:text-black hover:text-zinc-500 duration-200">
+                  class=" bg-black text-white    hover:text-zinc-500 duration-200">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="w-6 h-6"

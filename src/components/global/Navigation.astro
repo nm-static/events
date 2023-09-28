@@ -1,11 +1,11 @@
 <seciton>
-  <div class="w-full mx-auto bg-white dark:bg-black max-w-screen-2xl px-8 py-2">
+  <div class="w-full mx-auto bg-white max-w-screen-2xl px-8 py-2">
     <div
       x-data="{ open: false }"
       class="relative flex flex-col w-full mx-auto md:items-center md:justify-between md:flex-row">
       <div class="flex flex-row items-center justify-between lg:justify-start">
         <a
-          class="text-black dark:text-white inline-flex items-center gap-3 uppercase text-sm"
+          class="text-black inline-flex items-center gap-3 uppercase text-sm"
           href="/">
           <svg
             class="h-5"
@@ -61,10 +61,8 @@
       </div>
       <nav
         :class="{'flex': open, 'hidden': !open}"
-        class="flex-col items-center text-xs text-black font-medium dark:text-zinc-400 gap-6 flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row">
-        <a class="hover:text-accent-600 lg:ml-auto" href="/system/overview">
-          Overview
-        </a>
+        class="flex-col items-center text-xs text-black font-medium gap-6 flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row">
+        <a class="hover:text-accent-600 lg:ml-auto" href="/"> Overview</a>
         <a class="hover:text-accent-600" href="/system/style-guide">
           Style Guide</a
         >
@@ -103,7 +101,7 @@
                 :aria-expanded="open"
                 :aria-controls="$id('dropdown-button')"
                 type="button"
-                class="inline-flex h-8 items-center border border-transparent px-3.5 font-medium justify-between py-2 text-xs text-accent-600 hover:bg-zinc-200 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-white focus:border-accent-600 dark:hover:bg-zinc-900">
+                class="inline-flex h-8 items-center border border-transparent px-3.5 font-medium justify-between py-2 text-xs text-accent-600 hover:bg-zinc-200 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-white focus:border-accent-600">
                 Profile
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -123,37 +121,37 @@
                 x-on:click.outside="close($refs.button)"
                 :id="$id('dropdown-button')"
                 style="display: none;"
-                class="absolute left-0 mt-2 w-52 bg-white dark:bg-zinc-900 divide-y dark:divide-zinc-900 shadow-md">
+                class="absolute left-0 mt-2 w-52 bg-white divide-y shadow-md">
                 <a
                   href="/profile/settings"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black dark:text-white dark:hover:bg-zinc-900 dark:bg-zinc-800">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
                   Settings
                 </a>
 
                 <a
                   href="/profile/collections"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black dark:text-white dark:hover:bg-zinc-900 dark:bg-zinc-800">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
                   Collections
                 </a>
 
                 <a
                   href="/directory/submit"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black dark:text-white dark:hover:bg-zinc-900 dark:bg-zinc-000">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
                   Submit
                 </a>
                 <a
                   href="/directory/submissions"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black dark:text-white dark:hover:bg-zinc-900 dark:bg-zinc-000">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
                   Submission
                 </a>
                 <a
                   href="/profile/profile"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black dark:text-white dark:hover:bg-zinc-900 dark:bg-zinc-000">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
                   Your profile
                 </a>
                 <a
                   href="/forms/logout"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black dark:text-white dark:hover:bg-zinc-900 dark:bg-zinc-000">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
                   Log out
                 </a>
               </div>
@@ -161,7 +159,7 @@
           </div>
           <a
             href="/forms/login"
-            class="inline-flex h-8 items-center border border-transparent px-3.5 font-medium justify-between py-2 text-xs text-accent-600 hover:bg-zinc-200 dark:hover:bg-zinc-900 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-white focus:border-accent-600"
+            class="inline-flex h-8 items-center border border-transparent px-3.5 font-medium justify-between py-2 text-xs text-accent-600 hover:bg-zinc-200 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-white focus:border-accent-600"
             >Log in</a
           >
           <a

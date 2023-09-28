@@ -6,9 +6,9 @@ import EditCollecitonModal from "./EditCollecitonModal.astro";
 import RemoveWebsiteModal from "./RemoveWebsiteModal.astro";
 ---
 <section>
-  <div class="w-full mx-auto bg-white dark:bg-black max-w-screen-2xl px-8 py-24">
+  <div class="w-full mx-auto bg-white      max-w-screen-2xl px-8 py-24">
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-5">
-      <p class="text-4xl lg:text-5xl lg:col-span-2 tracking-tighter text-black dark:text-white font-medium">
+      <p class="text-4xl lg:text-5xl lg:col-span-2 tracking-tighter text-black    font-medium">
         Your collections
       </p>
       <div class="ml-auto flex flex-col md:flex-row gap-2 w-full lg:col-span-3 lg:ml-auto">
@@ -77,10 +77,10 @@ import RemoveWebsiteModal from "./RemoveWebsiteModal.astro";
       directory.slice(0,6).map((template) => (
       <>
         <div>
-          <p class="text-black dark:text-white text-xs mt-2">{template.title}</p>
+          <p class="text-black    text-xs mt-2">{template.title}</p>
           <div class="mt-4">
             <a href={template.link} class="hover:opacity-80 duration-200">
-              <div class="border dark:border-zinc-900">
+              <div class="border   ">
                 <img src={template.img} alt="#" />
               </div>
             </a>

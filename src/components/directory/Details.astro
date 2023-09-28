@@ -3,19 +3,18 @@ import CollectionModal from "./CollectionModal.astro";
 ---
 
 <section>
-  <div
-    class="w-full mx-auto bg-white dark:bg-black max-w-screen-2xl px-8 pt-24">
+  <div class="w-full mx-auto bg-white max-w-screen-2xl px-8 pt-24">
     <div class="grid grid-cols-1 lg:grid-cols-5 mt-12 gap-12">
       <div class="flex flex-col gap-12 lg:col-span-3">
         <div
           class="inline-flex items-center justify-between w-full col-span-full">
           <p
-            class="text-4xl lg:text-5xl tracking-tighter text-black dark:text-white font-medium">
+            class="text-4xl lg:text-5xl tracking-tighter text-black font-medium">
             Website name
           </p>
           <a
             href="#_"
-            class="bg-black text-white dark:bg-white dark:text-black hover:text-zinc-500 duration-200">
+            class="bg-black text-white hover:text-zinc-500 duration-200">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-6 h-6 lg:h-12 lg:w-12"
@@ -32,8 +31,7 @@ import CollectionModal from "./CollectionModal.astro";
         <img src="/ex4.png" alt="" />
       </div>
       <div class="lg:col-span-2 order-first lg:order-last">
-        <p
-          class="text-xl tracking-tighter text-black dark:text-white font-medium">
+        <p class="text-xl tracking-tighter text-black font-medium">
           Website name
         </p>
         <p class="text-sm text-zinc-500 mt-4">
@@ -42,14 +40,14 @@ import CollectionModal from "./CollectionModal.astro";
           foundation for showcasing website with good UX
         </p>
         <div class="flex flex-col gap-8 mt-24">
-          <div x-data="{ open: false }">
+          <div x-data="{ open: false }" class="w-full">
             <!-- Collection Trigger -->
             <span x-on:click="open = true">
               <button
                 type="button"
                 class="inline-flex h-12 items-center border border-accent-600 px-4 justify-between py-2 text-sm font-medium text-accent-600 hover:bg-accent-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-accent-600 focus:text-white">
                 <span>Add to collecton</span>
-                <span></span>
+
                 <svg
                   class="h-6 w-6"
                   xmlns="http://www.w3.org/2000/svg"
@@ -62,22 +60,17 @@ import CollectionModal from "./CollectionModal.astro";
                 >
               </button>
             </span>
+            <!-- Collection Modal -->
+            <CollectionModal />
           </div>
-
-          <!-- Collection Modal -->
-          <CollectionModal />
         </div>
 
-        <div class="flex flex-col gap-1 mt-24 divide-y dark:divide-zinc-900">
-          <span class="uppercase text-sm py-2 text-black dark:text-white"
-            >Category</span
-          >
+        <div class="flex flex-col gap-1 mt-24 divide-y">
+          <span class="uppercase text-sm py-2 text-black">Category</span>
           <span class="text-zinc-500 py-2">Portals</span>
         </div>
-        <div class="flex flex-col gap-1 divide-y dark:divide-zinc-900">
-          <span class="uppercase text-sm py-2 text-black dark:text-white"
-            >Typography</span
-          >
+        <div class="flex flex-col gap-1 divide-y">
+          <span class="uppercase text-sm py-2 text-black">Typography</span>
           <span class="text-zinc-500 py-2">IBM Plex Sans</span>
           <span class="text-zinc-500 py-2">IBM Plex Mono</span>
         </div>

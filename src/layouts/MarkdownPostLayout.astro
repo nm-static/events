@@ -49,7 +49,7 @@ import { AstroSeo } from "@astrolib/seo";
     <div class="flex flex-wrap gap-3 mt-12">
       {
         frontmatter.tags.map((tag) => (
-          <span class="inline-flex items-center text-sm font-light text-black dark:text-white  underline hover:text-accent-300">
+          <span class="inline-flex items-center text-sm font-normal text-black dark:text-white  underline hover:text-accent-300">
             <a href={`/tags/${tag}`}>{tag}</a>
           </span>
         ))

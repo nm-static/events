@@ -1,0 +1,52 @@
+<div
+  x-show="open"
+  style="display: none"
+  x-on:keydown.escape.prevent.stop="open = false"
+  role="dialog"
+  aria-modal="true"
+  x-id="['modal-title']"
+  :aria-labelledby="$id('modal-title')"
+  class="fixed inset-0 z-10 overflow-y-auto">
+  <!-- Overlay -->
+  <div
+    x-show="open"
+    x-transition.opacity
+    class="fixed inset-0 bg-black bg-opacity-50">
+  </div>
+
+  <!-- Panel -->
+  <div
+    x-show="open"
+    x-transition
+    x-on:click="open = false"
+    class="relative flex min-h-screen items-center justify-center p-4">
+    <div
+      x-on:click.stop
+      x-trap.noscroll.inert="open"
+      class="relative w-full max-w-2xl overflow-y-auto dark:border-zinc-900 bg-white dark:bg-black border p-12 shadow-lg">
+      <!-- Title -->
+      <h2
+        class="text-xl tracking-tighter text-black dark:text-white font-medium"
+        :id="$id('modal-title')">
+        Remove Website Name from Collection 1
+      </h2>
+
+      <!-- Content -->
+      <p class="mt-2 text-zinc-500">
+        Are you sure you want to remove Website Name from Collection 1?
+      </p>
+      <div class="flex mt-9 flex-row w-full gap-1 justify-end pt-4">
+        <button
+          type="button"
+          class="inline-flex h-12 items-center border border-zinc-600 px-3.5 justify-between py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 focus:ring-1 focus:ring-offset-1 focus:ring-zinc-600 focus:bg-zinc-600 focus:text-white cursor-pointer duration-200 shrink-0">
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="inline-flex h-12 items-center border border-accent-600 px-3.5 justify-between py-2 text-sm font-medium text-accent-600 hover:bg-accent-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-accent-600 focus:text-white cursor-pointer duration-200 shrink-0">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

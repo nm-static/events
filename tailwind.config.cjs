@@ -95,23 +95,36 @@ module.exports = {
 
       colors: {
 
-        blue: {
-         50: "#EBEBFF",
-      100: "#D2D2FE",
-      200: "#A6A4FE",
-      300: "#7E7CFD",
-      400: "#524FFD",
-      500: "#2522FC",
-      600: "#0703E2",
-      700: "#0502AB",
-      800: "#03026F",
-      900: "#020137",
-      950: "#01001E"
+        accent: {
+
+          '100': '#edf5ff',
+          '200': '#d0e2ff',
+          '300': '#a6c8ff',
+          '400': '#78a9ff',
+          '500': '#4589ff',
+          '600': '#0f62fe',
+          '700': '#0043ce',
+          '800': '#002d9c',
+          '900': '#001d6c',
+          '950': '#001141',
+        },
+        red: {
+
+          '100': '#FFD2DD',
+          '200': '#FFA5B4',
+          '300': '#FF7D87',
+          '400': '#FF5050',
+          '500': '#E71D32',
+          '600': '#AD1625',
+          '700': '#8C101C',
+          '800': '#6E0A1E',
+          '900': '#4C0A17',
+          '950': '#040001',
         },
       },
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
-        mono: ["JetBrains Mono", ...defaultTheme.fontFamily.mono],
+        sans: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
+        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
       },
     },
   },

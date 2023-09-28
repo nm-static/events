@@ -1,0 +1,111 @@
+<div
+  x-show="open"
+  style="display: none"
+  x-on:keydown.escape.prevent.stop="open = false"
+  role="dialog"
+  aria-modal="true"
+  x-id="['modal-title']"
+  :aria-labelledby="$id('modal-title')"
+  class="fixed inset-0 z-10 overflow-y-auto">
+  <!-- Overlay -->
+  <div
+    x-show="open"
+    x-transition.opacity
+    class="fixed inset-0 bg-black bg-opacity-50">
+  </div>
+
+  <!-- Panel -->
+  <div
+    x-show="open"
+    x-transition
+    x-on:click="open = false"
+    class="relative flex min-h-screen items-center justify-center p-4">
+    <div
+      x-on:click.stop
+      x-trap.noscroll.inert="open"
+      class="relative w-full max-w-2xl overflow-y-auto dark:border-zinc-900 bg-white dark:bg-black border p-12 shadow-lg">
+      <!-- Title -->
+      <h2
+        class="text-xl tracking-tighter text-black dark:text-white font-medium"
+        :id="$id('modal-title')">
+        Add website to a collection or create a new one
+      </h2>
+
+      <!-- Content -->
+      <p class="mt-2 text-zinc-500">
+        Select an existing collection to add this site to, or create a new one.
+      </p>
+      <div class="divide-y mt-8 dark:divide-zinc-900">
+        <div class="flex flex-col gap-4">
+          <span class="uppercase text-sm text-black dark:text-white"
+            >ADD TO EXISTING COLLECTIONS
+          </span>
+          <div class="flex flex-col md:flex-row gap-2 lg:gap-8">
+            <div class="flex items-center mt-2">
+              <input
+                id="#"
+                name="#"
+                type="checkbox"
+                class="h-4 w-4 text-500 focus:ring-zinc-600 text-black dark:text-white"
+              /><label for="#" class="ml-2 block text-sm text-zinc-500"
+                >Collection 1</label
+              >
+            </div>
+            <div class="flex items-center mt-2">
+              <input
+                id="#"
+                name="#"
+                type="checkbox"
+                class="h-4 w-4 text-500 focus:ring-zinc-600 text-black dark:text-white"
+              /><label for="#" class="ml-2 block text-sm text-zinc-500"
+                >Collection 2</label
+              >
+            </div>
+          </div>
+          <div>
+            <button
+              type="button"
+              class="inline-flex h-12 items-center border border-accent-600 px-3.5 justify-between py-2 text-sm font-medium text-accent-600 hover:bg-accent-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 w-full shrink-0 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-accent-600 focus:text-white">
+              <span>Update</span>
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-col gap-1 mt-4 pt-4">
+          <span class="uppercase text-sm text-black dark:text-white"
+            >CREATE A NEW COLLECTION
+          </span>
+          <div class="flex flex-col gap-2 mt-2">
+            <input
+              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent dark:bg-zinc-900 dark:ring-zinc-800 py-1.5 pr-14 text-black dark:text-white ring-0 ring-inset border-b border-zinc-900 dark:border-zinc-500 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-600 sm:text-sm sm:leading-6"
+              placeholder="Title"
+              maxlength="255"
+              id="#"
+              type="text"
+              name="#"
+            />
+            <button
+              type="button"
+              class="inline-flex h-12 items-center border border-accent-600 px-3.5 justify-between py-2 text-sm font-medium text-accent-600 hover:bg-accent-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-accent-600 focus:text-white cursor-pointer duration-200 gap-12 shrink-0">
+              <span>Add to collecton</span>
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="icon icon-tabler icon-tabler-plus h-4 w-4"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M12 5l0 14"></path>
+                  <path d="M5 12l14 0"></path>
+                </svg></span
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

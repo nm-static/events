@@ -1,0 +1,87 @@
+---
+import CollectionModal from "./CollectionModal.astro";
+---
+
+<section>
+  <div
+    class="w-full mx-auto bg-white dark:bg-black max-w-screen-2xl px-8 pt-24">
+    <div class="grid grid-cols-1 lg:grid-cols-5 mt-12 gap-12">
+      <div class="flex flex-col gap-12 lg:col-span-3">
+        <div
+          class="inline-flex items-center justify-between w-full col-span-full">
+          <p
+            class="text-4xl lg:text-5xl tracking-tighter text-black dark:text-white font-medium">
+            Website name
+          </p>
+          <a
+            href="#_"
+            class="bg-black text-white dark:bg-white dark:text-black hover:text-zinc-500 duration-200">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 lg:h-12 lg:w-12"
+              viewBox="0 0 32 32">
+              <path
+                fill="currentColor"
+                d="M10 6v2h12.59L6 24.59L7.41 26L24 9.41V22h2V6H10z"></path>
+            </svg></a
+          >
+        </div>
+        <img src="/ex1.png" alt="" />
+        <img src="/ex2.png" alt="" />
+        <img src="/ex3.png" alt="" />
+        <img src="/ex4.png" alt="" />
+      </div>
+      <div class="lg:col-span-2 order-first lg:order-last">
+        <p
+          class="text-xl tracking-tighter text-black dark:text-white font-medium">
+          Website name
+        </p>
+        <p class="text-sm text-zinc-500 mt-4">
+          This website is a light and dark and elegant directory website
+          template. With a focus on clean aesthetics it serves as the perfect
+          foundation for showcasing website with good UX
+        </p>
+        <div class="flex flex-col gap-8 mt-24">
+          <div x-data="{ open: false }">
+            <!-- Collection Trigger -->
+            <span x-on:click="open = true">
+              <button
+                type="button"
+                class="inline-flex h-12 items-center border border-accent-600 px-4 justify-between py-2 text-sm font-medium text-accent-600 hover:bg-accent-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-accent-600 focus:text-white">
+                <span>Add to collecton</span>
+                <span></span>
+                <svg
+                  class="h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  ><path
+                    fill="currentColor"
+                    d="M17 15V8h-2v7H8v2h7v7h2v-7h7v-2z"></path></svg
+                >
+              </button>
+            </span>
+          </div>
+
+          <!-- Collection Modal -->
+          <CollectionModal />
+        </div>
+
+        <div class="flex flex-col gap-1 mt-24 divide-y dark:divide-zinc-900">
+          <span class="uppercase text-sm py-2 text-black dark:text-white"
+            >Category</span
+          >
+          <span class="text-zinc-500 py-2">Portals</span>
+        </div>
+        <div class="flex flex-col gap-1 divide-y dark:divide-zinc-900">
+          <span class="uppercase text-sm py-2 text-black dark:text-white"
+            >Typography</span
+          >
+          <span class="text-zinc-500 py-2">IBM Plex Sans</span>
+          <span class="text-zinc-500 py-2">IBM Plex Mono</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

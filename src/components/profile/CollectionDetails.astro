@@ -1,0 +1,111 @@
+---
+import { directory } from "../../data/directory.json";
+import DeleteCollectionModal from "./DeleteCollectionModal.astro";
+import CreateCollectionModal from "./CreateCollectionModal.astro";
+import EditCollecitonModal from "./EditCollecitonModal.astro";
+import RemoveWebsiteModal from "./RemoveWebsiteModal.astro";
+---
+<section>
+  <div class="w-full mx-auto bg-white dark:bg-black max-w-screen-2xl px-8 py-24">
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-5">
+      <p class="text-4xl lg:text-5xl lg:col-span-2 tracking-tighter text-black dark:text-white font-medium">
+        Your collections
+      </p>
+      <div class="ml-auto flex flex-col md:flex-row gap-2 w-full lg:col-span-3 lg:ml-auto">
+
+         <div x-data="{ open: false }" class="w-full">
+          <!-- Collection Trigger -->
+          <span x-on:click="open = true">
+            <button type="button" class="inline-flex h-12 items-center border border-zinc-600 px-4 justify-between py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-zinc-600 focus:bg-zinc-600 focus:text-white">
+              Create Collection
+            <span>
+              <svg
+                  class="h-6 w-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="32"
+                  height="32"
+                  viewBox="0 0 32 32"
+                  ><path
+                    fill="currentColor"
+                    d="M17 15V8h-2v7H8v2h7v7h2v-7h7v-2z"></path></svg
+                ></span>
+            </button>
+          </span>
+          <!-- Collection Modal -->
+          <CreateCollectionModal />
+        </div>
+         <div x-data="{ open: false }" class="w-full">
+          <!-- Collection Trigger -->
+          <span x-on:click="open = true">
+            <button type="button" class="inline-flex h-12 items-center border border-zinc-600 px-4 justify-between py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-zinc-600 focus:bg-zinc-600 focus:text-white">
+              Edit Collection
+              <span>
+                 <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 32 32"
+                    ><path
+                      fill="currentColor"
+                      d="M2 26h28v2H2zM25.4 9c.8-.8.8-2 0-2.8l-3.6-3.6c-.8-.8-2-.8-2.8 0l-15 15V24h6.4l15-15zm-5-5L24 7.6l-3 3L17.4 7l3-3zM6 22v-3.6l10-10l3.6 3.6l-10 10H6z"
+                    ></path></svg
+                  > </span>
+            </button>
+          </span>
+          <!-- Collection Modal -->
+          <EditCollecitonModal />
+        </div>
+        <div x-data="{ open: false }" class="w-full">
+          <!-- Collection Trigger -->
+          <span x-on:click="open = true">
+            <button type="button" class="inline-flex h-12 items-center border border-zinc-600 px-4 justify-between py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-zinc-600 focus:bg-zinc-600 focus:text-white">
+             Delete Collection
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 32 32">
+                  <path fill="currentColor" d="M12 12h2v12h-2zm6 0h2v12h-2z"></path>
+                  <path fill="currentColor" d="M4 6v2h2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8h2V6zm4 22V8h16v20zm4-26h8v2h-8z"></path>
+                </svg></span>
+            </button>
+          </span>
+          <!-- Collection Modal -->
+          <DeleteCollectionModal />
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 gap-px mt-24 gap-y-12 lg:gap-y-24 sm:grid-cols-2
+    lg:grid-cols-3  mx-auto">
+      {
+      directory.slice(0,6).map((template) => (
+      <>
+        <div>
+          <p class="text-black dark:text-white text-xs mt-2">{template.title}</p>
+          <div class="mt-4">
+            <a href={template.link} class="hover:opacity-80 duration-200">
+              <div class="border dark:border-zinc-900">
+                <img src={template.img} alt="#" />
+              </div>
+            </a>
+          </div>
+          <div class="flex mt-2 w-full">
+            <div x-data="{ open: false }" class="w-full">
+              <!-- Collection Trigger -->
+              <span x-on:click="open = true">
+                <button type="button" class="inline-flex h-12 items-center border border-zinc-600 px-4 justify-between py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-zinc-600 focus:bg-zinc-600 focus:text-white">
+                  Remove website
+                  <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 32 32">
+                      <path fill="currentColor" d="M12 12h2v12h-2zm6 0h2v12h-2z"></path>
+                      <path fill="currentColor" d="M4 6v2h2v20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8h2V6zm4 22V8h16v20zm4-26h8v2h-8z"></path>
+                    </svg></span>
+                </button>
+              </span>
+              <!-- Collection Modal -->
+              <RemoveWebsiteModal />
+            </div>
+          </div>
+        </div>
+      </>
+      ))
+      }
+    </div>
+  </div>
+</section>

@@ -4,30 +4,29 @@ const { title, url, description, pubDate, author, image } = Astro.props;
 
 <li>
   <a href={url} title={title} class="group">
-    <article class="flex-1 h-full flex flex-col p-4 lg:p-8 bg-zinc-100">
+    <article class="flex-1 h-full flex flex-col  bg-white duration-200 hover:bg-zinc-100">
      
-     <div class="flex flex-col items-start justify-between">
-        <img class="aspect-[384/246] bg-center h-full" src={image} alt={title} />
+     <div class="flex flex-col lg:flex-row items-end h-full items justify-between gap-12">
+        <div class="h-full w-full">
+          <img class=" object-cover   bg-center h-full" src={image} alt={title} /></div>
   
-        <div class="flex flex-col items-start justify-between  w-full mt-4">
-          <div class="w-full">
-           
-            <p class="text-2xl tracking-tighter text-black font-medium">{title}</p>
-            <p class="mt-2 text-sm text-gray-600 line-clamp-3">
-              {description}
+        <div class="flex flex-col items-start justify-between  w-full p-4 lg:p-8">
+          <p  class="text-4xl  tracking-tighter text-black font-medium"> {title}</p>
+          <p class="text-sm text-zinc-500 mt-4 lg:text-lg">
+           {description}
+          </p>
+
+         
+          <div class="flex flex-col mt-12 lg:mt-24 text-xs font-medium text-gray-900">
+            <p >
+              {author}
             </p>
+           
+            <time  datetime="2020-03-16"> {pubDate}</time>
+          
           </div>
-          <footer>
-            <div class="inline-flex space-x-1 items-center mt-6">
-              <p class="text-xs font-medium text-gray-900">
-                {author}
-              </p>
-              <span aria-hidden="true">&middot;</span>
-              <div class="flex text-xs text-gray-500">
-                <time datetime="2020-03-16"> {pubDate}</time>
-              </div>
-            </div>
-          </footer>
+          
+         
         </div>
      </div>
     </article>

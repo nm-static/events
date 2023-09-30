@@ -8,16 +8,33 @@ const pageTitle = "Tag Index";
 
 <BaseLayout pageTitle={pageTitle}>
   <section>
-    <div class="px-8 md:px-12 mx-auto max-w-7xl py-12 lg:py-32">
-      <ol role="list" class="flex flex-wrap gap-3">
-        {
-          tags.map((tag) => (
-            <li class="inline-flex items-center border rounded-md bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ">
-              <a href={`/tags/${tag}`}>{tag}</a>
-            </li>
-          ))
-        }
-      </ol>
+    <div class="w-full px-8 py-24 mx-auto bg-white max-w-screen-2xl">
+      <div class="max-w-xl mx-auto">
+        <h1 class="text-4xl font-semibold tracking-tighter text-black">
+          Tag index
+        </h1>
+        <ol role="list" class="flex flex-col gap-3 mt-12 ">
+          {
+            tags.map((tag) => (
+              <li>
+                <a class="inline-flex h-12 items-center border border-blue-600 px-4 justify-between py-2 text-sm font-medium text-blue-600 hover:bg-blue-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-blue-600 focus:text-white" href={`/tags/${tag}`}>
+                  {tag}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-4 w-4"
+                    viewBox="0 0 32 32"
+                  >
+                    <path
+                      fill="currentColor"
+                      d="m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10L18 6z"
+                    />
+                  </svg>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
     </div>
   </section>
 </BaseLayout>

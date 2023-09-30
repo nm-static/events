@@ -39,23 +39,64 @@ import { AstroSeo } from "@astrolib/seo";
   }}
 />
 <BaseLayout>
-  <div
-    class="mx-auto hover:prose-a:text-black prose prose-a:text-blue-500 prose-blockquote:border-l-black prose-blockquote:text-gray-500 prose-code:text-black prose-headings:font-bold prose-headings:text-black prose-headings:tracking-tighter prose-li:marker:text-blue-500 text-gray-500 py-24 prose-pre:border">
-    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+  <section>
+    <div class="w-full mx-auto bg-white max-w-screen-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-7 lg:divide-x">
+        <div class="lg:col-span-1 divide-y">
+          <div class="p-8">
+           <a href="/blog/blog">
+              <h1 class="text-base tracking-tighter text-blue-600 font-medium">
+                Blog
+              </h1>
+            </a>
+          </div>
+          <div class="p-8">
+            <p class="text-base tracking-tighter text-black font-medium">
+              Date
+            </p>
+            <p class="text-sm text-zinc-500">
+              {frontmatter.pubDate.toString().slice(0, 10)}
+            </p>
+          </div>
+          <div class="p-8">
+            <p class="text-base tracking-tighter text-black font-medium">
+              Author
+            </p>
+            <p class="text-sm text-zinc-500">
+              {frontmatter.author}
+            </p>
+          </div>
+          <div class="p-8">
+            <p class="text-xl tracking-tighter text-black font-medium">
+              Topics
+            </p>
+            <ol role="list" class="flex flex-wrap lg:flex-col gap-3 mt-4">
+              {
+                frontmatter.tags.map((tag) => (
+                  <li >
+                    <a href={`/tags/${tag}`} class="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-normal text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                      {tag}
+                    </a>
+                  </li>
+                ))
+              }
+            </ol>
+          </div>
+        </div>
+        <div class="col-span-6 p-8 lg:p-24">
+          <div class="prose-styles pt-12 border-t">
+            <div class="max-w-2xl">
+              <p class="text-4xl lg:text-5xl tracking-tighter text-black font-medium ">{frontmatter.title}</p>
+              <p class="text-3xl"><em>{frontmatter.description}</em></p>
+            </div>
 
-    <p>{frontmatter.title}</p>
-    <p><em>{frontmatter.description}</em></p>
-    <p>Written by: {frontmatter.author}</p>
-    <div class="flex flex-wrap gap-3 mt-12">
-      {
-        frontmatter.tags.map((tag) => (
-          <span class="inline-flex items-center text-sm font-normal text-black     underline hover:text-blue-300">
-            <a href={`/tags/${tag}`}>{tag}</a>
-          </span>
-        ))
-      }
+           
+            <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
+            <div class="max-w-2xl"><slot /></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
-    <slot />
-  </div>
+  </section>
+   m
 </BaseLayout>

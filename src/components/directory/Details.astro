@@ -3,8 +3,8 @@ import CollectionModal from "./CollectionModal.astro";
 ---
 
 <section>
-  <div class="w-full mx-auto bg-white max-w-screen-2xl px-8 pt-24">
-    <div class="grid grid-cols-1 lg:grid-cols-5 mt-12 gap-12">
+  <div class="w-full mx-auto bg-white max-w-screen-2xl px-8 py-24   ">
+    <div class="grid grid-cols-1 lg:grid-cols-5  gap-12">
       <div class="flex flex-col gap-12 lg:col-span-3">
         <div
           class="inline-flex items-center justify-between w-full col-span-full">
@@ -31,7 +31,8 @@ import CollectionModal from "./CollectionModal.astro";
         <img src="/ex4.png" alt="" />
       </div>
       <div class="lg:col-span-2 order-first lg:order-last">
-        <p class="text-xl tracking-tighter text-black font-medium">
+        <img src="/ex1.png" class="lg:hidden" alt="" />
+        <p class="text-xl tracking-tighter text-black font-medium mt-4 lg:mt-0">
           Website name
         </p>
         <p class="text-sm text-zinc-500 mt-4">
@@ -39,7 +40,7 @@ import CollectionModal from "./CollectionModal.astro";
           template. With a focus on clean aesthetics it serves as the perfect
           foundation for showcasing website with good UX
         </p>
-        <div class="flex flex-col gap-8 mt-24">
+        <div class="flex flex-col gap-8 mt-8 lg:mt-24">
           <div x-data="{ open: false }" class="w-full">
             <!-- Collection Trigger -->
             <span x-on:click="open = true">

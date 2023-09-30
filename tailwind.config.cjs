@@ -95,7 +95,7 @@ module.exports = {
 
       colors: {
 
-        accent: {
+        blue: {
 
           '100': '#edf5ff',
           '200': '#d0e2ff',

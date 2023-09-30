@@ -1,17 +1,20 @@
 <seciton>
-  <div class="w-full mx-auto bg-white max-w-screen-2xl px-8 py-2">
+  <div class="w-full mx-auto bg-white max-w-screen-2xl border-b px-8 py-1">
     <div
       x-data="{ open: false }"
-      class="relative flex flex-col w-full mx-auto md:items-center md:justify-between md:flex-row">
+      class="relative flex flex-col w-full mx-auto md:items-center md:justify-between md:flex-row"
+    >
       <div class="flex flex-row items-center justify-between lg:justify-start">
         <a
           class="text-black inline-flex items-center gap-3 uppercase text-sm"
-          href="/">
+          href="/"
+        >
           <svg
             class="h-5"
             viewBox="0 0 400 413"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <g clip-path="url(#clip0_1984_325)">
               <path
                 d="M0.0018118 235.381L0.998397 85.3896C1.1788 58.2384 20.1604 34.9786 46.3782 29.7819L191.213 1.07354C226.018 -5.8253 258.315 21.4078 258.077 57.4519L257.079 207.443C256.899 234.594 237.918 257.854 211.701 263.051L66.865 291.759C32.06 298.658 -0.237673 271.425 0.0018118 235.381Z"
@@ -36,12 +39,14 @@
         </a>
         <button
           @click="open = !open"
-          class="inline-flex items-center justify-center p-2 text-zinc-400 hover:text-black focus:outline-none focus:text-black md:hidden">
+          class="inline-flex items-center justify-center p-2 text-zinc-400 hover:text-black focus:outline-none focus:text-black md:hidden"
+        >
           <svg
             class="w-6 h-6"
             stroke="currentColor"
             fill="none"
-            viewBox="0 0 24 24">
+            viewBox="0 0 24 24"
+          >
             <path
               :class="{'hidden': open, 'inline-flex': !open }"
               class="inline-flex"
@@ -61,12 +66,13 @@
       </div>
       <nav
         :class="{'flex': open, 'hidden': !open}"
-        class="flex-col items-center text-xs text-black font-medium gap-6 flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row">
-        <a class="hover:text-accent-600 lg:ml-auto" href="/"> Overview</a>
-        <a class="hover:text-accent-600" href="/system/style-guide">
+        class="flex-col items-center text-base text-black font-medium gap-6 flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row"
+      >
+        <a class="hover:text-blue-600 lg:ml-auto" href="/"> Overview</a>
+        <a class="hover:text-blue-600" href="/system/style-guide">
           Style Guide</a
         >
-        <a class="hover:text-accent-600" href="#">Buy Carbon</a>
+        <a class="hover:text-blue-600" href="#">Buy Carbon</a>
 
         <div class="flex flex-col md:flex-row lg:ml-auto gap-2">
           <div class="flex justify-center">
@@ -93,7 +99,8 @@
               x-on:keydown.escape.prevent.stop="close($refs.button)"
               x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
               x-id="['dropdown-button']"
-              class="relative">
+              class="relative"
+            >
               <!-- Button -->
               <button
                 x-ref="button"
@@ -101,16 +108,18 @@
                 :aria-expanded="open"
                 :aria-controls="$id('dropdown-button')"
                 type="button"
-                class="inline-flex h-8 items-center border border-transparent px-3.5 font-medium justify-between py-2 text-xs text-accent-600 hover:bg-zinc-200 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-white focus:border-accent-600">
-                Profile
+                class="inline-flex h-10 items-center border border-transparent px-3.5 font-medium justify-between py-2 text-base text-blue-600 hover:bg-zinc-200 hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-white focus:border-blue-600"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  class="w-4 h-4"
+                  class="w-6 h-6"
                   viewBox="0 0 32 32"
                   ><path
                     fill="currentColor"
-                    d="M16 22L6 12l1.4-1.4l8.6 8.6l8.6-8.6L26 12z"></path></svg
+                    d="M16 4a5 5 0 1 1-5 5a5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7a7 7 0 0 0-7-7zm10 28h-2v-5a5 5 0 0 0-5-5h-6a5 5 0 0 0-5 5v5H6v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7z"
+                  ></path></svg
                 >
+                
               </button>
 
               <!-- Panel -->
@@ -121,51 +130,54 @@
                 x-on:click.outside="close($refs.button)"
                 :id="$id('dropdown-button')"
                 style="display: none;"
-                class="absolute left-0 mt-2 w-52 bg-white divide-y shadow-md">
+                class="absolute -left-12 mt-2 w-52  flex flex-col bg-white  shadow rounded-0"
+              >
                 <a
                   href="/profile/settings"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
+                >
                   Settings
                 </a>
 
                 <a
                   href="/profile/collections"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
+                >
                   Collections
                 </a>
 
                 <a
                   href="/directory/submit"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
+                >
                   Submit
                 </a>
                 <a
-                  href="/directory/submissions"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
+                  href="/profile/submissions"
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
+                >
                   Submission
                 </a>
                 <a
                   href="/profile/profile"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
+                >
                   Your profile
                 </a>
                 <a
                   href="/forms/logout"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-xs hover:bg-gray-200 text-black">
+                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
+                >
                   Log out
                 </a>
               </div>
             </div>
           </div>
+
           <a
             href="/forms/login"
-            class="inline-flex h-8 items-center border border-transparent px-3.5 font-medium justify-between py-2 text-xs text-accent-600 hover:bg-zinc-200 hover:text-accent-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-white focus:border-accent-600"
+            class="inline-flex h-10 items-center border border-blue-600 px-3.5 justify-between py-2 text-base font-medium text-blue-600 hover:bg-blue-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-blue-600 focus:text-white"
             >Log in</a
-          >
-          <a
-            href="/directory/submit"
-            class="inline-flex h-8 items-center border border-accent-600 px-3.5 justify-between py-2 text-xs font-medium text-accent-600 hover:bg-accent-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-accent-600 focus:text-white"
-            >Submit</a
           >
         </div>
       </nav>

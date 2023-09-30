@@ -2,46 +2,39 @@
   <div class="w-full mx-auto bg-white max-w-screen-2xl px-8 py-24">
     <div class="max-w-md mx-auto">
       <p class="text-4xl lg:text-5xl tracking-tighter text-black font-medium">
-        Sign up to Carbon
+        Edit your profile
       </p>
 
       <form class="space-y-6 mx-auto mt-14" action="#" method="POST">
         <div>
           <label
-            for="first-name"
+            for="name"
             class="block text-sm font-medium leading-6 text-black"
-            >First name</label
+            >Your name</label
           >
           <div class="mt-2">
             <input
-              id="first-name"
-              name="first-name"
+              id="name"
+              name="name"
               type="text"
-              autocomplete="first-name"
-              placeholder="placeholder text"
+              autocomplete="name"
+              value="Michael Andreuzza"
               required
               class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
-        <div>
-          <label
-            for="last-name"
-            class="block text-sm font-medium leading-6 text-black"
-            >Last name</label
-          >
-          <div class="mt-2">
-            <input
-              id="last-name"
-              name="last-name"
-              type="text"
-              autocomplete="last-name"
-              placeholder="placeholder text"
-              required
-              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-            />
-          </div>
+        <div class="flex items-center mt-2">
+          <input
+            id="#"
+            name="#"
+            type="checkbox"
+            class="h-4 w-4 text-500 focus:ring-zinc-600 text-black"
+          /><label for="#" class="ml-2 block text-sm text-zinc-500"
+            >Check this if you are an agency or organisation
+          </label>
         </div>
+
         <div>
           <label
             for="email"
@@ -60,71 +53,54 @@
             />
           </div>
         </div>
-        <div>
-          <label
-            for="password"
-            class="block text-sm font-medium leading-6 text-black"
-            >Password</label
-          >
-
-          <div class="mt-2">
-            <input
-              id="password"
-              name="password"
-              type="text"
-              autocomplete="password"
-              placeholder="placeholder text"
-              required
-              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-        <div>
-          <label
-            for="confirm-password"
-            class="block text-sm font-medium leading-6 text-black"
-            >Confirm Password</label
-          >
-
-          <div class="mt-2">
-            <input
-              id="confirm-password"
-              name="confirm-password"
-              type="text"
-              autocomplete="password"
-              placeholder="placeholder text"
-              required
-              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-        <div class="flex items-center">
-          <input
-            id="#"
-            name="#"
-            type="checkbox"
-            class="h-4 w-4 text-500 focus:ring-zinc-600 text-black"
-          />
-          <label for="#" class="ml-2 block text-sm text-zinc-500"
-            >Receive emails from us?</label
-          >
-        </div>
         <small class="text-xs text-zinc-500"
-          >Receive a weekly digest of new sites on Friday, plus other (very)
-          occasional news
+          >This will be displayed publicly, so please use a sales or general
+          address.
         </small>
+        <div>
+          <label
+            for="website"
+            class="block text-sm font-medium leading-6 text-black"
+            >Website</label
+          >
+
+          <div class="mt-2">
+            <input
+              id="website"
+              name="website"
+              type="text"
+              autocomplete="website"
+              value="https://michaelandreuzza.com"
+              required
+              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            for="twitter"
+            class="block text-sm font-medium leading-6 text-black"
+            >Website</label
+          >
+
+          <div class="mt-2">
+            <input
+              id="twitter"
+              name="twitter"
+              type="text"
+              autocomplete=""
+              value="@Mike_Andreuzza"
+              required
+              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+        <small class="text-xs text-zinc-500">Don't include the @ prefix</small>
         <div class="flex">
           <button
             type="submit"
             class="inline-flex h-12 items-center bg-blue-600 pl-4 pr-16 justify-between py-2 text-xs font-normal text-white hover:bg-blue-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-blue-600 focus:text-white w-auto"
-            >Sign in</button
-          >
-        </div>
-        <div class="inline-flex items-center justify-between w-full">
-          <p class="text-zinc-500 text-sm">Don't have an account?</p>
-          <a
-            class="text-blue-600 text-sm hover:text-black duration-200"
-            href="/forms/signup">Create an account</a
+            >Save</button
           >
         </div>
       </form>

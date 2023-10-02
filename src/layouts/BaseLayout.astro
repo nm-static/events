@@ -4,13 +4,13 @@ import Navigation from "@/components/global/Navigation.astro";
 import Footer from "@/components/global/Footer.astro";
 ---
 
-<html lang="en">
+<html lang="en" class="selection:bg-accent-500">
   <head>
     <BaseHead />
   </head>
-  <body class="flex flex-col min-h-screen bg-white">
+  <body class="flex flex-col min-h-screen bg-zinc-900">
     <Navigation />
-    <main class="flex-grow"><slot /></main>
+    <main class="flex-grow z-10 pb-24 rounded-5xl lg:rounded-b-6xl bg-zinc-900 mb-[100vh]"><slot /></main>
     <Footer />
     
   </body>

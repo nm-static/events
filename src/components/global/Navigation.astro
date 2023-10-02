@@ -1,51 +1,33 @@
-<seciton>
-  <div class="w-full mx-auto bg-white max-w-screen-2xl border-b px-8 py-1">
+<seciton class="fixed z-50 w-full bg-zinc-900">
+  <div class="w-full mx-auto py-1">
     <div
       x-data="{ open: false }"
-      class="relative flex flex-col w-full mx-auto md:items-center md:justify-between md:flex-row"
+      class="relative flex flex-col w-full mx-auto max-w-screen-2xl px-8 md:items-center md:justify-between md:flex-row"
     >
       <div class="flex flex-row items-center justify-between lg:justify-start">
-        <a
-          class="text-black inline-flex items-center gap-2 uppercase text-sm"
-          href="/"
-        >
+        <a class="text-white inline-flex items-center gap-2 uppercase" href="/">
           <svg
-          class="h-5"
-            viewBox="0 0 400 413"
+            class="h-5"
+            viewBox="0 0 56 11"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#clip0_1984_325)">
-              <path
-                d="M399.998 177.119L399.002 327.11C398.821 354.262 379.84 377.521 353.622 382.718L208.787 411.426C173.982 418.325 141.685 391.092 141.923 355.048L142.921 205.057C143.101 177.906 162.082 154.646 188.299 149.449L333.135 120.741C367.94 113.842 400.238 141.075 399.998 177.119Z"
-                fill="currentColor"
-                fill-opacity="0.2"></path>
-              <path
-                d="M329.037 117.307L328.041 267.298C327.86 294.449 308.879 317.709 282.661 322.906L137.825 351.614C103.02 358.513 70.723 331.28 70.963 295.236L71.9593 145.244C72.1393 118.093 91.1217 94.8329 117.339 89.6366L262.174 60.9279C296.979 54.0291 329.277 81.2628 329.037 117.307Z"
-                fill="currentColor"
-                fill-opacity="0.5"></path>
-              <path
-                d="M258.076 57.4389L257.079 207.43C256.899 234.583 237.918 257.841 211.7 263.039L66.8651 291.747C32.0601 298.646 -0.238708 271.413 0.00131226 235.369L0.997559 85.3776C1.1788 58.2264 20.16 34.9664 46.3775 29.7689L191.213 1.06134C226.018 -5.8374 258.315 21.3951 258.076 57.4389Z"
-                fill="currentColor"
-                fill-opacity="0.8"></path>
-            </g>
-            <defs>
-              <clipPath id="clip0_1984_325">
-                <rect
-                  width="400"
-                  height="412.5"
-                  fill="currentColor"
-                  transform="matrix(-1 0 0 -1 400 412.5)"></rect>
-              </clipPath>
-            </defs>
+            <path
+              d="M4.68 10.12C3.752 10.12 2.956 9.952 2.292 9.616C1.628 9.272 1.12 8.792 0.768 8.176C0.416 7.552 0.24 6.82 0.24 5.98C0.24 5.14 0.416 4.412 0.768 3.796C1.12 3.172 1.628 2.692 2.292 2.356C2.956 2.012 3.752 1.84 4.68 1.84C5.584 1.84 6.356 1.976 6.996 2.248C7.644 2.52 8.14 2.912 8.484 3.424C8.828 3.936 9 4.552 9 5.272V5.476H6.48V5.272C6.48 4.816 6.352 4.492 6.096 4.3C5.84 4.1 5.38 4 4.716 4C4.172 4 3.748 4.056 3.444 4.168C3.148 4.272 2.94 4.468 2.82 4.756C2.7 5.036 2.64 5.444 2.64 5.98C2.64 6.508 2.7 6.916 2.82 7.204C2.94 7.492 3.148 7.692 3.444 7.804C3.748 7.908 4.172 7.96 4.716 7.96C5.38 7.96 5.84 7.864 6.096 7.672C6.352 7.472 6.48 7.144 6.48 6.688V6.484H9V6.688C9 7.4 8.828 8.016 8.484 8.536C8.14 9.048 7.644 9.44 6.996 9.712C6.356 9.984 5.584 10.12 4.68 10.12ZM11.6464 10H9.11437L12.5824 1.96H15.8104L19.2904 10H16.6984L14.7904 5.356L14.2624 4H14.1064L13.5904 5.356L11.6464 10ZM17.0944 8.512H11.1664V6.484H17.0944V8.512ZM21.7879 10H19.5319V1.96H24.2239C24.9359 1.96 25.5319 2.056 26.0119 2.248C26.4919 2.44 26.8519 2.72 27.0919 3.088C27.3399 3.448 27.4639 3.892 27.4639 4.42C27.4639 4.844 27.3879 5.212 27.2359 5.524C27.0919 5.828 26.8599 6.076 26.5399 6.268C26.2199 6.452 25.8039 6.576 25.2919 6.64V6.76C25.7079 6.864 26.0039 7.02 26.1799 7.228C26.3639 7.428 26.5319 7.68 26.6839 7.984L27.6799 10H25.0759L24.1159 8.032C24.0199 7.832 23.9199 7.676 23.8159 7.564C23.7119 7.452 23.5759 7.376 23.4079 7.336C23.2399 7.288 23.0079 7.264 22.7119 7.264H21.7879V10ZM21.7879 3.988V5.584H24.1999C24.5279 5.584 24.7599 5.536 24.8959 5.44C25.0319 5.344 25.0999 5.124 25.0999 4.78C25.0999 4.46 25.0319 4.248 24.8959 4.144C24.7599 4.04 24.5279 3.988 24.1999 3.988H21.7879ZM33.4277 10H28.0397V1.96H33.1517C33.7357 1.96 34.2197 2.036 34.6037 2.188C34.9877 2.332 35.2757 2.548 35.4677 2.836C35.6597 3.124 35.7557 3.48 35.7557 3.904C35.7557 4.416 35.6037 4.84 35.2997 5.176C35.0037 5.512 34.4877 5.696 33.7517 5.728V5.848C34.5597 5.88 35.1557 6.068 35.5397 6.412C35.9317 6.756 36.1277 7.208 36.1277 7.768C36.1277 8.216 36.0357 8.608 35.8517 8.944C35.6677 9.28 35.3757 9.54 34.9757 9.724C34.5837 9.908 34.0677 10 33.4277 10ZM30.2837 6.856V7.972H33.1397C33.4117 7.972 33.5957 7.936 33.6917 7.864C33.7957 7.784 33.8477 7.632 33.8477 7.408C33.8477 7.184 33.7997 7.036 33.7037 6.964C33.6077 6.892 33.4197 6.856 33.1397 6.856H30.2837ZM30.2837 3.988V5.008H32.9117C33.1437 5.008 33.2997 4.972 33.3797 4.9C33.4597 4.82 33.4997 4.688 33.4997 4.504C33.4997 4.32 33.4477 4.188 33.3437 4.108C33.2477 4.028 33.0837 3.988 32.8517 3.988H30.2837ZM48.9168 10H46.6608V1.96H49.0608L51.2928 4.972L52.4688 6.82H52.6248L52.5168 5.068V1.96H54.7728V10H52.3728L49.9968 6.904L48.9768 5.32H48.8208L48.9168 6.856V10Z"
+              fill="white"></path>
+            <rect
+              x="37.6296"
+              y="4.62963"
+              width="6.74074"
+              height="1.96445"
+              rx="0.982226"
+              stroke="white"
+              stroke-width="1.25926"></rect>
           </svg>
-
-       
-          <span>Carbon</span>
         </a>
         <button
           @click="open = !open"
-          class="inline-flex items-center justify-center p-2 text-zinc-400 hover:text-black focus:outline-none focus:text-black md:hidden"
+          class="inline-flex items-center justify-center p-2 text-zinc-400 hover:text-white focus:outline-none focus:text-white md:hidden"
         >
           <svg
             class="w-6 h-6"
@@ -72,118 +54,111 @@
       </div>
       <nav
         :class="{'flex': open, 'hidden': !open}"
-        class="flex-col items-center text-base text-black font-medium gap-6 flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row"
+        class="flex-col items-center text-base text-white tracking-wide font-light uppercase gap-6 flex-grow hidden md:pb-0 md:flex md:justify-end md:flex-row"
       >
-        <a class="hover:text-blue-600 lg:ml-auto" href="/"> Overview</a>
-        <a class="hover:text-blue-600" href="/system/style-guide">
+        <a class="hover:text-accent-500 h-9 p-2 lg:ml-auto" href="/">
+          Overview</a
+        >
+        <a class="hover:text-accent-500 h-9 p-2" href="/system/style-guide">
           Style Guide</a
         >
-        <a class="hover:text-blue-600" href="#">Buy Carbon</a>
+        <a class="hover:text-accent-500 h-9 p-2" href="#">Buy Carbon</a>
 
-        <div class="flex flex-col md:flex-row lg:ml-auto gap-2">
-          <div class="flex justify-center">
-            <div
-              x-data="{
-            open: false,
-            toggle() {
-                if (this.open) {
-                    return this.close()
-                }
+        <div class="flex justify-center lg:ml-auto">
+          <div
+            x-data="{
+          open: false,
+          toggle() {
+              if (this.open) {
+                  return this.close()
+              }
 
-                this.$refs.button.focus()
+              this.$refs.button.focus()
 
-                this.open = true
-            },
-            close(focusAfter) {
-                if (! this.open) return
+              this.open = true
+          },
+          close(focusAfter) {
+              if (! this.open) return
 
-                this.open = false
+              this.open = false
 
-                focusAfter && focusAfter.focus()
-            }
-        }"
-              x-on:keydown.escape.prevent.stop="close($refs.button)"
-              x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
-              x-id="['dropdown-button']"
-              class="relative"
+              focusAfter && focusAfter.focus()
+          }
+      }"
+            x-on:keydown.escape.prevent.stop="close($refs.button)"
+            x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
+            x-id="['dropdown-button']"
+            class="relative"
+          >
+            <!-- Button -->
+            <button
+              x-ref="button"
+              x-on:click="toggle()"
+              :aria-expanded="open"
+              :aria-controls="$id('dropdown-button')"
+              type="button"
+              class="px-4 duration-200 hover:border-accent-500 h-10 text-white justify-between uppercase border-2 rounded-full inline-flex items-center justify gap-12"
             >
-              <!-- Button -->
-              <button
-                x-ref="button"
-                x-on:click="toggle()"
-                :aria-expanded="open"
-                :aria-controls="$id('dropdown-button')"
-                type="button"
-                class="inline-flex h-10 items-center border border-transparent px-3.5 font-medium justify-between py-2 text-base text-blue-600 hover:bg-zinc-200 hover:text-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-white focus:border-blue-600"
+              Profile
+              
+            </button>
+
+            <!-- Panel -->
+            <div
+              x-ref="panel"
+              x-show="open"
+              x-transition.origin.top.left
+              x-on:click.outside="close($refs.button)"
+              :id="$id('dropdown-button')"
+              style="display: none;"
+              class="absolute -left-12 mt-2 w-52 flex uppercase flex-col bg-black shadow-2xl overflow-hidden divide-y divide-zinc-900 rounded-xl rounded-0 border border-zinc-900"
+            >
+              <a
+                href="/profile/settings"
+                class="flex items-center gap-2 h-9 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-6 h-6"
-                  viewBox="0 0 32 32"
-                  ><path
-                    fill="currentColor"
-                    d="M16 4a5 5 0 1 1-5 5a5 5 0 0 1 5-5m0-2a7 7 0 1 0 7 7a7 7 0 0 0-7-7zm10 28h-2v-5a5 5 0 0 0-5-5h-6a5 5 0 0 0-5 5v5H6v-5a7 7 0 0 1 7-7h6a7 7 0 0 1 7 7z"
-                  ></path></svg
-                >
-              </button>
+                Settings
+              </a>
 
-              <!-- Panel -->
-              <div
-                x-ref="panel"
-                x-show="open"
-                x-transition.origin.top.left
-                x-on:click.outside="close($refs.button)"
-                :id="$id('dropdown-button')"
-                style="display: none;"
-                class="absolute -left-12 mt-2 w-52 flex flex-col bg-white shadow rounded-0"
+              <a
+                href="/profile/collections"
+                class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
               >
-                <a
-                  href="/profile/settings"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
-                >
-                  Settings
-                </a>
+                Collections
+              </a>
 
-                <a
-                  href="/profile/collections"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
-                >
-                  Collections
-                </a>
-
-                <a
-                  href="/directory/submit"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
-                >
-                  Submit
-                </a>
-                <a
-                  href="/profile/submissions"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
-                >
-                  Submission
-                </a>
-                <a
-                  href="/profile/profile"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
-                >
-                  Your profile
-                </a>
-                <a
-                  href="/forms/logout"
-                  class="flex items-center gap-2 w-full pl-4 pr-16 py-2.5 text-left text-base hover:bg-gray-200 text-black font-normal border-b focus:ring-1 focus:ring-blue-600"
-                >
-                  Log out
-                </a>
-              </div>
+              <a
+                href="/directory/submit"
+                class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
+              >
+                Submit
+              </a>
+              <a
+                href="/profile/submissions"
+                class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
+              >
+                Submission
+              </a>
+              <a
+                href="/profile/profile"
+                class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
+              >
+                Your profile
+              </a>
+              <a
+                href="/forms/login"
+                class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
+              >
+                Log in
+              </a>
+              <a
+                href="/forms/logout"
+                class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
+              >
+                Log out
+              </a>
             </div>
           </div>
-
-          <a
-            href="/forms/login"
-            class="inline-flex h-10 items-center border border-blue-600 px-3.5 justify-between py-2 text-base font-medium text-blue-600 hover:bg-blue-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-blue-600 focus:text-white"
-            >Log in</a
-          >
         </div>
       </nav>
     </div>

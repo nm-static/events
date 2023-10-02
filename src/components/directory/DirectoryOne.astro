@@ -1,61 +1,27 @@
 ---
 import { directory } from "../../data/directory.json";
-import FiltersOne from "./FiltersOne.astro";
+
 ---
 
 <section x-data="{ open: false }">
-  <div class="w-full mx-auto bg-white max-w-screen-2xl px-8 py-12   ">
-    <div class="relative">
-      <div class="absolute inset-0 flex items-center" aria-hidden="true">
-        <div class="w-full border-t"></div>
-      </div>
-      <div class="relative flex justify-between">
-        <span
-          class="bg-white pr-2 uppercase texts-m tracking-tighter font-medium text-black"
-          >Full directory</span
-        >
-        <div>
-          <button
-            class="bg-white pl-2 uppercase texts-m tracking-tighter font-medium text-black"
-            @click="open = ! open">Filters</button
-          >
-        </div>
-      </div>
-    </div>
-    <div
-      x-show="open"
-      @click.outside="open = false"
-      x-transition:enter.duration.500ms
-      x-transition:leave.duration.400ms>
-      <FiltersOne />
-    </div>
+  <div class="w-full mx-auto max-w-screen-2xl  px-8 py-12   ">
+  
 
     <div
       class="grid grid-cols-1 gap-px gap-y-12 lg:gap-y-24 sm:grid-cols-2 lg:grid-cols-3 mt-6 mx-auto">
       {
         directory.map((template) => (
           <>
-            <div>
-              <a href={template.link} class="hover:opacity-80 duration-200">
-                <div class="border   ">
+            <div class="group">
+              <a href={template.link} class="hover:opacity-80 duration-200 ">
+                <div class="border border-zinc-800   group-hover:grayscale overflow-hidden rounded-4xl ">
                   <img src={template.img} alt="#" />
                 </div>
               </a>
-              <div class="inline-flex items-center justify-between w-full">
-                <p class="text-black    text-sm mt-2">{template.title}</p>
-                <a
-                  href="#_"
-                  class=" bg-black text-white    hover:text-zinc-500 duration-200">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-6 h-6"
-                    viewBox="0 0 32 32">
-                    <path
-                      fill="currentColor"
-                      d="M10 6v2h12.59L6 24.59L7.41 26L24 9.41V22h2V6H10z"
-                    />
-                  </svg>
-                </a>
+              <div class="flex flex-col  uppercase mt-2">
+                <p class="text-white text-sm">{template.title}</p>
+                <p class="text-zinc-500 text-xs mt-1">Added on {template.date}</p>
+                
               </div>
             </div>
           </>

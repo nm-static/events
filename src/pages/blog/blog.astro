@@ -8,11 +8,11 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 
 <BaseLayout>
   <section>
-    <div class="w-full mx-auto bg-white max-w-screen-2xl">
+    <div class="w-full mx-auto max-w-screen-xl lg:px-32">
       <div class="grid grid-cols-1 lg:grid-cols-7 lg:divide-x">
         <div class="lg:col-span-1 divide-y">
           <div class="p-8">
-            <h1 class="text-base tracking-tighter text-blue-600 font-medium">
+            <h1 class="text-base tracking-tighter text-accent-600 font-medium">
               Blog
             </h1>
           </div>
@@ -25,7 +25,7 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
                 tags.map((tag) => (
                   <li>
                     <a
-                      class="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-normal text-blue-700 ring-1 ring-inset ring-blue-700/10"
+                      class="inline-flex items-center rounded-full bg-accent-50 px-2 py-1 text-xs font-normal text-accent-700 ring-1 ring-inset ring-accent-700/10"
                       href={`/tags/${tag}`}
                     >
                       {tag}
@@ -76,7 +76,7 @@ const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
               type="text"
               name="search"
               id="search"
-              class="block items-center pl-12 w-full h-16 border-0 bg-zinc-100 relative border-b border-zinc-900 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-blue-600 sm:text-sm sm:leading-6"
+              class="block items-center pl-12 w-full h-16 border-0 bg-zinc-100 relative border-b border-zinc-900 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-600 sm:text-sm sm:leading-6"
             />
             <div class="absolute inset-y-0 left-0 flex py-5 pl-2">
               <svg

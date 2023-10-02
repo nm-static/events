@@ -2,7 +2,7 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     screens: {
       sm: "540px",
@@ -92,45 +92,35 @@ module.exports = {
       ],
     },
     extend: {
-
+      borderRadius: {
+        "4xl": "2rem",
+        "5xl": "3rem",
+        "6xl": "5rem",
+      },
       colors: {
-
-        blue: {
-
-          '100': '#edf5ff',
-          '200': '#d0e2ff',
-          '300': '#a6c8ff',
-          '400': '#78a9ff',
-          '500': '#4589ff',
-          '600': '#0f62fe',
-          '700': '#0043ce',
-          '800': '#002d9c',
-          '900': '#001d6c',
-          '950': '#001141',
-        },
-        red: {
-
-          '100': '#FFD2DD',
-          '200': '#FFA5B4',
-          '300': '#FF7D87',
-          '400': '#FF5050',
-          '500': '#E71D32',
-          '600': '#AD1625',
-          '700': '#8C101C',
-          '800': '#6E0A1E',
-          '900': '#4C0A17',
-          '950': '#040001',
+        black: "#0d0d0d",
+        accent: {
+          50: "hsl(22, 100%, 96%)",
+          100: "hsl(25, 100%, 91%)",
+          200: "hsl(22, 100%, 82%)",
+          300: "hsl(20, 100%, 71%)",
+          400: "hsl(16, 100%, 60%)",
+          500: "hsl(14, 100%, 52%)",
+          600: "hsl(9, 100%, 50%)",
+          700: "hsl(6, 98%, 40%)",
+          800: "hsl(4, 87%, 34%)",
+          900: "hsl(4, 83%, 28%)",
+          950: "hsl(1, 89%, 15%)",
         },
       },
       fontFamily: {
-        sans: ["IBM Plex Sans", ...defaultTheme.fontFamily.sans],
-        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
+        sans: ["Clash Display", ...defaultTheme.fontFamily.sans],
       },
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/aspect-ratio'),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
   ],
-}
+};

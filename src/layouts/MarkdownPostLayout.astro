@@ -40,12 +40,12 @@ import { AstroSeo } from "@astrolib/seo";
 />
 <BaseLayout>
   <section>
-    <div class="w-full mx-auto bg-white max-w-screen-2xl">
+    <div class="w-full mx-auto max-w-screen-xl lg:px-32">
       <div class="grid grid-cols-1 lg:grid-cols-7 lg:divide-x">
         <div class="lg:col-span-1 divide-y">
           <div class="p-8">
            <a href="/blog/blog">
-              <h1 class="text-base tracking-tighter text-blue-600 font-medium">
+              <h1 class="text-base tracking-tighter text-accent-600 font-medium">
                 Blog
               </h1>
             </a>
@@ -74,7 +74,7 @@ import { AstroSeo } from "@astrolib/seo";
               {
                 frontmatter.tags.map((tag) => (
                   <li >
-                    <a href={`/tags/${tag}`} class="inline-flex items-center rounded-full bg-blue-50 px-2 py-1 text-xs font-normal text-blue-700 ring-1 ring-inset ring-blue-700/10">
+                    <a href={`/tags/${tag}`} class="inline-flex items-center rounded-full bg-accent-50 px-2 py-1 text-xs font-normal text-accent-700 ring-1 ring-inset ring-accent-700/10">
                       {tag}
                     </a>
                   </li>

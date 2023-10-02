@@ -2,78 +2,94 @@
 import CollectionModal from "./CollectionModal.astro";
 ---
 
-<section>
-  <div class="w-full mx-auto bg-white max-w-screen-2xl px-8 py-24   ">
-    <div class="grid grid-cols-1 lg:grid-cols-5  gap-12">
-      <div class="flex flex-col gap-12 lg:col-span-3">
+<section >
+  <div class="w-full mx-auto max-w-screen-2xl  px-8  py-24">
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-px">
+      <div class="lg:col-span-2 order-first">
+        <div class="p-10 bg-zinc-800 rounded-3xl lg:rounded-5xl h-full">
+         <img class="rounded-3xl" src="/ex1.png" class="lg:hidden" alt="" />
+         <p class="text-xl uppercase text-accent-500 font-medium mt-4 lg:mt-0">
+           Website name
+         </p>
+         <p class="text-lg text-white mt-4">
+           This website is a light and dark and elegant directory website
+           template. With a focus on clean aesthetics it serves as the perfect
+           foundation for showcasing website with good UX
+         </p>
+          <div class="flex flex-col gap-8 mt-8">
+            <div x-data="{ open: false }" class="w-full">
+              <!-- Collection Trigger -->
+              <span x-on:click="open = true">
+                <button
+                  type="button"
+                  class="pl-4 pr-2 w-full duration-200 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center"
+                >
+                  <span>Add to collecton</span>
+  
+                  <div
+                    class="bg-white h-8 w-8 text-black inline-flex items-center justify-center rounded-full"
+                  >
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-5 h-5"
+                        viewBox="0 0 32 32"
+                        ><path
+                          fill="currentColor"
+                          d="m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10L18 6z"
+                        ></path></svg
+                      ></span
+                    >
+                  </div>
+                </button>
+              </span>
+              <!-- Collection Modal -->
+              <CollectionModal />
+            </div>
+          </div>
+  
+          <div class="flex flex-col gap-1 mt-8 divide-y">
+            <span class="uppercase text-sm py-2 text-white">Category</span>
+            <span class="text-zinc-500 py-2">Portals</span>
+          </div>
+          <div class="flex flex-col gap-1 divide-y">
+            <span class="uppercase text-sm py-2 text-white">Typography</span>
+            <span class="text-zinc-500 py-2">Carbon Plex Sans</span>
+            <span class="text-zinc-500 py-2">Carbon Plex Mono</span>
+          </div>
+       </div>
+      </div>
+      <div
+        class="flex flex-col gap-12 lg:col-span-3  bg-zinc-800 rounded-3xl lg:rounded-5xl p-10"
+      >
         <div
-          class="inline-flex items-center justify-between w-full col-span-full">
+          class="inline-flex items-center justify-between w-full col-span-full"
+        >
           <p
-            class="text-4xl lg:text-5xl tracking-tighter text-black font-medium">
+            class="text-xl lg:text-5xl  text-white font-medium uppercase"
+          >
             Website name
           </p>
           <a
             href="#_"
-            class="bg-black text-white hover:text-zinc-500 duration-200">
+            class="bg-white h-8 w-8 lg:h-12 lg:w-12 text-black inline-flex items-center justify-center rounded-full"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 lg:h-12 lg:w-12"
-              viewBox="0 0 32 32">
+              class="w-5 h-5 lg:h-10 lg:w-10"
+              viewBox="0 0 32 32"
+            >
               <path
                 fill="currentColor"
                 d="M10 6v2h12.59L6 24.59L7.41 26L24 9.41V22h2V6H10z"></path>
             </svg></a
           >
         </div>
-        <img src="/ex1.png" alt="" />
-        <img src="/ex2.png" alt="" />
-        <img src="/ex3.png" alt="" />
-        <img src="/ex4.png" alt="" />
-      </div>
-      <div class="lg:col-span-2 order-first lg:order-last">
-        <img src="/ex1.png" class="lg:hidden" alt="" />
-        <p class="text-xl tracking-tighter text-black font-medium mt-4 lg:mt-0">
-          Website name
-        </p>
-        <p class="text-sm text-zinc-500 mt-4">
-          This website is a light and dark and elegant directory website
-          template. With a focus on clean aesthetics it serves as the perfect
-          foundation for showcasing website with good UX
-        </p>
-        <div class="flex flex-col gap-8 mt-8 lg:mt-24">
-          <div x-data="{ open: false }" class="w-full">
-            <!-- Collection Trigger -->
-            <span x-on:click="open = true">
-              <button
-                type="button"
-                class="inline-flex h-12 items-center border border-blue-600 px-4 justify-between py-2 text-sm font-medium text-blue-600 hover:bg-blue-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-blue-600 focus:text-white">
-                <span>Add to collecton</span>
-
-                <svg
-                  class="h-6 w-6"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 32 32"
-                  ><path
-                    fill="currentColor"
-                    d="M17 15V8h-2v7H8v2h7v7h2v-7h7v-2z"></path></svg
-                >
-              </button>
-            </span>
-            <!-- Collection Modal -->
-            <CollectionModal />
-          </div>
-        </div>
-
-        <div class="flex flex-col gap-1 mt-24 divide-y">
-          <span class="uppercase text-sm py-2 text-black">Category</span>
-          <span class="text-zinc-500 py-2">Portals</span>
-        </div>
-        <div class="flex flex-col gap-1 divide-y">
-          <span class="uppercase text-sm py-2 text-black">Typography</span>
-          <span class="text-zinc-500 py-2">Carbon Plex Sans</span>
-          <span class="text-zinc-500 py-2">Carbon Plex Mono</span>
+        <div class="flex flex-col gap-px">
+          <img class="rounded-3xl" src="/ex1.png" alt="" />
+          <img class="rounded-3xl" src="/ex2.png" alt="" />
+          <img class="rounded-3xl" src="/ex3.png" alt="" />
+          <img class="rounded-3xl" src="/ex4.png" alt="" />
         </div>
       </div>
     </div>

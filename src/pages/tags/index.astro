@@ -8,7 +8,7 @@ const pageTitle = "Tag Index";
 
 <BaseLayout pageTitle={pageTitle}>
   <section>
-    <div class="w-full px-8 py-24 mx-auto bg-white max-w-screen-2xl">
+    <div class="w-full px-8 py-24 mx-auto max-w-screen-xl lg:px-32">
       <div class="max-w-xl mx-auto">
         <h1 class="text-4xl font-semibold tracking-tighter text-black">
           Tag index
@@ -17,7 +17,7 @@ const pageTitle = "Tag Index";
           {
             tags.map((tag) => (
               <li>
-                <a class="inline-flex h-12 items-center border border-blue-600 px-4 justify-between py-2 text-sm font-medium text-blue-600 hover:bg-blue-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-blue-600 focus:bg-blue-600 focus:text-white" href={`/tags/${tag}`}>
+                <a class="inline-flex h-12 items-center border border-accent-600 px-4 justify-between py-2 text-sm font-medium text-accent-600 hover:bg-accent-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-accent-600 focus:bg-accent-600 focus:text-white" href={`/tags/${tag}`}>
                   {tag}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

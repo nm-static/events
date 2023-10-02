@@ -40,63 +40,51 @@ import { AstroSeo } from "@astrolib/seo";
 />
 <BaseLayout>
   <section>
-    <div class="w-full mx-auto max-w-screen-xl lg:px-32">
-      <div class="grid grid-cols-1 lg:grid-cols-7 lg:divide-x">
-        <div class="lg:col-span-1 divide-y">
-          <div class="p-8">
-           <a href="/blog/blog">
-              <h1 class="text-base tracking-tighter text-accent-500 font-medium">
-                Blog
-              </h1>
-            </a>
-          </div>
-          <div class="p-8">
-            <p class="text-base tracking-tighter text-black font-medium">
-              Date
-            </p>
-            <p class="text-sm text-zinc-500">
-              {frontmatter.pubDate.toString().slice(0, 10)}
-            </p>
-          </div>
-          <div class="p-8">
-            <p class="text-base tracking-tighter text-black font-medium">
-              Author
-            </p>
-            <p class="text-sm text-zinc-500">
-              {frontmatter.author}
-            </p>
-          </div>
-          <div class="p-8">
-            <p class="text-xl tracking-tighter text-black font-medium">
-              Topics
-            </p>
-            <ol role="list" class="flex flex-wrap lg:flex-col gap-3 mt-4">
-              {
-                frontmatter.tags.map((tag) => (
-                  <li >
-                    <a href={`/tags/${tag}`} class="inline-flex items-center rounded-full bg-accent-50 px-2 py-1 text-xs font-normal text-accent-700 ring-1 ring-inset ring-accent-700/10">
-                      {tag}
-                    </a>
-                  </li>
-                ))
-              }
-            </ol>
-          </div>
+    <div class="w-full mx-auto max-w-screen-2xl px-8 py-24 mt-24">
+      <p
+        class="text-2xl lg:text-7xl tracking-tighter text-white font-medium uppercase"
+      >
+        {frontmatter.title}
+      </p>
+      <p class="text-xl text-zinc-400"><em>{frontmatter.description}</em></p>
+      <div class="flex flex-col lg:flex-row gap-8 mt-8">
+        <div>
+          <p class="text-base tracking-tighter text-white font-medium">Date</p>
+          <p class="text-sm text-zinc-400">
+            {frontmatter.pubDate.toString().slice(0, 10)}
+          </p>
         </div>
-        <div class="col-span-6 p-8 lg:p-24">
-          <div class="prose-styles pt-12 border-t">
-            <div class="max-w-2xl">
-              <p class="text-4xl lg:text-5xl tracking-tighter text-black font-medium ">{frontmatter.title}</p>
-              <p class="text-3xl"><em>{frontmatter.description}</em></p>
-            </div>
-
-           
-            <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
-            <div class="max-w-2xl"><slot /></div>
-          </div>
+        <div>
+          <p class="text-base tracking-tighter text-white font-medium">
+            Author
+          </p>
+          <p class="text-sm text-zinc-400">
+            {frontmatter.author}
+          </p>
+        </div>
+        <div>
+          <p class="text-xl tracking-tighter text-white font-medium">Topics</p>
+          <ol role="list" class="flex flex-col lg:flex-row gap-3">
+            {
+              frontmatter.tags.map((tag) => (
+                <li>
+                  <a
+                    href={`/tags/${tag}`}
+                    class="text-white text-sm hover:underline"
+                  >
+                    {tag}
+                  </a>
+                </li>
+              ))
+            }
+          </ol>
         </div>
       </div>
+      <div class="prose-styles mt-8">
+        <img src={frontmatter.image.url} alt={frontmatter.image.alt} />
+        <div class="max-w-2xl "><slot /></div>
+      </div>
     </div>
+     m
   </section>
-   m
 </BaseLayout>

@@ -4,7 +4,7 @@ import { directory } from "../../data/directory.json";
 ---
 
 <section x-data="{ open: false }">
-  <div class="w-full mx-auto max-w-screen-2xl  px-8 py-12   ">
+  <div class="w-full mx-auto max-w-screen-2xl  px-8 py-24">
   
 
     <div
@@ -18,9 +18,9 @@ import { directory } from "../../data/directory.json";
                   <img src={template.img} alt="#" />
                 </div>
               </a>
-              <div class="flex flex-col  uppercase mt-2">
+              <div class="flex flex-col  uppercase mt-2 text-center">
                 <p class="text-white text-sm">{template.title}</p>
-                <p class="text-zinc-500 text-xs mt-1">Added on {template.date}</p>
+                <p class="text-zinc-400 text-xs mt-1">Added on {template.date}</p>
                 
               </div>
             </div>

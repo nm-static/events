@@ -6,17 +6,17 @@ import EditCollecitonModal from "./EditCollecitonModal.astro";
 import RemoveWebsiteModal from "./RemoveWebsiteModal.astro";
 ---
 <section>
-  <div class="w-full mx-auto bg-white      max-w-screen-xl lg:px-32 px-8 py-24">
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-5">
-      <p class="text-4xl lg:text-5xl lg:col-span-2 tracking-tighter text-black    font-medium">
+  <div class="w-full mx-auto       max-w-screen-2xl  px-8 py-24">
+    <div class="grid grid-cols-1 gap-6 xl:grid-cols-5">
+      <p class=" text-3xl   tracking-wide uppercase text-white font-medium lg:col-span-2">
         Your collections
       </p>
-      <div class="ml-auto flex flex-col md:flex-row gap-2 w-full lg:col-span-3 lg:ml-auto">
+      <div class=" flex flex-col md:flex-row gap-2 w-full xl:col-span-3 xl:ml-auto">
 
          <div x-data="{ open: false }" class="w-full">
           <!-- Collection Trigger -->
           <span x-on:click="open = true">
-            <button type="button" class="inline-flex h-12 items-center border border-zinc-600 px-4 justify-between py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-zinc-600 focus:bg-zinc-600 focus:text-white">
+            <button type="button" class="p-4 duration-200 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center w-full">
               Create Collection
             <span>
               <svg
@@ -37,7 +37,7 @@ import RemoveWebsiteModal from "./RemoveWebsiteModal.astro";
          <div x-data="{ open: false }" class="w-full">
           <!-- Collection Trigger -->
           <span x-on:click="open = true">
-            <button type="button" class="inline-flex h-12 items-center border border-zinc-600 px-4 justify-between py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-zinc-600 focus:bg-zinc-600 focus:text-white">
+            <button type="button" class="p-4 duration-200 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center w-full">
               Edit Collection
               <span>
                  <svg
@@ -57,7 +57,7 @@ import RemoveWebsiteModal from "./RemoveWebsiteModal.astro";
         <div x-data="{ open: false }" class="w-full">
           <!-- Collection Trigger -->
           <span x-on:click="open = true">
-            <button type="button" class="inline-flex h-12 items-center border border-zinc-600 px-4 justify-between py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-zinc-600 focus:bg-zinc-600 focus:text-white">
+            <button type="button" class="p-4 duration-200 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center w-full">
              Delete Collection
               <span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 32 32">
@@ -71,17 +71,16 @@ import RemoveWebsiteModal from "./RemoveWebsiteModal.astro";
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-1 gap-px mt-24 gap-y-12 lg:gap-y-24 sm:grid-cols-2
-    lg:grid-cols-3  mx-auto">
+    <div class="grid grid-cols-1 gap-px gap-y-12 lg:gap-y-24 sm:grid-cols-2 lg:grid-cols-3 mt-12 lg:mt-24 mx-auto">
       {
       directory.slice(0,6).map((template) => (
       <>
-        <div>
-          <p class="text-black    text-xs mt-2">{template.title}</p>
+        <div class="group">
+          <p class="text-white text-center    text-xs mt-2">{template.title}</p>
           <div class="mt-4">
             <a href={template.link} class="hover:opacity-80 duration-200">
-              <div class="border   ">
-                <img src={template.img} alt="#" />
+              <div class="border border-zinc-800   group-hover:grayscale overflow-hidden rounded-4xl">
+                <img  src={template.img} alt="#" />
               </div>
             </a>
           </div>
@@ -89,7 +88,7 @@ import RemoveWebsiteModal from "./RemoveWebsiteModal.astro";
             <div x-data="{ open: false }" class="w-full">
               <!-- Collection Trigger -->
               <span x-on:click="open = true">
-                <button type="button" class="inline-flex h-12 items-center border border-zinc-600 px-4 justify-between py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-600 w-full hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-zinc-600 focus:bg-zinc-600 focus:text-white">
+                <button type="button" class="p-4 duration-200 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center w-full">
                   Remove website
                   <span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 32 32">

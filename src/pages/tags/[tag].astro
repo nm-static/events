@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import EntriesTwo from "@/components/entries/EntriesTwo.astro";
+import EntriesOne from "@/components/entries/EntriesOne.astro";
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
   const allPosts = await getCollection("posts");
@@ -24,47 +24,29 @@ const { posts } = Astro.props;
 ---
 
 <BaseLayout pageTitle={tag}>
-  <div>
-    <div>
-      <label for="search" class="sr-only">Quick search</label>
-      <div class="relative inline-flex w-full items-center">
-        <input
-          placeholder="Search for topics, titles and authors..."
-          type="text"
-          name="search"
-          id="search"
-          class="block items-center pl-12 w-full h-16 border-0 bg-zinc-100 relative border-b border-zinc-900 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
-        />
-        <div class="absolute inset-y-0 left-0 flex py-5 pl-2">
-          <svg
-            class="inline-flex items-center w-6 h-6"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 32 32"
-            ><path
-              fill="currentColor"
-              d="m29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9Z"
-            >
-            </path></svg
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-  <ul
-    class="grid grid-cols-1 gap-px bg-black mx-auto"
-  >
-    {
-      posts.map((post) => (
-        <EntriesTwo
-          url={"/posts/" + post.slug}
-          title={post.data.title}
-          description={post.data.description}
-          alt={post.data.title}
-          pubDate={post.data.pubDate.toString().slice(0, 10)}
-          author={post.data.author}
-          image={post.data.image.url}
-        />
-      ))
-    }
-  </ul>
+  
+  <section>
+   <div class="w-full mx-auto max-w-screen-2xl px-8 py-24">
+    <p class="text-2xl lg:text-7xl tracking-tighter text-white font-medium uppercase">
+      Posts tagged with <span class="text-accent-500">{tag}</span> <span class="lg:block">
+       
+    </p>
+      <ul
+      class="grid grid-cols-1 gap-8 gap-y-32 mt-12  sm:grid-cols-2 lg:grid-cols-3 mx-auto">
+        {
+          posts.map((post) => (
+            <EntriesOne
+              url={"/posts/" + post.slug}
+              title={post.data.title}
+              description={post.data.description}
+              alt={post.data.title}
+              pubDate={post.data.pubDate.toString().slice(0, 10)}
+              author={post.data.author}
+              image={post.data.image.url}
+            />
+          ))
+        }
+      </ul>
+   </div>
+  </section>
 </BaseLayout>

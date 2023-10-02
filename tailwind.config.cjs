@@ -114,7 +114,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Clash Display", ...defaultTheme.fontFamily.sans],
+        sans: ["Bricolage Grotesque", ...defaultTheme.fontFamily.sans],
       },
     },
   },

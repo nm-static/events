@@ -6,12 +6,14 @@
   aria-modal="true"
   x-id="['modal-title']"
   :aria-labelledby="$id('modal-title')"
-  class="fixed inset-0 z-10 overflow-y-auto">
+  class="fixed inset-0 z-10 overflow-y-auto"
+>
   <!-- Overlay -->
   <div
     x-show="open"
     x-transition.opacity
-    class="fixed inset-0 bg-black bg-opacity-50">
+    class="fixed inset-0 bg-black bg-opacity-50"
+  >
   </div>
 
   <!-- Panel -->
@@ -19,26 +21,29 @@
     x-show="open"
     x-transition
     x-on:click="open = false"
-    class="relative flex min-h-screen items-center justify-center p-4">
+    class="relative flex min-h-screen items-center justify-center p-4"
+  >
     <div
       x-on:click.stop
       x-trap.noscroll.inert="open"
-      class="relative w-full max-w-2xl overflow-y-auto bg-white border p-12 shadow-lg">
+      class="relative w-full max-w-2xl overflow-y-auto p-10 bg-zinc-800 rounded-3xl lg:rounded-5xl shadow-lg"
+    >
       <!-- Title -->
       <h2
-        class="text-xl tracking-tighter text-black font-medium"
-        :id="$id('modal-title')">
+        class="text-xl tracking-wide text-accent-500 uppercase font-medium"
+        :id="$id('modal-title')"
+      >
         Submitted website
       </h2>
 
       <!-- Content -->
-      <p class="mt-2 text-zinc-500">Edit your submission.</p>
+      <p class="mt-2 text-zinc-400 text-lg">Edit your submission.</p>
       <div class="divide-y mt-8">
         <div class="flex flex-col gap-1 mt-4 pt-4">
-          <span class="uppercase text-sm text-black">Edit</span>
+          <span class="uppercase text-sm text-white">edit</span>
           <div class="flex flex-col gap-2 mt-2">
             <input
-              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+              class="block items-center px-4 ring-offset-zinc-800 w-full rounded-full h-14 border-0 bg-zinc-900 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
               value="https://lexingtonthemes.com"
               maxlength="255"
               id="#"
@@ -48,8 +53,24 @@
 
             <button
               type="button"
-              class="inline-flex h-12 items-center border border-accent-500 px-3.5 justify-between py-2 text-sm font-medium text-accent-500 hover:bg-accent-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 focus:ring-1 focus:ring-offset-1 focus:ring-accent-500 focus:bg-accent-500 focus:text-white cursor-pointer duration-200 shrink-0">
-              <span>Submit</span>
+              class="pl-4 pr-2 w-full duration-200 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center"
+            >
+              <span>Save</span>
+              <div
+                class="bg-white h-8 w-8 text-black inline-flex items-center justify-center rounded-full"
+              >
+                <span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5"
+                    viewBox="0 0 32 32"
+                    ><path
+                      fill="currentColor"
+                      d="m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10L18 6z"
+                    ></path></svg
+                  ></span
+                >
+              </div>
             </button>
           </div>
         </div>

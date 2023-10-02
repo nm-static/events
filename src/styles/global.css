@@ -25,5 +25,5 @@
 }
 
 .prose-styles {
-  @apply text-sm prose text-neutral-600   dark:text-neutral-600 prose-a:font-normal prose-a:text-accent-600 hover:prose-a:text-black prose-h1:text-3xl prose-img:border prose-img:bg-neutral-50  prose-img:border-transparent  prose-p:text-sm prose-pre:font-mono max-w-none  prose-pre:border prose-headings:font-normal;
+  @apply text-sm prose text-neutral-600   dark:text-neutral-600 prose-a:font-normal prose-a:text-accent-500 hover:prose-a:text-black prose-h1:text-3xl prose-img:border prose-img:bg-neutral-50  prose-img:border-transparent  prose-p:text-sm prose-pre:font-mono max-w-none  prose-pre:border prose-headings:font-normal;
 }

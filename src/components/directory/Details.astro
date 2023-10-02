@@ -2,20 +2,22 @@
 import CollectionModal from "./CollectionModal.astro";
 ---
 
-<section >
-  <div class="w-full mx-auto max-w-screen-2xl  px-8  py-24">
+
+
+<section>
+  <div class="w-full mx-auto max-w-screen-2xl px-8 py-24">
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-px">
       <div class="lg:col-span-2 order-first">
-        <div class="p-10 bg-zinc-800 rounded-3xl lg:rounded-5xl h-full">
-         <img class="rounded-3xl" src="/ex1.png" class="lg:hidden" alt="" />
-         <p class="text-xl uppercase text-accent-500 font-medium mt-4 lg:mt-0">
-           Website name
-         </p>
-         <p class="text-lg text-white mt-4">
-           This website is a light and dark and elegant directory website
-           template. With a focus on clean aesthetics it serves as the perfect
-           foundation for showcasing website with good UX
-         </p>
+        <div class="p-10 bg-zinc-800 rounded-3xl lg:rounded-5xl lg:sticky lg:top-24 ">
+          <img class="rounded-3xl lg:hidden" src="/ex1.png"  alt="" />
+          <p class="text-xl uppercase text-accent-500 font-medium mt-4 lg:mt-0">
+            Website name
+          </p>
+          <p class="text-lg text-white mt-4">
+            This website is a light and dark and elegant directory website
+            template. With a focus on clean aesthetics it serves as the perfect
+            foundation for showcasing website with good UX
+          </p>
           <div class="flex flex-col gap-8 mt-8">
             <div x-data="{ open: false }" class="w-full">
               <!-- Collection Trigger -->
@@ -25,7 +27,7 @@ import CollectionModal from "./CollectionModal.astro";
                   class="pl-4 pr-2 w-full duration-200 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center"
                 >
                   <span>Add to collecton</span>
-  
+
                   <div
                     class="bg-white h-8 w-8 text-black inline-flex items-center justify-center rounded-full"
                   >
@@ -47,27 +49,25 @@ import CollectionModal from "./CollectionModal.astro";
               <CollectionModal />
             </div>
           </div>
-  
-          <div class="flex flex-col gap-1 mt-8 divide-y">
-            <span class="uppercase text-sm py-2 text-white">Category</span>
-            <span class="text-zinc-500 py-2">Portals</span>
+
+          <div class="flex flex-col text-sm g mt-8  divide-y-2 divide-zinc-900 border-2 border-zinc-900 rounded-2xl overflow-hidden">
+            <span class="uppercase  p-4 bg-zinc-900  text-white">Category</span>
+            <span class="text-zinc-400 p-4">Portals</span>
+            <span class="uppercase  p-4 bg-zinc-900  text-white">Typography</span>
+            <span class="text-zinc-400 p-4">Carbon Plex Sans</span>
+            <span class="text-zinc-400 p-4">Carbon Plex Mono</span>
+            
           </div>
-          <div class="flex flex-col gap-1 divide-y">
-            <span class="uppercase text-sm py-2 text-white">Typography</span>
-            <span class="text-zinc-500 py-2">Carbon Plex Sans</span>
-            <span class="text-zinc-500 py-2">Carbon Plex Mono</span>
-          </div>
-       </div>
+         
+        </div>
       </div>
       <div
-        class="flex flex-col gap-12 lg:col-span-3  bg-zinc-800 rounded-3xl lg:rounded-5xl p-10"
+        class="flex flex-col gap-12 lg:col-span-3 bg-zinc-800 rounded-3xl lg:rounded-5xl p-10"
       >
         <div
           class="inline-flex items-center justify-between w-full col-span-full"
         >
-          <p
-            class="text-xl lg:text-5xl  text-white font-medium uppercase"
-          >
+          <p class="text-xl lg:text-5xl text-white font-medium uppercase">
             Website name
           </p>
           <a

@@ -1,73 +1,59 @@
 <section>
-  <div class="w-full mx-auto max-w-screen-xl lg:px-32 px-8 py-24   ">
+  <div
+    class="w-full relative px-8 py-24 mx-auto max-w-screen-2xl items-center flex flex-col justify-center"
+  >
     <div class="max-w-md mx-auto">
-      <p class="text-4xl lg:text-5xl tracking-tighter text-black font-medium">
+      <p class="text-3xl tracking-wide uppercase text-white font-medium">
         Edit settings
       </p>
 
-      <form class="space-y-6 mx-auto mt-14" action="#" method="POST">
+      <form class="flex flex-col gap-px mx-auto mt-8" action="#" method="POST">
         <div>
-          <label
-            for="first-name"
-            class="block text-sm font-medium leading-6 text-black"
-            >First name</label
-          >
-          <div class="mt-2">
+          <label for="first-name" class="sr-only">First name</label>
+          <div>
             <input
               id="first-name"
               name="first-name"
               type="text"
               autocomplete="first-name"
-              placeholder="placeholder text"
+              placeholder="your name"
               required
-              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+              class="block items-center px-4 ring-offset-zinc-800 w-full text-center rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
         <div>
-          <label
-            for="last-name"
-            class="block text-sm font-medium leading-6 text-black"
-            >Last name</label
-          >
-          <div class="mt-2">
+          <label for="last-name" class="sr-only">Last name</label>
+          <div>
             <input
               id="last-name"
               name="last-name"
               type="text"
               autocomplete="last-name"
-              placeholder="placeholder text"
+              placeholder="your lastname"
               required
-              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+              class="block items-center px-4 ring-offset-zinc-800 w-full text-center rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
         <div>
-          <label
-            for="email"
-            class="block text-sm font-medium leading-6 text-black"
-            >Email address</label
-          >
-          <div class="mt-2">
+          <label for="email" class="sr-only">Email address</label>
+          <div>
             <input
               id="email"
               name="email"
               type="email"
               autocomplete="email"
               required
-              placeholder="placeholder text"
-              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+              placeholder="your email"
+              class="block items-center px-4 ring-offset-zinc-800 w-full text-center rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
         <div>
-          <label
-            for="password"
-            class="block text-sm font-medium leading-6 text-black"
-            >Password</label
-          >
+          <label for="password" class="sr-only">Password</label>
 
-          <div class="mt-2">
+          <div>
             <input
               id="password"
               name="password"
@@ -75,21 +61,19 @@
               autocomplete="password"
               value="*********"
               required
-              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+              class="block items-center px-4 ring-offset-zinc-800 w-full text-center rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
-        <small class="text-xs text-zinc-400"
-          >Leave blank if you don't want to change</small
-        >
-        <div>
-          <label
-            for="confirm-password"
-            class="block text-sm font-medium leading-6 text-black"
-            >Confirm Password</label
+        <div class="py-2">
+          <small class="text-xs text-zinc-400 justify-center"
+            >Leave blank if you don't want to change</small
           >
+        </div>
+        <div>
+          <label for="confirm-password" class="sr-only">Confirm Password</label>
 
-          <div class="mt-2">
+          <div>
             <input
               id="confirm-password"
               name="confirm-password"
@@ -97,7 +81,7 @@
               autocomplete="password"
               value="*********"
               required
-              class="block w-full h-12 border-0 bg-zinc-100 border-trasnparent py-1.5 pr-14 text-black ring-0 ring-inset border-b border-zinc-900 ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+              class="block items-center px-4 ring-offset-zinc-800 w-full text-center rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
             />
           </div>
         </div>
@@ -106,26 +90,46 @@
             id="#"
             name="#"
             type="checkbox"
-            class="h-4 w-4 text-500 focus:ring-zinc-600 text-black"
+            class="h-4 w-4 text-500 focus:ring-zinc-600 text-black bg-zinc-800 rounded-full border-accent-500"
           />
-          <label for="#" class="ml-2 block text-sm text-zinc-400"
-            >Receive emails from us?</label
-          >
+          <div class="py-2">
+            <label for="#" class="ml-2 block text-sm text-zinc-400"
+              >Receive emails from us?</label
+            >
+          </div>
         </div>
-        <small class="text-xs text-zinc-400"
-          >Receive a weekly digest of new sites on Friday, plus other (very)
-          occasional news
-        </small>
+        <div class="py-2">
+          <small class="text-xs text-zinc-400"
+            >Receive a weekly digest of new sites on Friday, plus other
+            occasional news
+          </small>
+        </div>
         <div class="flex">
           <button
-            type="submit"
-            class="inline-flex h-12 items-center bg-accent-500 pl-4 pr-16 justify-between py-2 text-xs font-normal text-white hover:bg-accent-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-accent-500 focus:bg-accent-500 focus:text-white w-auto"
-            >Sign in</button
+          type="submit"
+          class="py-1 pl-4 duration-200 pr-2 border-accent-500 bg-accent-500 hover:text-black h-12 hover:bg-white text-white justify-between uppercase border-2 hover:border-white rounded-full inline-flex items-center w-full"
+        >
+         Save
+          <div
+            class="bg-black h-8 w-8 text-white inline-flex items-center justify-center rounded-full"
           >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                viewBox="0 0 32 32"
+                ><path
+                  fill="currentColor"
+                  d="m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10L18 6z"
+                ></path></svg
+              ></span
+            >
+          </div>
+        </button>
         </div>
       </form>
       <div class="mt-24">
-        <p class="text-xl tracking-tighter text-black font-medium">
+        <p class="text-xl tracking-tighter text-white uppercase font-medium">
           Cancel account
         </p>
         <p class="text-sm text-zinc-400 mx-auto">
@@ -134,10 +138,26 @@
         </p>
         <div class="flex mt-8">
           <button
-            type="submit"
-            class="inline-flex h-12 items-center bg-red-600 pl-4 pr-16 justify-between py-2 text-xs font-normal text-white hover:bg-red-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 cursor-pointer duration-200 gap-12 focus:ring-1 focus:ring-offset-1 focus:ring-red-600 focus:bg-red-600 focus:text-white w-auto"
-            >Delete your account</button
+          type="submit"
+          class="py-1 pl-4 duration-200 pr-2 border-zinc-800 bg-zinc-800 hover:text-black h-12 hover:bg-white text-white justify-between uppercase border-2 hover:border-white rounded-full inline-flex items-center w-full"
+        >
+          Delete your account
+          <div
+            class="bg-black h-8 w-8 text-white inline-flex items-center justify-center rounded-full"
           >
+            <span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5"
+                viewBox="0 0 32 32"
+                ><path
+                  fill="currentColor"
+                  d="m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10L18 6z"
+                ></path></svg
+              ></span
+            >
+          </div>
+        </button>
         </div>
       </div>
     </div>

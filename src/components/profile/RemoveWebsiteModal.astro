@@ -23,10 +23,10 @@
     <div
       x-on:click.stop
       x-trap.noscroll.inert="open"
-      class="relative w-full max-w-2xl overflow-y-auto bg-white border p-12 shadow-lg">
+      class="relative w-full max-w-2xl overflow-y-auto p-10 bg-zinc-800 rounded-3xl lg:rounded-5xl shadow-lg">
       <!-- Title -->
       <h2
-        class="text-xl tracking-tighter text-black font-medium"
+      class="text-xl tracking-wide text-accent-500 uppercase font-medium"
         :id="$id('modal-title')">
         Remove Website Name from Collection 1
       </h2>
@@ -38,13 +38,13 @@
       <div class="flex mt-9 flex-row w-full gap-1 justify-end pt-4">
         <button
           type="button"
-          class="inline-flex h-12 items-center border border-zinc-600 px-3.5 justify-between py-2 text-sm font-medium text-zinc-600 hover:bg-zinc-600 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 focus:ring-1 focus:ring-offset-1 focus:ring-zinc-600 focus:bg-zinc-600 focus:text-white cursor-pointer duration-200 shrink-0">
+          class="px-4 py-2  duration-200 bg-zinc-900 border-zinc-900 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center">
           Cancel
         </button>
         <button
           type="button"
-          class="inline-flex h-12 items-center border border-accent-500 px-3.5 justify-between py-2 text-sm font-medium text-accent-500 hover:bg-accent-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-100 focus:ring-1 focus:ring-offset-1 focus:ring-accent-500 focus:bg-accent-500 focus:text-white cursor-pointer duration-200 shrink-0">
-          Submit
+          class="px-4 py-2  duration-200 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center">
+          Remove
         </button>
       </div>
     </div>

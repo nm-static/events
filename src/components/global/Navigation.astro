@@ -1,3 +1,6 @@
+---
+import DropDown from "./DropDown.astro";
+---
 <seciton class="fixed z-50 w-full bg-zinc-900/50 backdrop-blur-2xl">
   <div class="w-full mx-auto py-4">
     <div
@@ -61,99 +64,9 @@
           Style Guide</a
         >
 
-        <div
-          x-data="{
-      open: false,
-      toggle() {
-          if (this.open) {
-              return this.close()
-          }
+        <DropDown/>
 
-          this.$refs.button.focus()
-
-          this.open = true
-      },
-      close(focusAfter) {
-          if (! this.open) return
-
-          this.open = false
-
-          focusAfter && focusAfter.focus()
-      }
-  }"
-          x-on:keydown.escape.prevent.stop="close($refs.button)"
-          x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
-          x-id="['dropdown-button']"
-          class="relative"
-        >
-          <!-- Button -->
-          <button
-            x-ref="button"
-            x-on:click="toggle()"
-            :aria-expanded="open"
-            :aria-controls="$id('dropdown-button')"
-            type="button"
-            class="hover:text-accent-500 h-9 p-2 mx-auto tracking-wide uppercase"
-          >
-            Profile
-          </button>
-
-          <!-- Panel -->
-          <div
-            x-ref="panel"
-            x-show="open"
-            x-transition.origin.top.left
-            x-on:click.outside="close($refs.button)"
-            :id="$id('dropdown-button')"
-            style="display: none;"
-            class="absolute -left-12 mt-2 w-52 flex uppercase flex-col bg-black shadow-2xl overflow-hidden divide-y divide-zinc-900 rounded-xl rounded-0 border border-zinc-900"
-          >
-            <a
-              href="/profile/settings"
-              class="flex items-center gap-2 h-9 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
-            >
-              Settings
-            </a>
-
-            <a
-              href="/profile/collections"
-              class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
-            >
-              Collections
-            </a>
-
-            <a
-              href="/directory/submit"
-              class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
-            >
-              Submit
-            </a>
-            <a
-              href="/profile/submissions"
-              class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
-            >
-              Submission
-            </a>
-            <a
-              href="/profile/profile"
-              class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
-            >
-              Your profile
-            </a>
-            <a
-              href="/forms/login"
-              class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
-            >
-              Log in
-            </a>
-            <a
-              href="/forms/logout"
-              class="flex items-center gap-2 w-full p-2 text-left text-xs hover:bg-zinc-900 focus:ring-1 focus:ring-accent-500"
-            >
-              Log out
-            </a>
-          </div>
-        </div>
+       
 
         <div class="flex justify-center">
           <a

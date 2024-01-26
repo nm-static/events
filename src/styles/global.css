@@ -25,5 +25,5 @@
 }
 
 .prose-styles {
-  @apply  prose text-zinc-400 prose-lg prose-blockquote:text-accent-500    prose-a:font-normal prose-a:text-accent-500 hover:prose-a:text-black prose-h1:text-3xl  prose-headings:text-white   prose-p:text-sm prose-pre:font-mono max-w-none   prose-headings:font-normal;
+  @apply  prose text-zinc-400 prose-lg prose-blockquote:text-accent-500    prose-a:font-normal prose-a:text-accent-500 hover:prose-a:text-black prose-h1:text-3xl  prose-headings:text-white prose-strong:text-white   prose-p:text-sm prose-pre:font-mono max-w-none   prose-headings:font-normal;
 }

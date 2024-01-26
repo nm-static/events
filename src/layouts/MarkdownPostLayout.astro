@@ -1,43 +1,10 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 const { frontmatter } = Astro.props;
-import { AstroSeo } from "@astrolib/seo";
+
 ---
 
-<AstroSeo
-  title={frontmatter.title}
-  description={frontmatter.description}
-  canonical="https://www.lexingtonthemes.com"
-  openGraph={{
-    url: "https://www.lexingtonthemes.com",
-    title: "Title}",
-    description: "{frontmatter.description}",
-    images: [
-      {
-        url: "https://www.lexingtonthemes.com/opengraph/social-og.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Social open graph",
-        type: "image/jpeg",
-      },
-      {
-        url: "https://www.lexingtonthemes.com/opengraph/twitter-og.jpg",
-        width: 4096,
-        height: 4096,
-        alt: "Twitter open graph",
-        type: "image/jpeg",
-      },
-      { url: "https://www.lexingtonthemes.com/opengraph/social-og.jpg" },
-      { url: "https://www.lexingtonthemes.com/opengraph/twitter-og.jpg" },
-    ],
-    site_name: "YourSitesName",
-  }}
-  twitter={{
-    handle: "@TwitterHandle",
-    site: "@site",
-    cardType: "summary_large_image",
-  }}
-/>
+
 <BaseLayout>
   <section>
     <div class="w-full mx-auto max-w-screen-2xl px-8 py-24 mt-24">
@@ -85,6 +52,6 @@ import { AstroSeo } from "@astrolib/seo";
         <div class="max-w-2xl "><slot /></div>
       </div>
     </div>
-     m
+
   </section>
 </BaseLayout>

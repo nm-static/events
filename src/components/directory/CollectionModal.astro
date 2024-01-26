@@ -6,7 +6,7 @@
   aria-modal="true"
   x-id="['modal-title']"
   :aria-labelledby="$id('modal-title')"
-  class="fixed inset-0 z-10 overflow-y-auto"
+  class="fixed inset-0 z-50 overflow-y-auto"
 >
   <!-- Overlay -->
   <div
@@ -21,12 +21,12 @@
     x-show="open"
     x-transition
     x-on:click="open = false"
-    class="relative flex min-h-screen items-center justify-center p-4"
+    class="relative flex min-h-svh items-center justify-center p-4 z-50"
   >
     <div
       x-on:click.stop
       x-trap.noscroll.inert="open"
-      class="relative w-full max-w-2xl overflow-y-auto p-10 bg-zinc-800 rounded-3xl lg:rounded-5xl shadow-lg"
+      class="relative w-full max-w-2xl overflow-y-auto p-10 bg-zinc-800  rounded-3xl lg:rounded-5xl shadow-lg"
     >
       <!-- Title -->
       <h2

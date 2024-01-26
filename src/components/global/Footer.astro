@@ -1,13 +1,13 @@
-<footer
+<footer x-data="{ year: new Date().getFullYear() }"
   class="bg-accent-500 overflow-hidden lg:fixed lg:bottom-0 w-full z-0 selection:bg-white"
 >
-  <div class="p-8 flex flex-col max-w-screen-2xl">
+  <div class="p-8 flex flex-col max-w-screen-2xl mx-auto">
     <div class="grid grid-cols-1 xl:grid-cols-2 gap-px">
       <div
         class="text-base tracking-wide uppercase text-black font-medium p-8 bg-accent-500 rounded-3xl"
       >
         <p>A comprehensive directory for all your needs</p>
-        <p class="text-xs">© 2022 Lexington Themes. All rights reserved</p>
+        <p class="text-xs" x-text="'Copyright © ' + year + ' Lexington Themes. All Rights Reserved.'"> </p>
       </div>
       <div class="grid grid-cols-1 gap-px sm:grid-cols-3 text-black">
         <ul role="list" class="p-8 bg-accent-600 rounded-4xl">
@@ -116,6 +116,6 @@
         fill="#18181b"></path>
     </svg>
 
-  
+
   </div>
 </footer>

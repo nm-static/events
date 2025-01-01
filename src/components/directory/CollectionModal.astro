@@ -6,14 +6,10 @@
   aria-modal="true"
   x-id="['modal-title']"
   :aria-labelledby="$id('modal-title')"
-  class="fixed inset-0 z-50 overflow-y-auto"
+  class="fixed inset-0 z-10 overflow-y-auto"
 >
   <!-- Overlay -->
-  <div
-    x-show="open"
-    x-transition.opacity
-    class="fixed inset-0 bg-black bg-opacity-50"
-  >
+  <div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/50">
   </div>
 
   <!-- Panel -->
@@ -21,94 +17,50 @@
     x-show="open"
     x-transition
     x-on:click="open = false"
-    class="relative flex min-h-svh items-center justify-center p-4 z-50"
+    class="relative flex min-h-svh items-center justify-center p-4"
   >
     <div
       x-on:click.stop
       x-trap.noscroll.inert="open"
-      class="relative w-full max-w-2xl overflow-y-auto p-10 bg-zinc-800  rounded-3xl lg:rounded-5xl shadow-lg"
+      class="relative w-full max-w-2xl overflow-y-auto p-10 bg-zinc-800 rounded-3xl lg:rounded-5xl shadow-lg"
     >
       <!-- Title -->
       <h2
         class="text-xl tracking-wide text-accent-500 uppercase font-medium"
         :id="$id('modal-title')"
       >
-        Add website to a collection or create a new one
+        Create collection
       </h2>
 
       <!-- Content -->
-      <p class="mt-2 text-lg text-zinc-400">
-        Select an existing collection to add this site to, or create a new one.
-      </p>
-      <div class="divide-y divide-zinc-900 mt-8">
-        <div class="flex flex-col gap-4">
-          <span class="uppercase text-sm text-white"
-            >ADD TO EXISTING COLLECTIONS
-          </span>
-          <div class="flex flex-col md:flex-row gap-2 lg:gap-8">
-            <div class="flex items-center mt-2">
-              <input
-                id="#"
-                name="#"
-                type="checkbox"
-                class="h-4 w-4 text-500 focus:ring-zinc-600 text-black bg-zinc-800 rounded-full border-accent-500"
-              /><label for="#" class="ml-2 block text-sm text-zinc-400"
-                >Collection 1</label
-              >
-            </div>
-            <div class="flex items-center mt-2">
-              <input
-                id="#"
-                name="#"
-                type="checkbox"
-                class="h-4 w-4 text-500 focus:ring-zinc-600 text-black bg-zinc-800 rounded-full border-accent-500"
-              /><label for="#" class="ml-2 block text-sm text-zinc-400"
-                >Collection 2</label
-              >
-            </div>
-          </div>
-          <div>
-            <button
-              type="button"
-              class="pl-4 pr-2 w-full duration-200 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center"
-            >
-              <span>Update</span>
-              <div
-                class="bg-white h-8 w-8 text-black inline-flex items-center justify-center rounded-full"
-              >
-                <span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-5 h-5"
-                    viewBox="0 0 32 32"
-                    ><path
-                      fill="currentColor"
-                      d="m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10L18 6z"
-                    ></path></svg
-                  ></span
-                >
-              </div>
-            </button>
-          </div>
-        </div>
+      <p class="mt-2 text-zinc-400">Edit your collection.</p>
+      <div class="divide-y mt-8">
         <div class="flex flex-col gap-1 mt-4 pt-4">
-          <span class="uppercase text-sm text-white"
-            >CREATE A NEW COLLECTION
-          </span>
+          <span class="uppercase text-sm text-white">Name your collection</span>
           <div class="flex flex-col gap-2 mt-2">
             <input
               class="block items-center px-4 ring-offset-zinc-800 w-full rounded-full h-14 border-0 bg-zinc-900 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
               placeholder="Title"
               maxlength="255"
               id="#"
-              type="Name your collection uppercase"
+              type="text"
               name="#"
             />
+            <div class="flex items-center">
+              <input
+                id="#"
+                name="#"
+                type="checkbox"
+                class="h-4 w-4 text-500 focus:ring-zinc-600 text-black bg-zinc-800 rounded-full border-accent-500"
+              /><label for="#" class="ml-2 block text-sm text-zinc-400"
+                >Allow others to view this collection
+              </label>
+            </div>
             <button
               type="button"
               class="pl-4 pr-2 w-full duration-200 hover:border-accent-500 h-12 text-white justify-between uppercase border-2 rounded-full inline-flex items-center"
             >
-              <span>Add to collecton</span>
+              <span>Create collecton</span>
               <div
                 class="bg-white h-8 w-8 text-black inline-flex items-center justify-center rounded-full"
               >
@@ -131,4 +83,3 @@
     </div>
   </div>
 </div>
-

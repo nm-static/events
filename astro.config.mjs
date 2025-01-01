@@ -1,8 +1,11 @@
 import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from '@tailwindcss/vite';
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx"; 
 export default defineConfig({
+  vite: {
+    plugins: [tailwindcss()],
+  },
   markdown: {
     drafts: true,
     shikiConfig: {
@@ -14,6 +17,6 @@ export default defineConfig({
     skipInline: false,
     drafts: true
   },
-  site: 'https://lexingtonthemes.com',
-  integrations: [tailwind(), sitemap(), mdx()]
+  site: 'https://yourdomain.com',
+  integrations: [sitemap(), mdx()]
 });

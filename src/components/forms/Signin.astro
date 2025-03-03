@@ -1,0 +1,162 @@
+---
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/components/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<section>
+  <Wrapper
+    variant="standard"
+    class="py-12 h-dvh items-center justify-center flex flex-col"
+  >
+    <div class="text-center text-balance max-w-xs mx-auto">
+      <Text
+        tag="h1"
+        variant="displayXL"
+        class="text-white font-medium "
+      >
+        Sign in
+      </Text>
+      <Text
+        tag="p"
+        variant="textBase"
+        class="mt-2 text-base-400 2xl:text-xl lg:text-balance"
+      >
+        Welcome back! Sign in with your Google account or your favourite email
+      </Text>
+    </div>
+
+    <form action="#" method="POST" class="mx-auto max-w-sm mt-12 w-full">
+      <div class="flex flex-col gap-y-px mt-4">
+        <div>
+          <label class="sr-only"> Email </label>
+          <div>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-describedby="email-error"
+              placeholder="Your email"
+              class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+            />
+            <span id="email-error" class="text-red-600 text-sm hidden">
+              Please enter a valid email address.
+            </span>
+          </div>
+        </div>
+        <div>
+          <label class="sr-only">
+            Password
+            <a class="undefined"> Forgot password? </a>
+          </label>
+          <div>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="current-password"
+              required
+              aria-required="true"
+              aria-describedby="password-error"
+              placeholder="Your password"
+              class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+            />
+            <span id="password-error" class="text-red-600 text-sm hidden">
+              Please enter a valid password.
+            </span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 py-2 justify-between">
+          <div class="flex items-center gap-3">
+            <input
+              id="remember-me"
+              name="remember-me"
+              type="checkbox"
+              class="text-accent-500 text-xs size-4 border-accent-500 bg-base-950 rounded-full focus:ring-accent-500 focus:border-accent-500"
+            />
+            <label class="undefined block text-sm text-base-400 font-medium">
+              Remember me
+            </label>
+          </div>
+          <Text
+            tag="a"
+            variant="textXS"
+            href="/forms/reset"
+            aria-label="Your label"
+            class="text-base-400 uppercase hover:text-accent-500 flex items-center gap-1 transition-all duration-200"
+          >
+            forgot password?
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+                d="M5 12l14 0"></path><path d="M15 16l4 -4"></path><path
+                d="M15 8l4 4"></path></svg
+            >
+          </Text>
+        </div>
+      </div>
+      <Button
+        size="xl"
+        submit="true"
+        variant="accent"
+        animated={true}
+        withArrow={true}
+        class="w-full"
+      >
+        Continue with email
+      </Button>
+      <Button
+        size="xl"
+        submit="true"
+        variant="default"
+        animated={true}
+        withArrow={true}
+        class="w-full"
+      >
+        Sign in with Google
+      </Button>
+      <div class="flex mt-4 justify-between items-center">
+        <Text tag="p" variant="textXS" class="text-base-400 uppercase">
+          Don't have an account?
+        </Text>
+        <Text
+          tag="a"
+          variant="textXS"
+          href="/forms/signup"
+          aria-label="Your label"
+          class="text-base-400 uppercase hover:text-accent-500 flex items-center gap-1 transition-all duration-200"
+        >
+          Sing up instead
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+            ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+              d="M5 12l14 0"></path><path d="M15 16l4 -4"></path><path
+              d="M15 8l4 4"></path></svg
+          >
+        </Text>
+      </div>
+    </form>
+  </Wrapper>
+</section>

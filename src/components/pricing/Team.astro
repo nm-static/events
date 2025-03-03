@@ -1,0 +1,40 @@
+---
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/components/Button.astro";
+---
+
+<div class="flex flex-col h-full justify-between bg-base-800 rounded-3xl p-8">
+  <Text tag="p" variant="textXL" class="text-white lg:w-1/2">
+    For super teams working on the next big thing
+  </Text>
+  <div class="flex flex-col gap-12 mt-20">
+    <div class="flex flex-col">
+      <Text tag="p" variant="display6XL" class="text-white font-semibold">
+        <span
+          class="tracking-tighter font-semibold"
+          data-monthly="$9"
+          data-annual="$6"
+          x-text="$el.dataset[duration]"></span>
+
+        <span class="text-xl">
+          <span x-show="duration === 'monthly'">/m</span>
+
+          <span x-show="duration === 'annual'" style="display: none">/a</span>
+        </span>
+      </Text>
+      <Text tag="p" variant="textBase" class="text-base-400 mt-4 text-balance">
+        Get limited access to everything.
+      </Text>
+    </div>
+    <Button
+      size="xl"
+      submit="true"
+      variant="accent"
+      animated={true}
+      withArrow={true}
+    >
+      Book
+    </Button>
+  </div>
+</div>

@@ -1,10 +1,7 @@
 ---
 page: Privacy
-
+pubDate: 2023-12-22
 ---
-California Resident Notice at Collection
-========================================
-
 If you are a California resident, the California Consumer Privacy Act, as amended by the California Privacy Rights Act of 2020 (“**CCPA**”), requires us to provide some additional information to California residents. This Section only applies to you if you are a California resident, although please note that this information and the rights afforded herein are the same as offered to our other users in our main Privacy Policy. This Section does not apply to personal information we collect from our employees and job applicants in their capacity as employees and job applicants, as such information practices are described in separate policies.
 
 The following chart details these activities:
@@ -89,3 +86,5 @@ Shine the Light Disclosure
 --------------------------
 
 The California "Shine the Light" law gives residents of California the right under certain circumstances to request information from us regarding the manner in which we disclose certain categories of personal information (as defined in the Shine the Light law) with third parties for their direct marketing purposes. We currently do not disclose your personal information to third parties for their own direct marketing purposes.
+
+

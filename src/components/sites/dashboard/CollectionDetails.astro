@@ -1,0 +1,139 @@
+---
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/components/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import EditCollectionModal from "./EditCollectionModal.astro";
+import CreateCollectionModal from "./CreateCollectionModal.astro";
+import RemoveCollectionModal from "./RemoveCollectionModal.astro";
+---
+
+<section>
+  <Wrapper variant="standard" class="pb-32 lg:pb-48 pt-12">
+    <div class="text-center max-w-xs mx-auto">
+      <Text tag="h1" variant="displayXL" class="text-white font-medium">
+        Design
+      </Text>
+      <Text tag="p" variant="textBase" class="mt-4 text-base-400 text-balance">
+        Manage your saved tools by adding, deleting, or renaming your
+        collections.
+      </Text>
+    </div>
+  </Wrapper>
+
+  <section>
+    <Wrapper variant="standard" class="pb-8">
+      <div class="flex items-center gap-x-1 relative justify-end">
+        <div x-data="{ open: false }">
+          <Button size="sm" variant="muted" x-on:click="open = true">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="M8 2.75C8 2.47386 7.77614 2.25 7.5 2.25C7.22386 2.25 7 2.47386 7 2.75V7H2.75C2.47386 7 2.25 7.22386 2.25 7.5C2.25 7.77614 2.47386 8 2.75 8H7V12.25C7 12.5261 7.22386 12.75 7.5 12.75C7.77614 12.75 8 12.5261 8 12.25V8H12.25C12.5261 8 12.75 7.77614 12.75 7.5C12.75 7.22386 12.5261 7 12.25 7H8V2.75Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"></path></svg
+            >
+            New collection
+          </Button>
+          <CreateCollectionModal />
+        </div>
+        <div x-data="{ open: false }">
+          <Button size="sm" variant="muted" x-on:click="open = true">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="M11.8536 1.14645C11.6583 0.951184 11.3417 0.951184 11.1465 1.14645L3.71455 8.57836C3.62459 8.66832 3.55263 8.77461 3.50251 8.89155L2.04044 12.303C1.9599 12.491 2.00189 12.709 2.14646 12.8536C2.29103 12.9981 2.50905 13.0401 2.69697 12.9596L6.10847 11.4975C6.2254 11.4474 6.3317 11.3754 6.42166 11.2855L13.8536 3.85355C14.0488 3.65829 14.0488 3.34171 13.8536 3.14645L11.8536 1.14645ZM4.42166 9.28547L11.5 2.20711L12.7929 3.5L5.71455 10.5784L4.21924 11.2192L3.78081 10.7808L4.42166 9.28547Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"></path></svg
+            >
+            Edit
+          </Button>
+          <EditCollectionModal />
+        </div>
+        <div x-data="{ open: false }">
+          <Button size="sm" variant="muted" x-on:click="open = true">
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 15 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                d="M11.7816 4.03157C12.0062 3.80702 12.0062 3.44295 11.7816 3.2184C11.5571 2.99385 11.193 2.99385 10.9685 3.2184L7.50005 6.68682L4.03164 3.2184C3.80708 2.99385 3.44301 2.99385 3.21846 3.2184C2.99391 3.44295 2.99391 3.80702 3.21846 4.03157L6.68688 7.49999L3.21846 10.9684C2.99391 11.193 2.99391 11.557 3.21846 11.7816C3.44301 12.0061 3.80708 12.0061 4.03164 11.7816L7.50005 8.31316L10.9685 11.7816C11.193 12.0061 11.5571 12.0061 11.7816 11.7816C12.0062 11.557 12.0062 11.193 11.7816 10.9684L8.31322 7.49999L11.7816 4.03157Z"
+                fill="currentColor"
+                fill-rule="evenodd"
+                clip-rule="evenodd"></path></svg
+            >
+            Delete collection
+          </Button>
+          <RemoveCollectionModal />
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-2 md:grid-cols-2 xl:grid-cols-4 mt-8">
+        <div x-data="{ show: true }" x-show="show">
+          <div class="overflow-hidden relative">
+            <img
+              src="/images/thumbnail/10.png"
+              data-image-component="true"
+              alt="Put your alt text"
+              width="500"
+              height="500"
+              loading="lazy"
+              decoding="async"
+              class="object-cover aspect-8/10 w-full object-top rounded-xl"
+            />
+            <a href="/sites/site/10" title="the Blimp">
+              <span class="absolute inset-0"></span>
+            </a>
+          </div>
+          <div class="pt-2">
+            <div class="flex items-center lg:justify-between">
+              <h3 class="text-base font-medium text-white">Hello</h3>
+              <div class="flex items-center gap-1">
+                <a href="#_" title="the Blimp">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-link size-4"
+                    ><path stroke="none" d="M0 0h24v24H0z" fill="none"
+                    ></path><path d="M9 15l6 -6"></path><path
+                      d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464"
+                    ></path><path
+                      d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463"
+                    ></path></svg
+                  >
+                </a>
+                <button
+                  @click="show = false"
+                  class="text-xs"
+                  aria-label="Delete"
+                  title="Delete this card"
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</section>

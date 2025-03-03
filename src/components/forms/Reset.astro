@@ -1,0 +1,62 @@
+---
+// Assets
+import { Image } from "astro:assets";
+import Gif from "@/images/forms.gif";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/components/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<section>
+  <Wrapper
+    variant="standard"
+    class="py-12 h-dvh items-center justify-center flex flex-col"
+  >
+    <div class="text-center text-balance max-w-xs mx-auto">
+      <Text tag="h1" variant="displayXL" class="text-white font-medium">
+        Reset
+      </Text>
+      <Text
+        tag="p"
+        variant="textBase"
+        class="mt-2 text-base-400 2xl:text-xl lg:text-balance"
+      >
+        Reset your password
+      </Text>
+    </div>
+
+    <form action="#" method="POST" class="mx-auto max-w-sm w-full mt-12">
+      <div>
+        <label class="sr-only"> Email </label>
+        <div>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            autocomplete="email"
+            required
+            aria-required="true"
+            aria-describedby="email-error"
+            placeholder="Your email"
+            class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+          />
+          <span id="email-error" class="text-red-600 text-sm hidden">
+            Please enter a valid email address.
+          </span>
+        </div>
+      </div>
+
+      <Button
+        size="xl"
+        submit="true"
+        variant="accent"
+        animated={true}
+        withArrow={true}
+        class="w-full"
+      >
+        Submit
+      </Button>
+    </form>
+  </Wrapper>
+</section>

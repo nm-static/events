@@ -1,0 +1,32 @@
+---
+// Assets
+import { Image } from "astro:assets";
+import Lex from "@/images/lex.jpg";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+---
+
+<div
+  class="group-hover:opacity-30 hover:opacity-100 peer hover:peer-hover:opacity-30 duration-300 group"
+>
+  <div class="overflow-hidden relative">
+    <Image
+      width="500"
+      height="500"
+      src={Lex}
+      alt="#_"
+      class="object-cover aspect-8/10 w-full object-top rounded-xl"
+    />
+    <a href="/pricing" title="#_">
+      <span class="absolute inset-0"></span>
+    </a>
+  </div>
+  <div class="pt-2">
+    <Text tag="h3" variant="textBase" class="font-medium text-white"
+      >Your sponsor card
+    </Text>
+    <Text tag="p" variant="textSM" class="font-medium text-base-400"
+      >Become a sponsor
+    </Text>
+  </div>
+</div>

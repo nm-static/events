@@ -1,0 +1,151 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Link from "@/components/fundations/components/Link.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <Wrapper variant="standard" class="pb-32 lg:pb-48 pt-12">
+      <Text
+        tag="h1"
+        variant="displayXL"
+        class="text-white font-medium lg:w-1/3"
+      >
+        Links
+      </Text>
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="standard" class="pb-8">
+      <Text tag="p" variant="textBase" class="mt-4 text-white text-balance">
+        Default
+      </Text>
+      <div
+        class="flex flex-col divide-y divide-base-900 text-base-900 font-medium"
+      >
+        <!-- Standard Default Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Link size="xs" variant="default">Default XS</Link>
+          <Link size="sm" variant="default">Default SM</Link>
+          <Link size="base" variant="default">Default Base</Link>
+          <Link size="md" variant="default">Default MD</Link>
+          <Link size="lg" variant="default">Default LG</Link>
+          <Link size="xl" variant="default">Default XL</Link>
+          <Link size="xxl" variant="default">Default XXL</Link>
+          <Link size="xxxl" variant="default">Default XXXL</Link>
+        </div>
+        <!-- Standard Accent Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Link size="xs" variant="accent">Accent XS</Link>
+          <Link size="sm" variant="accent">Accent SM</Link>
+          <Link size="base" variant="accent">Accent Base</Link>
+          <Link size="md" variant="accent">Accent MD</Link>
+          <Link size="lg" variant="accent">Accent LG</Link>
+          <Link size="xl" variant="accent">Accent XL</Link>
+          <Link size="xxl" variant="accent">Accent XXL</Link>
+          <Link size="xxxl" variant="accent">Accent XXXL</Link>
+        </div>
+        <!-- Standard Muted Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Link size="xs" variant="muted">Muted XS</Link>
+          <Link size="sm" variant="muted">Muted SM</Link>
+          <Link size="base" variant="muted">Muted Base</Link>
+          <Link size="md" variant="muted">Muted MD</Link>
+          <Link size="lg" variant="muted">Muted LG</Link>
+          <Link size="xl" variant="muted">Muted XL</Link>
+          <Link size="xxl" variant="muted">Muted XXL</Link>
+          <Link size="xxxl" variant="muted">Muted XXXL</Link>
+        </div>
+      </div>
+    </Wrapper>
+    <Wrapper variant="standard">
+      <Text tag="p" variant="textBase" class="mt-4 text-white text-balance">
+        Animated
+      </Text>
+      <div
+        class="flex flex-col divide-y divide-base-900 text-base-900 font-medium"
+      >
+        <!-- Animated Default Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Link size="xs" variant="default" animated={true} withArrow={true}>
+            Default XS</Link
+          >
+          <Link size="sm" variant="default" animated={true} withArrow={true}>
+            Default SM</Link
+          >
+          <Link size="base" variant="default" animated={true} withArrow={true}>
+            Default Base</Link
+          >
+          <Link size="md" variant="default" animated={true} withArrow={true}>
+            Default MD</Link
+          >
+          <Link size="lg" variant="default" animated={true} withArrow={true}>
+            Default LG</Link
+          >
+          <Link size="xl" variant="default" animated={true} withArrow={true}>
+            Default XL</Link
+          >
+          <Link size="xxl" variant="default" animated={true} withArrow={true}>
+            Default XXL</Link
+          >
+          <Link size="xxxl" variant="default" animated={true} withArrow={true}>
+            Default XXXL</Link
+          >
+        </div>
+        <!-- Animated Accent Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Link size="xs" variant="accent" animated={true} withArrow={true}>
+            Accent XS</Link
+          >
+          <Link size="sm" variant="accent" animated={true} withArrow={true}>
+            Accent SM</Link
+          >
+          <Link size="base" variant="accent" animated={true} withArrow={true}>
+            Accent Base</Link
+          >
+          <Link size="md" variant="accent" animated={true} withArrow={true}>
+            Accent MD</Link
+          >
+          <Link size="lg" variant="accent" animated={true} withArrow={true}>
+            Accent LG</Link
+          >
+          <Link size="xl" variant="accent" animated={true} withArrow={true}>
+            Accent XL</Link
+          ><Link size="xxl" variant="accent" animated={true} withArrow={true}>
+            Accent XXL</Link
+          ><Link size="xxl" variant="accent" animated={true} withArrow={true}>
+            Accent XXXL</Link
+          >
+        </div>
+        <!-- Animated Muted Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Link size="xs" variant="muted" animated={true} withArrow={true}>
+            Muted XS</Link
+          >
+          <Link size="sm" variant="muted" animated={true} withArrow={true}>
+            Muted SM</Link
+          >
+          <Link size="base" variant="muted" animated={true} withArrow={true}>
+            Muted Base</Link
+          >
+          <Link size="md" variant="muted" animated={true} withArrow={true}>
+            Muted MD</Link
+          >
+          <Link size="lg" variant="muted" animated={true} withArrow={true}>
+            Muted LG</Link
+          >
+          <Link size="xl" variant="muted" animated={true} withArrow={true}>
+            Muted XL</Link
+          ><Link size="xxl" variant="muted" animated={true} withArrow={true}>
+            Muted XXL</Link
+          ><Link size="xxxl" variant="muted" animated={true} withArrow={true}>
+            Muted XXXL</Link
+          >
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

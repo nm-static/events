@@ -1,0 +1,168 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/components/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <Wrapper variant="standard" class="pb-32 lg:pb-48 pt-12">
+      <Text
+        tag="h1"
+        variant="displayXL"
+        class="text-white font-medium lg:w-1/3"
+      >
+        Buttons
+      </Text>
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="standard" class="pb-8">
+      <Text tag="p" variant="textBase" class="mt-4 text-white text-balance">
+        Default
+      </Text>
+      <div
+        class="flex flex-col divide-y divide-base-900 text-base-900 font-medium"
+      >
+        <!-- Standard Default Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Button size="xs" variant="default">Default XS</Button>
+          <Button size="sm" variant="default">Default SM</Button>
+          <Button size="base" variant="default">Default Base</Button>
+          <Button size="md" variant="default">Default MD</Button>
+          <Button size="lg" variant="default">Default LG</Button>
+          <Button size="xl" variant="default">Default XL</Button>
+          <Button size="xxl" variant="default">Default XXL</Button>
+          <Button size="xxxl" variant="default">Default XXXL</Button>
+        </div>
+        <!-- Standard Accent Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Button size="xs" variant="accent">Accent XS</Button>
+          <Button size="sm" variant="accent">Accent SM</Button>
+          <Button size="base" variant="accent">Accent Base</Button>
+          <Button size="md" variant="accent">Accent MD</Button>
+          <Button size="lg" variant="accent">Accent LG</Button>
+          <Button size="xl" variant="accent">Accent XL</Button>
+          <Button size="xxl" variant="accent">Accent XXL</Button>
+          <Button size="xxxl" variant="accent">Accent XXXL</Button>
+        </div>
+        <!-- Standard Muted Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Button size="xs" variant="muted">Muted XS</Button>
+          <Button size="sm" variant="muted">Muted SM</Button>
+          <Button size="base" variant="muted">Muted Base</Button>
+          <Button size="md" variant="muted">Muted MD</Button>
+          <Button size="lg" variant="muted">Muted LG</Button>
+          <Button size="xl" variant="muted">Muted XL</Button>
+          <Button size="xxl" variant="muted">Muted XXL</Button>
+          <Button size="xxxl" variant="muted">Muted XXXL</Button>
+        </div>
+      </div>
+    </Wrapper>
+    <Wrapper variant="standard">
+      <Text tag="p" variant="textBase" class="mt-4 text-white text-balance">
+        Animated
+      </Text>
+      <div
+        class="flex flex-col divide-y divide-base-900 text-base-900 font-medium"
+      >
+        <!-- Animated Default Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Button size="xs" variant="default" animated={true} withArrow={true}>
+            Default XS</Button
+          >
+          <Button size="sm" variant="default" animated={true} withArrow={true}>
+            Default SM</Button
+          >
+          <Button
+            size="base"
+            variant="default"
+            animated={true}
+            withArrow={true}
+          >
+            Default Base</Button
+          >
+          <Button size="md" variant="default" animated={true} withArrow={true}>
+            Default MD</Button
+          >
+          <Button size="lg" variant="default" animated={true} withArrow={true}>
+            Default LG</Button
+          >
+          <Button size="xl" variant="default" animated={true} withArrow={true}>
+            Default XL</Button
+          >
+          <Button size="xxl" variant="default" animated={true} withArrow={true}>
+            Default XXL</Button
+          >
+          <Button
+            size="xxxl"
+            variant="default"
+            animated={true}
+            withArrow={true}
+          >
+            Default XXXL</Button
+          >
+        </div>
+        <!-- Animated Accent Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Button size="xs" variant="accent" animated={true} withArrow={true}>
+            Accent XS</Button
+          >
+          <Button size="sm" variant="accent" animated={true} withArrow={true}>
+            Accent SM</Button
+          >
+          <Button size="base" variant="accent" animated={true} withArrow={true}>
+            Accent Base</Button
+          >
+          <Button size="md" variant="accent" animated={true} withArrow={true}>
+            Accent MD</Button
+          >
+          <Button size="lg" variant="accent" animated={true} withArrow={true}>
+            Accent LG</Button
+          >
+          <Button size="xl" variant="accent" animated={true} withArrow={true}>
+            Accent XL</Button
+          ><Button size="xxl" variant="accent" animated={true} withArrow={true}>
+            Accent XXL</Button
+          ><Button
+            size="xxxl"
+            variant="accent"
+            animated={true}
+            withArrow={true}
+          >
+            Accent XXXL</Button
+          >
+        </div>
+        <!-- Animated Muted Variants -->
+        <div class="py-4 flex flex-wrap items-center gap-4">
+          <Button size="xs" variant="muted" animated={true} withArrow={true}>
+            Muted XS</Button
+          >
+          <Button size="sm" variant="muted" animated={true} withArrow={true}>
+            Muted SM</Button
+          >
+          <Button size="base" variant="muted" animated={true} withArrow={true}>
+            Muted Base</Button
+          >
+          <Button size="md" variant="muted" animated={true} withArrow={true}>
+            Muted MD</Button
+          >
+          <Button size="lg" variant="muted" animated={true} withArrow={true}>
+            Muted LG</Button
+          >
+          <Button size="xl" variant="muted" animated={true} withArrow={true}>
+            Muted XL</Button
+          >
+          <Button size="xxl" variant="muted" animated={true} withArrow={true}>
+            Muted XXL</Button
+          >
+          <Button size="xxxl" variant="muted" animated={true} withArrow={true}>
+            Muted XXXL</Button
+          >
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

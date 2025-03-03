@@ -1,0 +1,41 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+const { title, tagline, url, logo } = {
+  url: "/sites/site/" + Astro.props.post.slug,
+  title: Astro.props.post.data.title,
+  logo: Astro.props.post.data.logo.url,
+  tagline: Astro.props.post.data.tagline,
+};
+---
+
+<a
+  href={url}
+  title={title}
+  class="relative flex flex-col rounded-3xl bg-base-800 p-8 focus-outline-none"
+>
+  <div
+    class="flex-shrink-0 p-1 size-16 bg-base-900 rounded-full items-center flex justify-center"
+  >
+    <Image
+      width="100"
+      height="100"
+      src={logo}
+      alt={Astro.props.post.data.logo.alt}
+      class="object-cover size-8"
+    />
+  </div>
+  <div class="min-w-0 flex-1 mt-4">
+    <span class="absolute inset-0" aria-hidden="true"></span>
+    <div>
+      <Text tag="h3" variant="textXL" class="font-medium text-white"
+        >{title}</Text
+      >
+      <Text tag="p" variant="textBase" class="text-base-400 text-balance mt-1"
+        >{tagline}</Text
+      >
+    </div>
+  </div>
+</a>

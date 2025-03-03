@@ -1,0 +1,23 @@
+---
+// Layout
+import SitesLayout from "@/layouts/SitesLayout.astro";
+// Get  all posts from the "sites"  collection, which returns an unsorted array of post objects
+import { getCollection } from "astro:content";
+export async function getStaticPaths() {
+  const sites = await getCollection("sites");
+  const paths = sites.map((page) => {
+    return {
+      params: { slug: page.slug },
+      props: { page },
+      trailingSlash: false,
+    };
+  });
+  return paths;
+}
+const { page } = Astro.props;
+const { Content } = await page.render();
+---
+
+<SitesLayout frontmatter={page.data}>
+  <Content />
+</SitesLayout>

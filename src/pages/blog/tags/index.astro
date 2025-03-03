@@ -1,0 +1,47 @@
+---
+// Layout
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Link from "@/components/fundations/components/Link.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Get all posts from the "posts" collection
+import { getCollection } from "astro:content";
+const allPosts = await getCollection("posts");
+// Collect all unique tags
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <Wrapper variant="narrow" class="pb-32 lg:pb-48 pt-12">
+      <Text tag="h1" variant="displayXL" class="text-white font-medium text-center">
+        Explore all tags
+      </Text>
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="narrow" class="pb-8">
+      <ul role="list" class="flex flex-col gap-1">
+        {
+          tags.map((tag) => (
+            <Link
+              size="sm"
+              variant="link"
+              size="xl"
+              variant="muted"
+              animated={true}
+              withArrow={true}
+              title={tag}
+              aria-label={tag}
+              href={`/blog/tags/${tag}`}
+              class="capitalize"
+            >
+              {tag}
+            </Link>
+          ))
+        }
+      </ul>
+    </Wrapper>
+  </section>
+</BaseLayout>

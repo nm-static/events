@@ -1,0 +1,249 @@
+---
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Link from "@/components/fundations/components/Link.astro";
+import Button from "@/components/fundations/components/Button.astro";
+const filters = [
+  {
+    category: "Categories",
+    options: [
+      "Design Tools",
+      "Development Tools",
+      "SEO Tools",
+      "Analytics Tools",
+      "Project Management",
+      "Marketing Tools",
+      "CRM Software",
+      "E-commerce Platforms",
+      "Collaboration Tools",
+    ],
+  },
+  {
+    category: "Pricing",
+    options: [
+      "Free",
+      "Paid",
+      "Freemium",
+      "Subscription-based",
+      "One-time Payment",
+      "Enterprise Licensing",
+    ],
+  },
+  {
+    category: "Platform",
+    options: [
+      "Web",
+      "Desktop",
+      "Mobile",
+      "Cloud-based",
+      "Self-hosted",
+      "Cross-platform",
+    ],
+  },
+  {
+    category: "Features",
+    options: [
+      "Customizable",
+      "Integration-ready",
+      "Automation",
+      "Real-time Analytics",
+      "Drag-and-Drop Builder",
+      "Multilingual Support",
+      "AI-powered",
+      "Offline Access",
+    ],
+  },
+  {
+    category: "User Rating",
+    options: [
+      "5 Stars",
+      "4 Stars & Above",
+      "3 Stars & Above",
+      "Highly Recommended",
+      "Top-rated",
+    ],
+  },
+  {
+    category: "Industries",
+    options: [
+      "Design",
+      "Development",
+      "Marketing",
+      "Education",
+      "Healthcare",
+      "Finance",
+      "E-commerce",
+      "Real Estate",
+      "Hospitality",
+    ],
+  },
+  {
+    category: "Integration",
+    options: [
+      "Google Suite",
+      "Microsoft 365",
+      "Slack",
+      "Zapier",
+      "HubSpot",
+      "Salesforce",
+      "Stripe",
+      "Shopify",
+    ],
+  },
+];
+---
+
+<Button size="xs" variant="accent" type="button" @click="leftDrawerOpen = true">
+  Filters
+</Button>
+<div
+  x-show="leftDrawerOpen"
+  class="fixed inset-0 z-40 flex justify-start h-full p-2 lg:p-3"
+  x-description="Off-canvas menu for mobile, show/hide based on off-canvas menu state."
+  x-ref="dialog"
+  aria-modal="true"
+  style="display: none"
+>
+  <!-- Overlay -->
+  <div
+    x-show="leftDrawerOpen"
+    x-transition:enter="transition-opacity ease-linear duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition-opacity ease-linear duration-300"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-0 bg-base-950/90"
+    @click="leftDrawerOpen = false"
+    aria-hidden="true"
+  >
+  </div>
+  <!-- Menu (Left Side) -->
+  <div
+    x-show="leftDrawerOpen"
+    x-transition:enter="transition ease-in-out duration-300 transform"
+    x-transition:enter-start="-translate-x-full"
+    x-transition:enter-end="translate-x-0"
+    x-transition:leave="transition ease-in-out duration-300 transform"
+    x-transition:leave-start="translate-x-0"
+    x-transition:leave-end="-translate-x-full"
+    class="relative flex flex-col w-full lg:max-w-[26rem] bg-base-800 oultine-inset shadow-lg h-full overflow-hidden rounded-xl"
+  >
+    <!-- Close Button -->
+    <div
+      x-show="leftDrawerOpen"
+      x-transition:enter="ease-in-out duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="ease-in-out duration-300"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="absolute top-0 right-0 p-2 px-6 pl-2.5 py-3"
+    >
+      <button
+        type="button"
+        class="text-base-400 hover:text-white focus:outline-none"
+        @click="leftDrawerOpen = false"
+      >
+        <span class="sr-only">Close sidebar</span>
+        <svg
+          class="size-4"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
+    <!-- Menu Content -->
+    <div
+      class="flex flex-col overflow-y-auto h-full justify-between scrollbar-hide"
+    >
+      <div>
+        <div class="flex items-center flex-shrink-0 p-2 py-3 px-6">
+          <Text
+            tag="p"
+            variant="textSM"
+            class="uppercase text-white font-semibold"
+          >
+            Filters
+          </Text>
+        </div>
+
+        <div
+          class="gap-2 flex flex-col divide-y divide-base-900 border-y border-base-900"
+        >
+          {
+            filters.map((filter) => (
+              <details class="group p-2 py-3 px-6">
+                <summary class="text-white cursor-pointer font-semibold text-base flex items-center justify-between w-full select-none hover:text-accent-500">
+                  {filter.category}
+
+                  <svg
+                    class="size-4 duration-300 ease-out transform group-open:-rotate-45"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8 2.75C8 2.47386 7.77614 2.25 7.5 2.25C7.22386 2.25 7 2.47386 7 2.75V7H2.75C2.47386 7 2.25 7.22386 2.25 7.5C2.25 7.77614 2.47386 8 2.75 8H7V12.25C7 12.5261 7.22386 12.75 7.5 12.75C7.77614 12.75 8 12.5261 8 12.25V8H12.25C12.5261 8 12.75 7.77614 12.75 7.5C12.75 7.22386 12.5261 7 12.25 7H8V2.75Z"
+                      fill="currentColor"
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </summary>
+                <fieldset>
+                  <legend class="sr-only">{filter.category}</legend>
+                  <div class="flex flex-col space-y-2 mt-2">
+                    {filter.options.map((option) => (
+                      <label class="flex items-center gap-2">
+                        <input
+                          type="checkbox"
+                          name={filter.category.toLowerCase()}
+                          value={option}
+                          class="text-accent-500 outline-base-800  bg-base-900 rounded-full focus:ring-accent-500 focus:outline-accent-500"
+                        />
+                        <Text
+                          tag="span"
+                          variant="textSM"
+                          class="text-sm text-base-400"
+                        >
+                          {option}
+                        </Text>
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+      <!-- Footer -->
+      <div class="flex-shrink-0 px-6 py-3">
+        <div class="flex items-center gap-2">
+          <Button
+            size="sm"
+            variant="default"
+            class="w-auto justify-center"
+            href="/forms/signin">Clear</Button
+          >
+          <Button
+            size="sm"
+            variant="accent"
+            class="w-auto justify-center"
+            href="/forms/signup">Apply filters</Button
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

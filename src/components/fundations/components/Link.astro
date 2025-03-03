@@ -1,0 +1,148 @@
+---
+const {
+  variant = "default",
+  size = "base",
+  href,
+  animated = false,
+  withArrow = false,
+  animationColor,
+  class: className,
+  ...rest
+} = Astro.props;
+// Variant styles
+const defaultClass = [
+  "text-black",
+  "bg-white",
+  "hover:text-accent-600",
+  "focus:outline-accent-600",
+];
+const accentClass = [
+  "text-white",
+  "bg-accent-500",
+  "hover:text-black",
+  "focus:outline-accent-500",
+];
+const mutedClass = [
+  "text-white",
+  "bg-base-800",
+  "hover:text-accent-600",
+  "focus:outline-base-800",
+];
+// Size classes
+const xs = ["h-8", "px-4", "py-2", "text-xs", "font-medium"];
+const sm = ["h-9", "px-4", "py-2", "text-sm", "font-medium"];
+const base = ["h-10", "px-6", "py-3", "text-base", "font-medium"];
+const md = ["h-11", "px-6", "py-3", "text-base", "font-medium"];
+const lg = ["h-12", "px-6", "py-3", "text-base", "font-medium"];
+const xl = ["h-14", "px-6", "py-3", "text-lg", "font-medium"];
+const xxl = ["h-16", "px-8", "py-3", "text-xl", "font-medium"];
+const xxxl = ["h-20", "px-8", "py-3", "text-2xl", "font-medium"];
+// Arrow circle sizes based on button size - FIXED for better centering
+const getArrowSize = () => {
+  if (size === "xs") return { height: "h-6", width: "w-6", icon: "size-3" };
+  if (size === "sm") return { height: "h-7", width: "w-7", icon: "size-3.5" };
+  if (size === "base") return { height: "h-8", width: "w-8", icon: "size-4" };
+  if (size === "md") return { height: "h-9", width: "w-9", icon: "size-4" };
+  if (size === "lg") return { height: "h-10", width: "w-10", icon: "size-5" };
+  if (size === "xl") return { height: "h-12", width: "w-12", icon: "size-5" };
+  if (size === "xxl") return { height: "h-14", width: "w-14", icon: "size-6" };
+  if (size === "xxxl") return { height: "h-18", width: "w-18", icon: "size-8" };
+  return { height: "h-8", width: "w-8", icon: "size-4" }; // Default
+};
+// Default spacing
+const defaultGap = ["gap-2"];
+// Animation color
+const getAnimationColor = () => {
+  if (animationColor) return animationColor;
+  if (variant === "default") return "bg-base-300";
+  if (variant === "accent") return "bg-accent-600";
+  if (variant === "muted") return "bg-base-900";
+  return "bg-base-700"; // Default
+};
+// Calculate right padding when arrow is present
+const getArrowPadding = () => {
+  if (!withArrow) return "";
+  if (size === "xs") return "pr-8";
+  if (size === "sm") return "pr-9";
+  if (size === "base") return "pr-10";
+  if (size === "md") return "pr-11";
+  if (size === "lg") return "pr-12";
+  if (size === "xl") return "pr-14";
+  if (size === "xxl") return "pr-16";
+  if (size === "xxxl") return "pr-20";
+  return "pr-10"; // Default
+};
+// User-provided classes
+const additionalClasses = className ? className.split(" ") : [];
+// Get the arrow size properties
+const arrowSize = getArrowSize();
+---
+
+<a
+  href={href}
+  class:list={[
+    "flex",
+    "transition",
+    "rounded-full",
+    "items-center",
+    "duration-300",
+    "focus:outline-2",
+    "focus:ring-none",
+    "ring-offset-zinc-950",
+    "focus:outline-offset-2",
+    animated && "group relative",
+    variant === "default" && defaultClass,
+    variant === "accent" && accentClass,
+    variant === "muted" && mutedClass,
+    variant === "none" && [],
+    size === "xs" && xs,
+    size === "sm" && sm,
+    size === "base" && base,
+    size === "md" && md,
+    size === "lg" && lg,
+    size === "xl" && xl,
+    size === "xxl" && xxl,
+    size === "xxxl" && xxxl,
+    !animated && defaultGap,
+    withArrow && animated && getArrowPadding(),
+    ...additionalClasses,
+  ]}
+  {...rest}
+>
+  {!animated && <slot name="left-icon" />}
+  {
+    animated ? (
+      <span class="z-10 pr-2">
+        <slot />
+      </span>
+    ) : (
+      <slot />
+    )
+  }
+  {!animated && !withArrow && <slot name="right-icon" />}
+  {
+    animated && withArrow && (
+      <div
+        class={`absolute right-1 inline-flex ${arrowSize.height} ${arrowSize.width} items-center justify-end rounded-full ${getAnimationColor()} transition-[width] group-hover:w-[calc(100%-8px)]`}
+      >
+        <div
+          class={`relative ${arrowSize.height} ${arrowSize.width} flex items-center justify-center`}
+        >
+          <svg
+            class={`${arrowSize.icon}`}
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+      </div>
+    )
+  }
+</a>

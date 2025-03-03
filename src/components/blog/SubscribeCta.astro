@@ -1,0 +1,32 @@
+---
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "../fundations/components/Button.astro";
+import Wrapper from "../fundations/containers/Wrapper.astro";
+// Components
+import SubscribeModal from "../forms/SubscribeModal.astro";
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12 flex flex-col">
+    <div class="text-center">
+      <Text variant="displaySM" class="text-white font-medium tracking-tight">
+        Join our newsletter
+      </Text>
+      <Text tag="p" variant="textBase" class="mt-2 text-base-50 text-balance">
+        Stay up to date with our latest news and updates.
+      </Text>
+    </div>
+    <div x-data="{ open: false }" class="mt-8 justify-center flex">
+      <Button
+        x-on:click="open = true"
+        size="xl"
+        variant="accent"
+        animated={true}
+        withArrow={true}
+      >
+        Subscribe
+      </Button>
+      <SubscribeModal />
+    </div>
+  </Wrapper>
+</section>

@@ -1,0 +1,79 @@
+---
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Link from "@/components/fundations/components/Link.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SubmitModal from "@/components/sites/SubmitModal.astro";
+import Button from "@/components/fundations/components/Button.astro";
+---
+
+<section>
+  <Wrapper variant="standard" class="pb-32 lg:pb-48 pt-12">
+    <div class="max-w-sm">
+      <Text
+        tag="h1"
+        variant="displayXL"
+        class="text-white font-medium"
+      >
+        Submit your site to Carbon
+      </Text>
+      <Text tag="p" variant="textBase" class="mt-2 text-base-400 text-balance">
+        Get your web tool noticed by top develpers and designers and increase
+        their reach!
+      </Text>
+    </div>
+  </Wrapper>
+
+  <section>
+    <Wrapper variant="standard">
+      <Wrapper variant="prose" class="max-w-sm">
+        <h4>Get your website featured</h4>
+        <p>
+          Submit your website for free and get them noticed by top designers.
+          Every submission is carefully reviewed.
+        </p>
+
+        <h4>Submission process</h4>
+        <p>
+          It may take 2 or 3 years or more to publish your tool due to high
+          demand, who knows. For $99 bucks, you can skip the wait and receive a
+          review in 7 days, though publication is not guaranteed.
+        </p>
+        <div class="flex not-prose flex-col gap-2">
+          <div x-data="{ open: false }">
+            <!-- Trigger -->
+            <span x-on:click="open = true">
+              <Button
+                size="xl"
+                variant="default"
+                animated={true}
+                withArrow={true}
+                class="w-full"
+              >
+                Submit a site
+              </Button>
+            </span>
+            <!-- Modal -->
+            <SubmitModal />
+          </div>
+          <Link
+            size="xl"
+            variant="muted"
+            href="/pricing"
+            animated={true}
+            withArrow={true}
+            class="w-full"
+          >
+            Skip the waiting line for $299
+          </Link>
+        </div>
+
+        <h4>If not selected</h4>
+        <p>
+          Don’t give up—refine your tool and try again with future projects.
+        </p>
+      </Wrapper>
+    </Wrapper>
+  </section>
+</section>

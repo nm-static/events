@@ -1,8 +1,123 @@
 ---
+// Layout
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import Overview from "@/components/system/Overview.astro";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Link from "@/components/fundations/components/Link.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import SponsorCard from "@/components/sites/SponsorCard.astro";
+import SmallCards from "@/components/sites/SmallCards.astro";
+
+// Retrieve all posts from the "posts" collection
+import { getCollection } from "astro:content";
+// Tools
+const alltools = await getCollection("sites");
+import BigCard from "@/components/sites/BigCard.astro";
+// Store
+const allProducts = await getCollection("store");
+import StoreEntries from "@/components/store/StoreEntries.astro";
 ---
 
 <BaseLayout>
-  <Overview />
+  <section>
+    <Wrapper variant="standard" class="pb-32 lg:pb-48 pt-12">
+      <Text
+        tag="p"
+        variant="displayXL"
+        class="text-white font-medium text-center"
+      >
+        Real world <br /> website examples
+      </Text>
+      <div class="max-w-lg mt-12 mx-auto">
+        <label for="search" class="sr-only">Quick search</label>
+        <div class="relative inline-flex w-full items-center">
+          <input
+            placeholder="Search for topics, titles and authors..."
+            type="text"
+            name="search"
+            id="search"
+            class="block items-center pl-12 w-full rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 pr-14 text-white ring-0 ring-inset ring-transparent placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+          />
+          <div class="absolute inset-y-0 left-0 flex py-5 pl-4">
+            <svg
+              class="inline-flex items-center w-4 h-4 text-zinc-400"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 32 32"
+              ><path
+                fill="currentColor"
+                d="m29 27.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9a9.01 9.01 0 0 1-9-9Z"
+              ></path></svg
+            >
+          </div>
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="standard" class="pb-12">
+      <Text tag="h2" variant="textXS" class="font-medium uppercase text-white"
+      >Featured </Text
+    >
+      <div class="grid grid-cols-1 gap-px md:grid-cols-2 xl:grid-cols-6 mt-2">
+        {alltools.slice(6, 12).map((post) => <SmallCards post={post} />)}
+      </div>
+    </Wrapper>
+  </section>
+  <section
+    x-data="{ leftDrawerOpen: false }"
+    @keydown.window.escape="open = false"
+  >
+    <Wrapper variant="standard" class="pb-8">
+      <div class="flex flex-col gap-4 lg:flex-row lg:justify-between">
+        <Text tag="h2" variant="textXS" class="font-medium uppercase text-white"
+          >Latest additions</Text
+        >
+        <Link
+          size="sm"
+          variant="default"
+          animated={true}
+          withArrow={true}
+          href="/sites/home"
+        >
+          See all sites
+        </Link>
+      </div>
+      <div
+        class="grid grid-cols-1 gap-1 gap-y-12 lg:gap-y-24 md:grid-cols-2 lg:grid-cols-4 mt-2"
+      >
+        <!-- Example Content -->
+        {
+          alltools.slice(1, 4).map((post, i) => (
+            <>
+              <BigCard key={`post-${i}`} post={post} />
+              {i === 2 && <SponsorCard key={`sponsor-${i}`} />}
+            </>
+          ))
+        }
+      </div>
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="standard" class="pb-8">
+      <div class="flex flex-col gap-4 lg:flex-row lg:justify-between">
+        <Text tag="h2" variant="textXS" class="font-medium uppercase text-white"
+          >Our latest templates</Text
+        >
+        <Link
+          size="sm"
+          variant="default"
+          animated={true}
+          withArrow={true}
+          href="/store/home"
+        >
+          See them all!
+        </Link>
+      </div>
+      <div class="grid grid-cols-1 gap-px gap-y-12 md:grid-cols-2 group mt-2">
+        {allProducts.slice(1,3).map((post) => <StoreEntries post={post} />)}
+        {allProducts.slice(1,3).map((post) => <StoreEntries post={post} />)}
+      </div>
+    </Wrapper>
+  </section>
 </BaseLayout>

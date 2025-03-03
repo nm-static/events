@@ -1,0 +1,80 @@
+---
+// Layout
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Link from "@/components/fundations/components/Link.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import Insights from "@/components/blog/Insights.astro";
+import EntriesOne from "@/components/blog/EntriesOne.astro";
+import SubscribeCta from "@/components/blog/SubscribeCta.astro";
+// Retrieve all posts from the "posts" collection, which returns an unsorted array of post objects
+import { getCollection } from "astro:content";
+const allPostsUnsorted = await getCollection("posts");
+// Sort the posts in descending order by publication date (newest to oldest)
+const allPosts = allPostsUnsorted.sort(
+  (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
+);
+// Collect all unique tags
+const allTags = [...new Set(allPosts.flatMap((post) => post.data.tags || []))];
+const sortedTags = allTags.sort((a, b) => a.localeCompare(b));
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="pb-32 lg:pb-48 pt-12">
+      <div class="text-balance max-w-xs">
+        <Text tag="p" variant="displayXL" class="text-white font-medium">
+          Magazine
+        </Text>
+        <Text
+          tag="p"
+          variant="textBase"
+          class="mt-4 text-base-400 text-balance"
+        >
+          You will find here the latest trends in the world of web development,
+          design, and technology.
+        </Text>
+      </div>
+    </Wrapper>
+  </section>
+
+  <section>
+    <Wrapper variant="standard" class="pb-8">
+      <div
+        class="scrollable-content relative flex snap-x snap-proximity gap-1 py-2 px-2 overflow-x-scroll scrollbar-hide"
+      >
+        {
+          sortedTags.map((tag) => (
+            <>
+              <Link
+                size="xs"
+                title={tag}
+                variant="muted"
+                animated={true}
+                withArrow={true}
+                aria-label={tag}
+                href={`/blog/tags/${tag}`}
+              >
+                {tag}
+              </Link>
+            </>
+          ))
+        }
+      </div>
+
+      <div
+        class="flex flex-col group gap-px bg-base-800 rounded-3xl divide-y divide-base-900"
+      >
+        {allPosts.map((post) => <EntriesOne post={post} />)}
+      </div>
+      <div
+        class="grid grid-cols-1 gap-px md:grid-cols-2 xl:grid-cols-3 mt-px group"
+      >
+        {allPosts.slice(0, 3).map((post) => <Insights post={post} />)}
+      </div>
+    </Wrapper>
+  </section>
+  <SubscribeCta />
+</BaseLayout>

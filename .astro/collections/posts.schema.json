@@ -45,6 +45,22 @@
           ],
           "additionalProperties": false
         },
+        "avatar": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string"
+            },
+            "alt": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "url",
+            "alt"
+          ],
+          "additionalProperties": false
+        },
         "tags": {
           "type": "array",
           "items": {
@@ -61,6 +77,7 @@
         "description",
         "author",
         "image",
+        "avatar",
         "tags"
       ],
       "additionalProperties": false

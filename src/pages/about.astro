@@ -1,0 +1,61 @@
+---
+// Layout
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="pb-32 lg:pb-48 pt-12">
+      <Text
+        tag="h1"
+        variant="displayXL"
+        class="text-white font-medium lg:w-1/3"
+      >
+        Who we are
+      </Text>
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="standard" class="pb-8">
+      <Wrapper variant="prose" class="max-w-xl">
+        <Text tag="p" variant="textBase">
+          Carbon is a dynamic, community-powered platform built for creatives of
+          all kinds. Whether you're a designer refining your craft, a developer
+          exploring the latest front-end innovations, or a creative professional
+          seeking fresh inspiration, Carbon is your go-to hub for staying ahead.
+          We provide access to the latest trends in design, typography, and
+          cutting-edge tools—empowering you with resources that spark
+          innovation.
+        </Text>
+        <Text tag="p" variant="textBase">
+          But Carbon is more than just a resource—it's a thriving creative
+          ecosystem. Here, members exchange ideas, share experiences, and
+          showcase their work in an inspiring and collaborative space. Our
+          curated collections, in-depth articles, tutorials, and trend analyses
+          ensure you always have fresh insights to elevate your craft and
+          streamline your workflow.
+        </Text>
+        <Text tag="p" variant="textBase">
+          Creativity flourishes in a connected community, and Carbon is designed
+          to foster just that. We’re dedicated to cultivating an environment
+          where inspiration meets innovation—where you can push boundaries,
+          explore new possibilities, and shape the future of design. Join us
+          today and connect with forward-thinking creatives who are redefining
+          the industry.
+        </Text>
+      </Wrapper>
+      <div class="mt-12">
+        <Text tag="p" variant="textBase" class="text-base-400 italic">
+          "Innovation is born from connection. Together, we create the future of
+          design."
+        </Text>
+        <Text tag="p" variant="textBase" class="text-white mt-2 font-semibold">
+          — Jordan Miller, Founder of Carbon
+        </Text>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

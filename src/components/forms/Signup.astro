@@ -1,136 +1,161 @@
+---
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/components/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
 
-
-<section >
-    
-  <div
-    class="w-full relative px-8 py-24 mx-auto max-w-screen-2xl items-center flex flex-col lg:py-48 justify-center text-center"
+<section>
+  <Wrapper
+    variant="standard"
+    class="py-12 h-dvh items-center justify-center flex flex-col"
   >
-    <div class="max-w-md mx-auto">
-      <p class="text-3xl tracking-wide uppercase text-white font-medium">
-        Sign up to Carbon
-      </p>
+    <div class="text-center text-balance max-w-xs mx-auto">
+      <Text
+        tag="h1"
+        variant="displayXL"
+        class="text-white font-medium"
+      >
+        Sign up
+      </Text>
+      <Text
+        tag="p"
+        variant="textBase"
+        class="mt-2 text-base-400 2xl:text-xl lg:text-balance"
+      >
+        Welcome ! Sign up with your favourite email
+      </Text>
+    </div>
 
-      <form class="flex flex-col gap-px mx-auto mt-8" action="#" method="POST">
+    <form action="#" method="POST" class="mx-auto max-w-sm mt-12 w-full">
+      <div class="flex flex-col gap-y-px">
         <div>
-          <label for="first-name" class="sr-only">First name</label>
-          <div >
+          <label class="sr-only"> Name </label>
+          <div>
             <input
-              id="first-name"
-              name="first-name"
               type="text"
-              autocomplete="first-name"
-              placeholder="your name"
+              name="name"
+              id="name"
+              autocomplete="name"
               required
-              class="lock items-center px-4 ring-offset-zinc-800 w-full text-center rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+              aria-required="true"
+              aria-describedby="name-error"
+              placeholder="Your name"
+              class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
             />
+            <span id="name-error" class="text-red-600 text-sm hidden">
+              Please enter your name.
+            </span>
           </div>
         </div>
+
         <div>
-          <label for="last-name" class="sr-only">Last name</label>
-          <div >
+          <label class="sr-only"> Email </label>
+          <div>
             <input
-              id="last-name"
-              name="last-name"
-              type="text"
-              autocomplete="last-name"
-              placeholder="Your last name"
-              required
-              class="lock items-center px-4 ring-offset-zinc-800 w-full text-center rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
-            />
-          </div>
-        </div>
-        <div>
-          <label for="email" class="sr-only">Email address</label>
-          <div >
-            <input
-              id="email"
-              name="email"
               type="email"
+              name="email"
+              id="email"
               autocomplete="email"
               required
-              placeholder="your email"
-              class="lock items-center px-4 ring-offset-zinc-800 w-full text-center rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+              aria-required="true"
+              aria-describedby="email-error"
+              placeholder="Your email"
+              class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
             />
+            <span id="email-error" class="text-red-600 text-sm hidden">
+              Please enter a valid email address.
+            </span>
           </div>
         </div>
-        <div>
-          <label for="password" class="sr-only">Password</label>
 
-          <div >
+        <div>
+          <label class="sr-only">
+            Password
+            <a class="undefined"> Forgot password? </a>
+          </label>
+          <div>
             <input
-              id="password"
+              type="password"
               name="password"
-              type="text"
-              autocomplete="password"
-              placeholder="your password"
+              id="password"
+              autocomplete="current-password"
               required
-              class="lock items-center px-4 ring-offset-zinc-800 w-full text-center rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+              aria-required="true"
+              aria-describedby="password-error"
+              placeholder="Your password"
+              class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
             />
+            <span id="password-error" class="text-red-600 text-sm hidden">
+              Please enter a valid password.
+            </span>
           </div>
         </div>
-        <div>
-          <label for="confirm-password" class="sr-only">Confirm Password</label>
 
-          <div >
+        <div>
+          <label class="sr-only"> Confirm Password </label>
+          <div>
             <input
-              id="confirm-password"
+              type="password"
               name="confirm-password"
-              type="text"
-              autocomplete="password"
-              placeholder="confirm password"
+              id="confirm-password"
+              autocomplete="new-password"
               required
-              class="lock items-center px-4 ring-offset-zinc-800 w-full text-center rounded-full h-14 border-0 bg-zinc-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-zinc-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+              aria-required="true"
+              aria-describedby="confirm-password-error"
+              placeholder="Confirm your password"
+              class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
             />
-          </div>
-        </div>
-        <div class="flex items-center  py-2">
-          <input
-            id="#"
-            name="#"
-            type="checkbox"
-            class="h-4 w-4 text-500 focus:ring-zinc-600 text-black bg-zinc-800 rounded-full border-accent-500"
-          />
-          <label for="#" class="ml-2 block text-sm text-zinc-400"
-            >Receive emails from us?</label
-          >
-        </div>
-        <div class="py-2">
-          <small class="text-xs text-zinc-400"
-            >Receive a weekly digest of new sites on Friday, plus other 
-            occasional news.
-          </small>
-        </div>
-        <div class="flex">
-          <button
-          type="submit"
-          class="py-1 pl-4 duration-200 pr-2 border-accent-500 bg-accent-500 hover:text-black h-12 hover:bg-white text-white justify-between uppercase border-2 hover:border-white rounded-full inline-flex items-center w-full"
-        >
-          sing in
-          <div
-            class="bg-black h-8 w-8 text-white inline-flex items-center justify-center rounded-full"
-          >
-            <span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="w-5 h-5"
-                viewBox="0 0 32 32"
-                ><path
-                  fill="currentColor"
-                  d="m18 6l-1.43 1.393L24.15 15H4v2h20.15l-7.58 7.573L18 26l10-10L18 6z"
-                ></path></svg
-              ></span
+            <span
+              id="confirm-password-error"
+              class="text-red-600 text-sm hidden"
             >
+              Please confirm your password.
+            </span>
           </div>
-        </button>
         </div>
-        <div class="inline-flex items-center justify-between w-full mt-4">
-          <p class="text-zinc-400 text-sm">Don't have an account?</p>
-          <a
-            class="text-accent-500 text-sm hover:text-black duration-200"
-            href="/forms/signup">Create an account</a
+      </div>
+
+      <Button
+        size="xl"
+        submit="true"
+        variant="accent"
+        animated={true}
+        withArrow={true}
+        class="w-full"
+      >
+        Continue with email
+      </Button>
+
+      <div class="flex mt-4 justify-between items-center">
+        <Text tag="p" variant="textXS" class="text-base-400 uppercase">
+          Already have an account?
+        </Text>
+        <Text
+          tag="a"
+          variant="textXS"
+          href="/forms/signin"
+          aria-label="Your label"
+          class="text-base-400 uppercase hover:text-accent-500 flex items-center gap-1 transition-all duration-200"
+        >
+          Sing in instead
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-arrow-narrow-right"
+            ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+              d="M5 12l14 0"></path><path d="M15 16l4 -4"></path><path
+              d="M15 8l4 4"></path></svg
           >
-        </div>
-      </form>
-    </div>
-  </div>
+        </Text>
+      </div>
+    </form>
+  </Wrapper>
 </section>

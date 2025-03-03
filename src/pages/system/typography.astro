@@ -1,0 +1,77 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <Wrapper variant="standard" class="pb-32 lg:pb-48 pt-12">
+      <Text
+        tag="h1"
+        variant="displayXL"
+        class="text-white font-medium lg:w-1/3"
+      >
+        Typography: Inter
+      </Text>
+    </Wrapper>
+  </section>
+
+  <section>
+    <Wrapper variant="standard" class="pb-8">
+      <div
+        class="flex flex-col divide-y divide-base-900 text-white font-medium"
+      >
+        <div class="py-4">
+          <Text tag="p" variant="textXS"> Text XS </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="textSM"> Text SM </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="textBase"> Text MD </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="textBase"> Text Base </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="textLG"> Text LG </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="textXL"> Text XL </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="displayXS"> Display XS </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="displaySM"> Display SM </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="displayMD"> Display MD </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="displayLG"> Display LG </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="h1" variant="displayXL"> Display XL </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="display2XL"> Display 2XL </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="display3XL"> Display 3XL </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="display4XL"> Display 4XL </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="display5XL"> Display 5XL </Text>
+        </div>
+        <div class="py-4">
+          <Text tag="p" variant="display6XL"> Display 6XL </Text>
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

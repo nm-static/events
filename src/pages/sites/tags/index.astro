@@ -1,0 +1,51 @@
+---
+// Layout
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Link from "@/components/fundations/components/Link.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Get all posts from the "tools" collection
+import { getCollection } from "astro:content";
+const allTools = await getCollection("sites");
+// Collect all unique tags
+const tags = [...new Set(allTools.map((post) => post.data.tags).flat())];
+---
+
+<BaseLayout>
+  <section class="relative overflow-hidden">
+    <Wrapper variant="narrow" class="pb-32 lg:pb-48 pt-12">
+      <Text
+        tag="p"
+        variant="displayXL"
+        class="text-white font-medium  text-center"
+      >
+        Explore, and discover new resources.
+      </Text>
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="narrow" class="pb-8">
+      <ul role="list" class="flex flex-col gap-px">
+        {
+          tags.map((tag) => (
+            <Link
+              size="sm"
+              variant="link"
+              size="xl"
+              variant="muted"
+              animated={true}
+              withArrow={true}
+              title={tag}
+              aria-label={tag}
+              href={`/sites/tags/${tag}`}
+              class="capitalize"
+            >
+              {tag}
+            </Link>
+          ))
+        }
+      </ul>
+    </Wrapper>
+  </section>
+</BaseLayout>

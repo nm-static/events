@@ -1,0 +1,56 @@
+---
+// Layout
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/components/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-12">
+      <div class="text-center">
+        <Text tag="h1" variant="displayXL" class="text-white font-medium">
+          Advertise
+        </Text>
+      </div>
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="standard" class="pb-8">
+      <div
+        class="flex flex-col h-full justify-between bg-base-800 rounded-3xl p-8 max-w-sm mx-auto"
+      >
+        <Text tag="p" variant="textXL" class="text-white lg:w-1/2 text-balance">
+          Advertsie on Carbon and put your site in front of thousands of
+          visitors
+        </Text>
+
+        <div class="flex flex-col gap-12 mt-20">
+          <div class="flex flex-col">
+            <Text tag="p" variant="display4XL" class="text-white font-semibold"
+              >$10</Text
+            >
+            <Text
+              tag="p"
+              variant="textBase"
+              class="text-base-400 mt-4 text-balance"
+            >
+              Show your website on newsletters, blog, and social media.
+            </Text>
+          </div>
+          <Button
+            size="xl"
+            submit="true"
+            variant="default"
+            animated={true}
+            withArrow={true}
+          >
+            Book
+          </Button>
+        </div>
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

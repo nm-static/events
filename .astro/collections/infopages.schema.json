@@ -7,12 +7,29 @@
         "page": {
           "type": "string"
         },
+        "pubDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
         "$schema": {
           "type": "string"
         }
       },
       "required": [
-        "page"
+        "page",
+        "pubDate"
       ],
       "additionalProperties": false
     }

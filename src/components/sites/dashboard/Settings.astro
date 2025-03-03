@@ -1,0 +1,144 @@
+---
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/components/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+---
+
+<section>
+  <Wrapper variant="standard" class="pb-32 lg:pb-48 pt-12">
+    <Text
+      tag="h1"
+      variant="displayXL"
+      class="text-white font-medium text-center"
+    >
+      Settings
+    </Text>
+  </Wrapper>
+</section>
+<section>
+  <Wrapper variant="standard" class="pb-8">
+    <form action="#" method="POST" class="mx-auto max-w-xs">
+      <div class="flex flex-col gap-y-px">
+        <!-- First Name -->
+        <div>
+          <label class="sr-only"> First Name </label>
+          <div>
+            <input
+              type="text"
+              name="first_name"
+              id="first_name"
+              autocomplete="given-name"
+              required
+              aria-required="true"
+              aria-describedby="first-name-error"
+              placeholder="First Name"
+              class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+            />
+            <span id="first-name-error" class="text-red-600 text-sm hidden">
+              Please enter your first name.
+            </span>
+          </div>
+        </div>
+        <!-- Last Name -->
+        <div>
+          <label class="sr-only"> Last Name </label>
+          <div>
+            <input
+              type="text"
+              name="last_name"
+              id="last_name"
+              autocomplete="family-name"
+              required
+              aria-required="true"
+              aria-describedby="last-name-error"
+              placeholder="Last Name"
+              class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+            />
+            <span id="last-name-error" class="text-red-600 text-sm hidden">
+              Please enter your last name.
+            </span>
+          </div>
+        </div>
+        <!-- Email -->
+        <div>
+          <label class="sr-only"> Email </label>
+          <div>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              autocomplete="email"
+              required
+              aria-required="true"
+              aria-describedby="email-error"
+              placeholder="Your email"
+              class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+            />
+            <span id="email-error" class="text-red-600 text-sm hidden">
+              Please enter a valid email address.
+            </span>
+          </div>
+        </div>
+        <!-- Password -->
+        <div>
+          <label class="sr-only"> Password </label>
+          <div>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="current-password"
+              required
+              aria-required="true"
+              aria-describedby="password-error"
+              placeholder="Your password"
+              class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <Text
+          tag="a"
+          variant="textXS"
+          href="/forms/reset"
+          aria-label="Your label"
+          variant="textXS"
+          class="text-base-400 mt-2"
+        >
+          Leave blank if you don't want to change
+        </Text>
+      </div>
+      <!-- Confirm Password -->
+      <div class="mt-2">
+        <label class="sr-only"> Confirm Password </label>
+        <div>
+          <input
+            type="password"
+            name="confirm_password"
+            id="confirm_password"
+            required
+            aria-required="true"
+            aria-describedby="confirm-password-error"
+            placeholder="Confirm Password"
+            class="block items-center px-4 ring-offset-base-800 w-full text-center rounded-full h-14 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500 sm:text-sm sm:leading-6"
+          />
+          <span id="confirm-password-error" class="text-red-600 text-sm hidden">
+            Passwords do not match.
+          </span>
+        </div>
+        <Button
+          size="xl"
+          submit="true"
+          variant="accent"
+          animated={true}
+          withArrow={true}
+          class="w-full"
+        >
+          Update
+        </Button>
+      </div>
+    </form>
+  </Wrapper>
+</section>

@@ -39,6 +39,15 @@ All commands are run from the root of the project, from a terminal:
 Learn more - Explore more through Astro's official [documentation](https://docs.astro.build).
 
 ------
+Updated on 05th March 2425
+## This update includes:
+- Add search functionality
+------
+Updated on 01th March 2025
+## This update includes:
+- Full redesign
+
+------
 Updated on 30th December 2024
 
 ## This update includes:

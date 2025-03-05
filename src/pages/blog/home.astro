@@ -9,6 +9,7 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import Insights from "@/components/blog/Insights.astro";
 import EntriesOne from "@/components/blog/EntriesOne.astro";
 import SubscribeCta from "@/components/blog/SubscribeCta.astro";
+import BlogSearch from "@/components/blog/BlogSearch.astro";
 // Retrieve all posts from the "posts" collection, which returns an unsorted array of post objects
 import { getCollection } from "astro:content";
 const allPostsUnsorted = await getCollection("posts");
@@ -36,6 +37,9 @@ const sortedTags = allTags.sort((a, b) => a.localeCompare(b));
           You will find here the latest trends in the world of web development,
           design, and technology.
         </Text>
+      </div>
+      <div class="max-w-lg mt-12">
+        <BlogSearch />
       </div>
     </Wrapper>
   </section>

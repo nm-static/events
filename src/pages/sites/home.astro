@@ -8,6 +8,7 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
 import SponsorCard from "@/components/sites/SponsorCard.astro";
 import FiltersSidebar from "@/components/sites/FiltersSidebar.astro";
+import SiteSearch from "@/components/sites/SiteSearch.astro";
 // Retrieve all posts from the "posts" collection
 import { getCollection } from "astro:content";
 const alltools = await getCollection("sites");
@@ -27,6 +28,9 @@ const sortedTags = allTags.sort((a, b) => a.localeCompare(b));
       >
         Explore all sites.
       </Text>
+      <div class="max-w-lg mt-12 ">
+        <SiteSearch />
+      </div>
     </Wrapper>
   </section>
 

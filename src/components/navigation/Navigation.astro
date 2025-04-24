@@ -56,9 +56,10 @@ const navigation = [
     <div
       class="grid grid-cols-2 md:grid-cols-2 items-center w-full gap-3 pt-2 lg:pt-8"
     >
-      <a href="/" class="shrink-0">
-        <Logo class="h-4 text-white" />
-      </a>
+      <a href="/" class="shrink-0" aria-label="Go to homepage">
+  <Logo class="h-4 text-white" />
+</a>
+
       <div class="flex items-center gap-2 lg:gap-4 ml-auto">
         <div class="flex items-center gap-2 lg:gap-4">
           {
@@ -89,6 +90,8 @@ const navigation = [
           type="button"
           class="size-9 inline-flex items-center justify-center group"
           @click="rightDrawerOpen = true"
+          aria-label="Open side panel"
+
         >
           <div class="p-1.5 group-focus-visible:bg-base-50">
             <svg

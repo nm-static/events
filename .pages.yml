@@ -1,0 +1,175 @@
+# .pages.yml — Pages CMS config
+
+media:
+  - name: avatars
+    label: Avatars
+    input: src/images/avatars
+    output: src/images/avatars
+    path: ""
+    extensions: [png, jpg, jpeg, webp, svg]
+  - name: blog
+    label: Blog Images
+    input: src/images/blog
+    output: src/images/blog
+    path: ""
+    extensions: [png, jpg, jpeg, webp, svg]
+  - name: logos
+    label: Logos
+    input: src/images/logos
+    output: src/images/logos
+    path: ""
+    extensions: [png, jpg, jpeg, webp, svg]
+  - name: store
+    label: Store Images
+    input: src/images/store
+    output: src/images/store
+    path: ""
+    extensions: [png, jpg, jpeg, webp, svg]
+  - name: thumbnail
+    label: Thumbnails
+    input: src/images/thumbnail
+    output: src/images/thumbnail
+    path: ""
+    extensions: [png, jpg, jpeg, webp, svg]
+
+settings:
+  content:
+    merge: true
+
+content:
+  # ---------------------
+  # INFO PAGES
+  # ---------------------
+  - name: infopages
+    label: Info Pages
+    type: collection
+    path: src/content/infopages
+    filename: "{year}{month}{day}-{hour}{minute}{second}.md"
+    view:
+      primary: page
+      fields: [page, pubDate]
+      sort: [page]
+    fields:
+      - { name: page,    label: Page,     type: string, required: true }
+      - { name: pubDate, label: Pub Date, type: date }
+
+  # ---------------------
+  # STORE
+  # ---------------------
+  - name: store
+    label: Store
+    type: collection
+    path: src/content/store
+    filename: "{year}{month}{day}-{hour}{minute}{second}.md"
+    view:
+      primary: title
+      fields: [title, price]
+      sort: [title]
+    fields:
+      - { name: price,       label: Price,       type: string }
+      - { name: title,       label: Title,       type: string, required: true }
+      - { name: preview,     label: Preview URL, type: string }
+      - { name: checkout,    label: Checkout URL,type: string }
+      - { name: license,     label: License,     type: string }
+      - { name: highlights,  label: Highlights,  type: string, list: true }
+      - { name: description, label: Description, type: text }
+      - name: features
+        label: Features
+        type: object
+        list: true
+        fields:
+          - { name: title,       label: Title,       type: string }
+          - { name: description, label: Description, type: text }
+      - name: image
+        label: Main Image
+        type: object
+        fields:
+          - name: url
+            label: Image
+            type: image
+            options: { media: store }
+          - { name: alt, label: Alt text, type: string }
+
+  # ---------------------
+  # SITES
+  # ---------------------
+  - name: sites
+    label: Sites
+    type: collection
+    path: src/content/sites
+    filename: "{year}{month}{day}-{hour}{minute}{second}.md"
+    view:
+      primary: title
+      fields: [title, live]
+      sort: [title]
+    fields:
+      - { name: live,        label: Live URL,   type: string }
+      - { name: title,       label: Title,      type: string, required: true }
+      - { name: tagline,     label: Tagline,    type: string }
+      - { name: description, label: Description,type: text }
+      - name: details
+        label: Details
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Label, type: string }
+          - { name: value, label: Value, type: string }
+      - name: logo
+        label: Logo
+        type: object
+        fields:
+          - name: url
+            label: Logo Image
+            type: image
+            options: { media: logos }
+          - { name: alt, label: Alt text, type: string }
+      - name: thumbnail
+        label: Thumbnail
+        type: object
+        fields:
+          - name: url
+            label: Thumbnail Image
+            type: image
+            options: { media: thumbnail }
+          - { name: alt, label: Alt text, type: string }
+      - { name: tags, label: Tags, type: string, list: true }
+
+  # ---------------------
+  # POSTS
+  # ---------------------
+  - name: posts
+    label: Posts
+    type: collection
+    path: src/content/posts
+    filename: "{year}{month}{day}-{hour}{minute}{second}.md"
+    view:
+      primary: title
+      fields: [title, pubDate, author]
+      sort: [pubDate]
+      default:
+        sort: pubDate
+        order: desc
+    fields:
+      - { name: title,       label: Title,       type: string, required: true }
+      - { name: pubDate,     label: Pub Date,    type: date }
+      - { name: description, label: Description, type: text }
+      - { name: author,      label: Author,      type: string }
+      - name: image
+        label: Cover Image
+        type: object
+        fields:
+          - name: url
+            label: Image
+            type: image
+            options: { media: blog }
+          - { name: alt, label: Alt text, type: string }
+      - name: avatar
+        label: Author Avatar
+        type: object
+        fields:
+          - name: url
+            label: Avatar
+            type: image
+            options: { media: avatars }
+          - { name: alt, label: Alt text, type: string }
+      - { name: tags, label: Tags, type: string, list: true }

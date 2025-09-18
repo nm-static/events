@@ -24,7 +24,7 @@ const store = defineCollection({
         })
       ),
       image: z.object({
-        url: image(), 
+        url: image(),image() helper,
         alt: z.string(),
       }),
     }),

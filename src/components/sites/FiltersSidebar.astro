@@ -1,96 +1,10 @@
 ---
 // Fundation
 import Text from "@/components/fundations/elements/Text.astro";
-import Link from "@/components/fundations/components/Link.astro";
 import Button from "@/components/fundations/components/Button.astro";
-const filters = [
-  {
-    category: "Categories",
-    options: [
-      "Design Tools",
-      "Development Tools",
-      "SEO Tools",
-      "Analytics Tools",
-      "Project Management",
-      "Marketing Tools",
-      "CRM Software",
-      "E-commerce Platforms",
-      "Collaboration Tools",
-    ],
-  },
-  {
-    category: "Pricing",
-    options: [
-      "Free",
-      "Paid",
-      "Freemium",
-      "Subscription-based",
-      "One-time Payment",
-      "Enterprise Licensing",
-    ],
-  },
-  {
-    category: "Platform",
-    options: [
-      "Web",
-      "Desktop",
-      "Mobile",
-      "Cloud-based",
-      "Self-hosted",
-      "Cross-platform",
-    ],
-  },
-  {
-    category: "Features",
-    options: [
-      "Customizable",
-      "Integration-ready",
-      "Automation",
-      "Real-time Analytics",
-      "Drag-and-Drop Builder",
-      "Multilingual Support",
-      "AI-powered",
-      "Offline Access",
-    ],
-  },
-  {
-    category: "User Rating",
-    options: [
-      "5 Stars",
-      "4 Stars & Above",
-      "3 Stars & Above",
-      "Highly Recommended",
-      "Top-rated",
-    ],
-  },
-  {
-    category: "Industries",
-    options: [
-      "Design",
-      "Development",
-      "Marketing",
-      "Education",
-      "Healthcare",
-      "Finance",
-      "E-commerce",
-      "Real Estate",
-      "Hospitality",
-    ],
-  },
-  {
-    category: "Integration",
-    options: [
-      "Google Suite",
-      "Microsoft 365",
-      "Slack",
-      "Zapier",
-      "HubSpot",
-      "Salesforce",
-      "Stripe",
-      "Shopify",
-    ],
-  },
-];
+
+type Facet = { category: string; options: string[] };
+const { filters } = Astro.props as { filters: Facet[] };
 ---
 
 <Button size="xs" variant="accent" type="button" @click="leftDrawerOpen = true">
@@ -207,7 +121,7 @@ const filters = [
                       <label class="flex items-center gap-2">
                         <input
                           type="checkbox"
-                          name={filter.category.toLowerCase()}
+                          x-model={`selected["${filter.category}"]`}
                           value={option}
                           class="text-accent-500 outline-base-800  bg-base-900 rounded-full focus:ring-accent-500 focus:outline-accent-500"
                         />
@@ -234,14 +148,16 @@ const filters = [
             size="sm"
             variant="default"
             class="w-auto justify-center"
-            href="/forms/signin">Clear</Button
-          >
+            type="button"
+            @click="clear(); leftDrawerOpen = false"
+          >Clear</Button>
           <Button
             size="sm"
             variant="accent"
             class="w-auto justify-center"
-            href="/forms/signup">Apply filters</Button
-          >
+            type="button"
+            @click="leftDrawerOpen = false"
+          >Apply filters</Button>
         </div>
       </div>
     </div>

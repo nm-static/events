@@ -20,7 +20,7 @@ const { frontmatter } = Astro.props;
             <Text
               tag="h1"
               variant="textXL"
-              class="text-white font-medium  flex items-center gap-2 w-full justify-between"
+              class="text-white font-medium flex items-center gap-2 w-full justify-between"
               >{frontmatter.title}
               <span>${frontmatter.price}</span>
             </Text>
@@ -185,8 +185,8 @@ const { frontmatter } = Astro.props;
           class="outline outline-base-900 lg:col-span-3 lg:col-start-2 bg-base-800 p-6 rounded-3xl"
         >
           <Image
-            width="500"
-            height="500"
+            width="700"
+            height="700"
             src={frontmatter.image.url}
             alt={frontmatter.image.alt ?? "Fallback alt text if none provided"}
             class="object-cover aspect-16/10 w-full bg-base-100 rounded-2xl"

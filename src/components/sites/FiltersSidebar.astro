@@ -4,7 +4,8 @@ import Text from "@/components/fundations/elements/Text.astro";
 import Button from "@/components/fundations/components/Button.astro";
 
 type Facet = { category: string; options: string[] };
-const { filters } = Astro.props as { filters: Facet[] };
+const props = Astro.props as { filters?: Facet[] };
+const filters: Facet[] = props.filters ?? [];
 ---
 
 <Button size="xs" variant="accent" type="button" @click="leftDrawerOpen = true">

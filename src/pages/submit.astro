@@ -1,0 +1,70 @@
+---
+// Fundation
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import Button from "@/components/fundations/elements/Button.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-24 lg:pt-48">
+      <Wrapper variant="narrow">
+        <div class="text-balance">
+          <Text
+            tag="h1"
+            variant="displayMD"
+            class="text-base-900 font-display font-thin"
+          >
+            Submit your site to Carbon
+          </Text>
+          <Text
+            tag="p"
+            variant="textBase"
+            class="mt-2 ext-base-600 text-balance"
+          >
+            Get your web tool noticed by top develpers and designers and
+            increase their reach!
+          </Text>
+        </div>
+        <Wrapper variant="prose" class="mt-12">
+          <h4>Get your website featured</h4>
+          <p>
+            Submit your website for free and get them noticed by top designers.
+            Every submission is carefully reviewed.
+          </p>
+          <h4>Submission process</h4>
+          <p>
+            It may take 2 or 3 years or more to publish your tool due to high
+            demand, who knows. For $99 bucks, you can skip the wait and receive
+            a review in 7 days, though publication is not guaranteed.
+          </p>
+          <div class="flex items-center not-prose gap-2">
+            <Button
+              size="sm"
+              variant="default"
+              class="w-fit"
+              data-modal-open="submit-modal"
+            >
+              Submit a site
+            </Button>
+            <Button
+              isLink
+              size="sm"
+              variant="accent"
+              href="/pricing"
+              class="w-fit"
+            >
+              Skip the waiting line for $299
+            </Button>
+          </div>
+          <h4>If not selected</h4>
+          <p>
+            Don’t give up—refine your tool and try again with future projects.
+          </p>
+        </Wrapper>
+      </Wrapper>
+    </Wrapper>
+  </section>
+</BaseLayout>

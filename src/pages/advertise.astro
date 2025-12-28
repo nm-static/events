@@ -3,53 +3,100 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 // Fundation
 import Text from "@/components/fundations/elements/Text.astro";
-import Button from "@/components/fundations/components/Button.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Data
+const packages = [
+  {
+    name: "Website Feature",
+    price: "$999",
+    features: [
+      { label: "Homepage placement", value: "7 days live" },
+      { label: "Newsletter highlight", value: "1x weekly send" },
+      { label: "Social push", value: "1x on X + LinkedIn" },
+    ],
+    description:
+      "A bespoke write-up on Carbon that shows your product in context. Great for launches that need instant credibility.",
+  },
+  {
+    name: "Newsletter Ad",
+    price: "$1,299",
+    features: [
+      { label: "Audience", value: "7,800+ subscribers" },
+      { label: "Send cadence", value: "2 consecutive issues" },
+      { label: "Creative", value: "We help refine your copy" },
+    ],
+    description:
+      "Secure ad space in our weekly newsletter. Reach a curated audience of designers and builders looking for production tools.",
+  },
+];
 ---
-
 <BaseLayout>
   <section>
-    <Wrapper variant="standard" class="py-12">
-      <div class="text-center">
-        <Text tag="h1" variant="displayXL" class="text-white font-medium">
-          Advertise
+    <Wrapper variant="standard" class="py-24 lg:pt-48">
+      <div class="text-center max-w-3xl mx-auto text-balance">
+        <Text
+          tag="h1"
+          variant="displayLG"
+          class="text-base-900 font-display font-thin text-center"
+        >
+          Put your launch in front of the Carbon crowd
+        </Text>
+        <Text tag="p" variant="textBase" class="text-base-600 mt-4">
+          Reach designers and developers actively looking for production-grade
+          inspiration. Choose a package or build a custom campaign.
         </Text>
       </div>
-    </Wrapper>
-  </section>
-  <section>
-    <Wrapper variant="standard" class="pb-8">
-      <div
-        class="flex flex-col h-full justify-between bg-base-800 rounded-3xl p-8 max-w-sm mx-auto"
-      >
-        <Text tag="p" variant="textXL" class="text-white lg:w-1/2 text-balance">
-          Advertsie on Carbon and put your site in front of thousands of
-          visitors
-        </Text>
-
-        <div class="flex flex-col gap-12 mt-20">
-          <div class="flex flex-col">
-            <Text tag="p" variant="display4XL" class="text-white font-semibold"
-              >$10</Text
-            >
-            <Text
-              tag="p"
-              variant="textBase"
-              class="text-base-400 mt-4 text-balance"
-            >
-              Show your website on newsletters, blog, and social media.
-            </Text>
-          </div>
-          <Button
-            size="xl"
-            submit="true"
-            variant="default"
-            animated={true}
-            withArrow={true}
-          >
-            Book
-          </Button>
-        </div>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 mt-12">
+        {
+          packages.map((pkg) => (
+            <div class="flex flex-col h-full justify-between bg-base-50 rounded-lg p-8 ">
+              <div class="flex flex-col gap-8">
+                <div class="space-y-3">
+                  <Text
+                    tag="p"
+                    variant="displaySM"
+                    class="text-base-900 text-balance font-display font-light"
+                  >
+                    {pkg.name}
+                  </Text>
+                  <Text tag="p" variant="textSM" class="text-base-600">
+                    {pkg.description}
+                  </Text>
+                </div>
+                <div>
+                  <Text
+                    tag="p"
+                    variant="displayLG"
+                    class="text-base-900 font-display font-light"
+                  >
+                    {pkg.price}
+                  </Text>
+                </div>
+                <ul class="divide-y divide-base-200 mt-4">
+                  {pkg.features.map((item) => (
+                    <li class="flex items-center justify-between py-3 text-base-800">
+                      <Text tag="span" variant="textBase" class="text-base-800">
+                        {item.label}
+                      </Text>
+                      <Text tag="span" variant="textSM" class="text-base-500">
+                        {item.value}
+                      </Text>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <Button
+                size="base"
+                variant="default"
+                submit="true"
+                class="w-fit mt-8"
+              >
+                Get started
+              </Button>
+            </div>
+          ))
+        }
       </div>
     </Wrapper>
   </section>

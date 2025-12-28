@@ -1,10 +1,21 @@
 ---
 // Import global styles
 import "@/styles/global.css";
-// Components
+// Fundation
 import BaseHead from "@/components/fundations/head/BaseHead.astro";
+// Components
 import Footer from "@/components/global/Footer.astro";
 import Navigation from "@/components/navigation/Navigation.astro";
+import Search from "@/components/sites/Search.astro";
+// Hides the navigation, search or footer on selected screens by passing props:
+// <BaseLayout hideNavigation={true} hideFooter={true}   />
+const {
+  hideNavigation = false,
+  hideFooter = false,
+  hideSearch, // legacy flag
+  showSearch = false,
+} = Astro.props;
+const renderSearch = showSearch || hideSearch === false;
 ---
 
 <html
@@ -14,15 +25,12 @@ import Navigation from "@/components/navigation/Navigation.astro";
   <head>
     <BaseHead />
   </head>
-  <body
-    x-data="{ rightDrawerOpen: false }"
-    @keydown.window.escape="rightDrawerOpen = false"
-    class="bg-zinc-950 flex flex-col lg:min-h-svh"
-  >
-    <Navigation />
-    <main class="grow z-10  bg-zinc-900 overflow-hidden lg:pb-24 lg:mb-[100vh]">
+  <body class="bg-white flex flex-col lg:min-h-svh">
+    {!hideNavigation && <Navigation />}
+    <main class="grow">
+      {renderSearch && <Search />}
       <slot />
     </main>
-    <Footer />
+    {!hideFooter && <Footer />}
   </body>
 </html>

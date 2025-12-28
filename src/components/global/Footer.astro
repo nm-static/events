@@ -1,118 +1,56 @@
 ---
+// Assets
 import Logo from "@/components/assets/Logo.astro";
+import Symbol from "@/components/assets/Symbol.astro";
 // Fundation
 import Text from "@/components/fundations/elements/Text.astro";
-import Link from "@/components/fundations/components/Link.astro";
-import Button from "@/components/fundations/components/Button.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-const footerLinks = [
-  {
-    title: "Navigation",
-    links: [
-      {
-        href: "/system/overview",
-        label: "Overview",
-      },
-      {
-        href: "/system/links",
-        label: "Links",
-      },
-      {
-        href: "/system/buttons",
-        label: "Buttons",
-      },
-      {
-        href: "/system/typography",
-        label: "Typography",
-      },
-    ],
-  },
-  {
-    title: "Stay updated",
-    links: [
-      { label: "License", href: "https://www.lexingtonthemes.com/license" },
-      {
-        label: "Documentation",
-        href: "https://www.lexingtonthemes.com/documentation",
-      },
-    ],
-  },
-
-  {
-    title: "Socials",
-    links: [
-      {
-        label: "@lexingtonthemes",
-        href: "https://twitter.com/lexingtonthemes",
-      },
-      { label: "@Mike_andreuzza", href: "https://twitter.com/Mike_andreuzza" },
-    ],
-  },
-  {
-    title: "Purchase",
-    links: [
-      {
-        href: "https://buy.polar.sh/polar_cl_XW5OJZO3ycbvB4jxhdi9cbOkfdopxGj4Hx1E_MOPpyU",
-        label: "Buy Carbon",
-      },
-    ],
-  },
-];
 ---
 
-<footer
-  class="bg-accent-600 overflow-hidden h-dvh lg:fixed lg:bottom-0 w-full z-0 selection:bg-white"
->
-  <Wrapper class="py-8 flex flex-col h-full justify-between">
-    <div class="mt- flex flex-col gap-px">
-      <label for="email-address" class="sr-only">Email address</label>
-      <input
-        id="email-address"
-        name="email"
-        type="email"
-        autocomplete="email"
-        required
-        placeholder="your@email.com"
-        class="block items-center px-4 ring-offset-base-800 text-2xl w-full text-center rounded-full h-20 border-0 bg-base-800 relative border-trasnparent py-1.5 text-white ring-0 ring-inset ring-white placeholder:text-base-400 focus:ring-2 focus:ring-inset focus:ring-accent-500  sm:leading-6"
-      />
-      <Button
-        size="xxxl"
-        variant="default"
-        animated={true}
-        withArrow={true}
-        type="submit"
-        >Subscribe
-      </Button>
-    </div>
-    <div>
-      <div
-        class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-8 text-black mt-4"
-      >
-        {
-          footerLinks.map((section) => (
-            <ul role="list">
-              <li>
-                <Text tag="h3" variant="textLG" class="text-white">
-                  {section.title}
-                </Text>
-                <div class="mt-4 flex flex-col gap-px">
-                  {section.links.map((link) => (
-                    <Text
-                      tag="a"
-                      variant="textSM"
-                      href={link.href}
-                      class="text-white"
-                    >
-                      {link.label}
-                    </Text>
-                  ))}
-                </div>
-              </li>
-            </ul>
-          ))
-        }
+<footer class="bg-base-50 overflow-hidden">
+  <Wrapper class="py-24">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center text-balance">
+        <Symbol class="inline-block size-12 text-base-900" />
+        <Text
+          tag="h3"
+          variant="displayLG"
+          class="text-base-900 font-display font-light mt-12"
+        >
+          Stay connected to the future of Carbon
+        </Text>
       </div>
-      <Logo class="shrink-0" />
+      <form
+        class="flex flex-col gap-2 max-w-md mx-auto items-start sm:items-center mt-8"
+      >
+        <label class="sr-only" for="footer-email">Email address</label>
+        <input
+          id="footer-email"
+          name="email"
+          type="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+          class="block w-full px-4 py-2 text-xs leading-tight align-middle bg-white border border-transparent transition duration-300 ease-in-out focus:z-10 h-9 rounded-md text-base-500 ring-1 ring-base-200 placeholder-base-400 focus:border-accent-500 focus:ring-accent-100 focus:ring-2 focus:outline-none shadow-sm"
+          required
+        />
+        <Button
+          size="sm"
+          variant="accent"
+          animated={true}
+          withArrow={true}
+          type="submit"
+          class="w-full"
+        >
+          Subscribe
+        </Button>
+      </form>
+      <div class="flex flex-wrap gap-4 mt-12 justify-center">
+        <a href="#_" class="text-base-600 hover:text-accent-600">Twitter</a>
+        <a href="#_" class="text-base-600 hover:text-accent-600">Pinterest</a>
+        <a href="#_" class="text-base-600 hover:text-accent-600">Instagram</a>
+      </div>
     </div>
   </Wrapper>
+  <Logo class="text-base-100 mt-8 -mx-24 -mb-24" />
 </footer>

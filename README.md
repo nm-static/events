@@ -57,11 +57,12 @@ Learn more:
 - [PagesCMS homepage](https://pagescms.org/)  
 - [Configuration docs](https://pagescms.org/docs/configuration/)  
 ---
-
+Updated on 28th Dec 2025
+- Full redesign
+---
 Updated on 05th March 2025
 
 ## This update includes:
-
 - Add search functionality
 
 ---
@@ -69,7 +70,6 @@ Updated on 05th March 2025
 Updated on 01th March 2025
 
 ## This update includes:
-
 - Full redesign
 
 ---
@@ -140,7 +140,5 @@ Your content goes here
 ---
 
 ### [Support](https://lexingtonthemes.com/legal/support/)
-
 ### [Documentation](https://lexingtonthemes.com/documentation/)
-
 ### [Get your bundle](https://lexingtonthemes.com)

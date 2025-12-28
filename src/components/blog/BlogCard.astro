@@ -1,0 +1,46 @@
+---
+// Assets
+import { Image } from "astro:assets";
+// Fndation
+import Text from "@/components/fundations/elements/Text.astro";
+const { title, url, image, tags, pubDate } = {
+  url: "/blog/posts/" + Astro.props.post.slug,
+  tags: Astro.props.post.data.tags,
+  title: Astro.props.post.data.title,
+  image: Astro.props.post.data.image.url,
+  pubDate: Astro.props.post.data.pubDate.toString().slice(0, 10),
+};
+---
+
+<article
+  class="relative group-hover:opacity-30 hover:opacity-100 peer hover:peer-hover:opacity-30 duration-300"
+>
+  <a href={url} title={title} class="absolute inset-0 z-10"> </a>
+  <div class="p-8 bg-base-50 rounded-lg">
+    <Image
+      width="500"
+      height="500"
+      src={image}
+      alt={title}
+      loading="lazy"
+      decoding="async"
+      class="object-cover aspect-8/5 w-full object-top rounded shadow"
+    />
+  </div>
+  <div class="mt-4">
+    <Text
+      tag="p"
+      variant="textXS"
+      class="text-base-600 uppercase font-medium flex items-center gap-2"
+    >
+      <time datetime={pubDate}>{pubDate}</time>
+      <span aria-hidden="true" class="pointer-events-none">·</span>
+      <span>{tags}</span>
+    </Text>
+    <Text
+      tag="h3"
+      variant="textSM"
+      class="text-base-900 font-medium text-balance mt-2">{title}</Text
+    >
+  </div>
+</article>

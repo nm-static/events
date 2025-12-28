@@ -1,0 +1,36 @@
+---
+// Layout
+import BaseLayout from "@/layouts/BaseLayout.astro";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Get all posts from the "store" collection
+import { getCollection } from "astro:content";
+const allProducts = await getCollection("store");
+// Components
+import StoreCard from "@/components/store/StoreCard.astro";
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-24 lg:pt-48">
+      <div class="text-balance max-w-xl text-center mx-auto">
+        <Text
+          tag="h1"
+          variant="displayLG"
+          class="text-base-900 font-display font-thin"
+        >
+          Our products
+        </Text>
+        <Text tag="p" variant="textBase" class="text-base-600 mt-4">
+          Shop my selection of digital products to help you grow your business,
+          and to make your life easier and more productive
+        </Text>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12">
+        {allProducts.map((post) => <StoreCard post={post} />)}
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

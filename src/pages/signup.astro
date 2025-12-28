@@ -1,0 +1,108 @@
+---
+// Fundations
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+---
+
+<BaseLayout hideNav={true} hideFooter={true}>
+  <div class="flex h-dvh">
+    <div class="w-full max-w-md py-24 lg:py-48 mx-auto">
+      <div class="text-center">
+        <Text
+          tag="h1"
+          variant="displayLG"
+          class="text-base-900 font-display font-light"
+        >
+          Sign up
+        </Text>
+        <Text tag="p" variant="textBase" class="text-base-600 mt-4">
+          Create your account below. We promise not to make you confirm your
+          email three times (unless you really want to).
+        </Text>
+      </div>
+      <form class="mt-10 space-y-4">
+        <div class="w-full">
+          <div class="flex items-baseline justify-between mb-1">
+            <label for="email" class="text-sm font-medium text-base-500">
+              Email Address
+            </label>
+          </div>
+          <div class="relative z-0 focus-within:z-10">
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              class="block w-full px-4 py-2 text-xs leading-tight align-middle bg-white border border-transparent transition duration-300 ease-in-out focus:z-10 h-9 rounded-md text-base-500 ring-1 ring-base-200 placeholder-base-400 focus:border-accent-500 focus:ring-accent-100 focus:ring-2 focus:outline-none shadow-sm"
+              inputmode="email"
+            />
+          </div>
+        </div>
+
+        <div class="w-full">
+          <div class="flex items-baseline justify-between mb-1">
+            <label for="password" class="text-sm font-medium text-base-500">
+              Password
+            </label>
+          </div>
+          <div class="relative z-0 focus-within:z-10">
+            <input
+              required
+              id="password"
+              name="password"
+              type="password"
+              placeholder="••••••••"
+              class="block w-full px-4 py-2 text-xs leading-tight align-middle bg-white border border-transparent transition duration-300 ease-in-out focus:z-10 h-9 rounded-md text-base-500 ring-1 ring-base-200 placeholder-base-400 focus:border-accent-500 focus:ring-accent-100 focus:ring-2 focus:outline-none shadow-sm"
+              aria-required="true"
+            />
+          </div>
+        </div>
+
+        <div class="w-full">
+          <div class="flex items-baseline justify-between mb-1">
+            <label
+              for="confirm-password"
+              class="text-sm font-medium text-base-500"
+            >
+              Confirm Password
+            </label>
+          </div>
+          <div class="relative z-0 focus-within:z-10">
+            <input
+              required
+              id="confirm-password"
+              name="confirm-password"
+              type="password"
+              placeholder="••••••••"
+              class="block w-full px-4 py-2 text-xs leading-tight align-middle bg-white border border-transparent transition duration-300 ease-in-out focus:z-10 h-9 rounded-md text-base-500 ring-1 ring-base-200 placeholder-base-400 focus:border-accent-500 focus:ring-accent-100 focus:ring-2 focus:outline-none shadow-sm"
+              aria-required="true"
+            />
+          </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <Button size="base" variant="accent" gap="sm" type="submit">
+            Create account
+          </Button>
+
+          <Button size="base" variant="muted" gap="sm" type="button">
+            Sign up with Google
+          </Button>
+        </div>
+      </form>
+      <Text
+        tag="p"
+        variant="textXS"
+        class="mt-4 font-medium text-center text-base-500"
+      >
+        Already have an account?
+        <a
+          href="/signin"
+          class="font-medium text-accent-500 hover:text-base-500"
+        >
+          Sign in
+        </a>
+      </Text>
+    </div>
+  </div>
+</BaseLayout>

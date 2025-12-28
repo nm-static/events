@@ -1,0 +1,95 @@
+---
+// Assets
+import Logo from "@/components/assets/Logo.astro";
+// Fundations
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Icons
+import Burger from "@/components/fundations/icons/Burger.astro";
+
+const links = [
+  { href: "/", text: "Websites" },
+  { href: "/pricing/", text: "Pricing" },
+  { href: "/blog/", text: "Blog" },
+  { href: "/store/", text: "Store" },
+  { href: "/submit/", text: "Submit" },
+  { href: "/advertise/", text: "Sponsors" },
+  { href: "/system/overview", text: "Overview" },
+  { href: "https://lexingtonthemes.com/templates/carbon", text: "Buy Carbon" },
+];
+---
+
+<nav class="fixed inset-x-0 top-0 z-40 bg-white md:hidden">
+  <Wrapper variant="standard" class="py-3">
+    <div class="flex items-center justify-between">
+      <a href="/" aria-label="Go to homepage">
+        <Logo class="h-4 text-base-900" />
+      </a>
+      <Button
+        iconOnly
+        size="xs"
+        variant="default"
+        type="button"
+        data-mobile-nav-toggle
+        aria-expanded="false"
+        aria-label="Open menu"
+      >
+        <Burger slot="icon" class="size-4" />
+      </Button>
+    </div>
+  </Wrapper>
+  <div class="hidden md:hidden bg-white" data-mobile-nav-panel>
+    <Wrapper variant="standard" class="py-4">
+      <div class="flex flex-col">
+        {
+          links.map((link) => (
+            <a
+              class="text-base-900 text-lg font-medium py-1 border-b border-base-100 last:border-b-0"
+              href={link.href}
+            >
+              {link.text}
+            </a>
+          ))
+        }
+      </div>
+      <div class="mt-8 flex items-center gap-2">
+        <Button isLink size="xs" variant="muted" href="/signin" class="shrink-0"
+          >Sign in</Button
+        >
+        <Button
+          isLink
+          size="xs"
+          variant="default"
+          href="/signup"
+          class="shrink-0">Sign up</Button
+        >
+      </div>
+    </Wrapper>
+  </div>
+</nav>
+
+<script is:inline>
+  (() => {
+    const toggle = document.querySelector("[data-mobile-nav-toggle]");
+    const panel = document.querySelector("[data-mobile-nav-panel]");
+    if (!toggle || !panel) return;
+    const close = () => {
+      panel.classList.add("hidden");
+      toggle.setAttribute("aria-expanded", "false");
+    };
+    const open = () => {
+      panel.classList.remove("hidden");
+      toggle.setAttribute("aria-expanded", "true");
+    };
+    toggle.addEventListener("click", () => {
+      const isOpen = toggle.getAttribute("aria-expanded") === "true";
+      if (isOpen) close();
+      else open();
+    });
+    document.addEventListener("click", (e) => {
+      if (!panel.contains(e.target) && !toggle.contains(e.target)) {
+        close();
+      }
+    });
+  })();
+</script>

@@ -9,7 +9,7 @@ export default defineConfig({
   markdown: {
     drafts: true,
     shikiConfig: {
-      theme: "css-variables"
+      theme: "min-light"
     }
   },
   shikiConfig: {

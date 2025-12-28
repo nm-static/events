@@ -1,0 +1,22 @@
+---
+// Layout
+import LegalLayout from "@/layouts/LegalLayout.astro";
+// Get all posts from the "legal" collection
+import { getCollection } from "astro:content";
+export async function getStaticPaths() {
+  const legal = await getCollection("legal");
+  const paths = legal.map((page) => {
+    return {
+      params: { slug: page.slug },
+      props: { page },
+
+      trailingSlash: false,
+    };
+  });
+  return paths;
+}
+const { page } = Astro.props;
+const { Content } = await page.render();
+---
+
+<LegalLayout frontmatter={page.data}> <Content /></LegalLayout>

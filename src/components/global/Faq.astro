@@ -1,0 +1,97 @@
+---
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import Plus from "@/components/fundations/icons/Plus.astro";
+const faqs = [
+  {
+    question: "What is a website tool curation platform?",
+    answer:
+      "A website tool curation platform is a site that collects and organizes the best tools available online to help users find resources for their specific needs, such as productivity, design, development, or marketing.",
+  },
+  {
+    question: "How are the tools selected for curation?",
+    answer:
+      "The tools are carefully selected based on their features, user reviews, popularity, and overall utility. Our team evaluates each tool to ensure it meets quality standards and provides value.",
+  },
+  {
+    question: "Can I suggest a tool to be added to the curation?",
+    answer:
+      "Yes, we encourage user suggestions! You can recommend tools through our 'Suggest a Tool' form. Each submission is reviewed to ensure it aligns with our platform’s focus and quality criteria.",
+  },
+  {
+    question: "Are the tools on your website free to use?",
+    answer:
+      "Our curated tools include a mix of free, freemium, and paid options. Each tool listing clearly mentions its pricing model to help you decide which fits your needs.",
+  },
+  {
+    question: "How do I know if a tool is trustworthy?",
+    answer:
+      "We provide detailed descriptions, reviews, and ratings for each tool. Additionally, tools are vetted for reliability, security, and user feedback before being listed on our platform.",
+  },
+  {
+    question: "Do you provide tutorials or guides for the tools?",
+    answer:
+      "Yes, for many tools, we offer links to official documentation, video tutorials, and user guides to help you get started quickly and efficiently.",
+  },
+  {
+    question: "Can I leave reviews or feedback on the tools listed?",
+    answer:
+      "Absolutely! We encourage users to leave reviews and feedback on tool pages. This helps others make informed decisions and ensures we maintain a high-quality curation.",
+  },
+  {
+    question: "Are there categories to help me find tools more easily?",
+    answer:
+      "Yes, tools are categorized by purpose, such as design, development, marketing, or productivity. You can also use our search function to find specific tools quickly.",
+  },
+  {
+    question: "Is there a cost to access the curated tools on your website?",
+    answer:
+      "Accessing our curated tool lists is completely free. However, individual tools may have their own pricing models, which are indicated in their descriptions.",
+  },
+  {
+    question: "Can I share curated tools with others?",
+    answer:
+      "Yes, each tool page has sharing options that allow you to easily send links to your colleagues, friends, or team members.",
+  },
+];
+---
+
+<section>
+  <Wrapper variant="standard" class="py-12">
+    <div class="text-center">
+      <Text
+        tag="h2"
+        variant="displayLG"
+        class="text-base-900 font-display font-thin"
+      >
+        Frequently Asked Questions
+      </Text>
+      <Text tag="p" variant="textBase" class="text-base-600 mt-4">
+        Everything you need to know about our platform.
+      </Text>
+    </div>
+    <Wrapper variant="narrow" class="mt-12">
+      <div>
+        {
+          faqs.map((faq) => (
+            <details class="group cursor-pointer">
+              <summary class="text-sm leading-normal text-base-900  font-medium flex items-center justify-between w-full px-8 py-4 text-left select-none hover:text-accent-500 focus:text-accent-500">
+                {faq.question}
+                <Plus class="size-4 duration-300 ease-out transform group-open:-rotate-45" />
+              </summary>
+              <div class="py-4 px-8">
+                <Text
+                  tag="p"
+                  variant="textSM"
+                  class="text-base-600 text-balance"
+                >
+                  {faq.answer}
+                </Text>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </Wrapper>
+  </Wrapper>
+</section>

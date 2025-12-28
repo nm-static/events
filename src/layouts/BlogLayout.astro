@@ -5,11 +5,10 @@ import { Image } from "astro:assets";
 import BaseLayout from "./BaseLayout.astro";
 // Fundation
 import Text from "@/components/fundations/elements/Text.astro";
-import Link from "@/components/fundations/components/Link.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 // Components
-import SubscribeCta from "@/components/blog/SubscribeCta.astro";
-import Insights from "@/components/blog/Insights.astro";
+import BlogCard from "@/components/blog/BlogCard.astro";
 // Frontmatter
 const { frontmatter } = Astro.props;
 // Retrieve all posts from the "posts" collection, which returns an unsorted array of post objects
@@ -23,86 +22,70 @@ const allPosts = allPostsUnsorted.sort(
 
 <BaseLayout>
   <section>
-    <Wrapper variant="standard" class="py-12">
-      <div class="grid grid-cols-1 gap-1 lg:grid-cols-4">
-        <div class="lg:col-span-1 lg:sticky lg:top-8 lg:self-start">
-          <div class="p-6 bg-base-800 rounded-3xl">
-            <Image
-              width="500"
-              height="500"
-              src={frontmatter.image.url}
-              alt={frontmatter.image.url}
-              class="object-cover aspect-16/9 w-full rounded-xl"
-            />
-            <Text
-              tag="p"
-              variant="textBase"
-              class="text-base-400 font-light mt-4"
-            >
-              {frontmatter.title}
-            </Text>
-            <Text
-              tag="p"
-              variant="textSM"
-              class="mt-2 text-base-400 text-balance"
-            >
-              {frontmatter.description}
-            </Text>
-            <div class="flex items-center gap-x-3 mt-4">
-              <Image
-                width="500"
-                height="500"
-                src={frontmatter.avatar.url}
-                alt={frontmatter.avatar.url}
-                class="object-cover size-10 rounded-full"
-              />
-              <div class="flex flex-col text-base-400">
-                <time datetime={frontmatter.pubDate.toString().slice(0, 10)}>
-                  <Text tag="span" variant="textXS" class="font-medium"
-                    >Written on {frontmatter.pubDate.toString().slice(0, 10)}
-                  </Text>
-                </time>
-                <Text tag="span" variant="textXS" class="font-medium">
-                  by {frontmatter.author}
-                </Text>
-              </div>
-            </div>
-            <div class="flex flex-wrap items-center gap-1 mt-12">
-              {
-                frontmatter.tags.map((tag) => (
-                  <>
-                    <Link
-                      title={tag}
-                      size="sm"
-                      variant="accent"
-                      animated={true}
-                      withArrow={true}
-                      aria-label={tag}
-                      href={`/blog/tags/${tag}`}
-                      class="text-accent-500  font-medium text-xs hover:text-base-900     "
-                    >
-                      {tag}
-                    </Link>
-                  </>
-                ))
-              }
-            </div>
-          </div>
+    <Wrapper variant="standard" class="py-24 lg:pt-48">
+      <div class="text-balance">
+        <div class="text-center max-w-3xl mx-auto text-balance">
+          <Text
+            tag="h1"
+            variant="displayLG"
+            class="text-base-900 font-display font-thin"
+          >
+            {frontmatter.title}
+          </Text>
+          <Text tag="p" variant="textBase" class="text-base-600 mt-4">
+            {frontmatter.description}
+          </Text>
         </div>
-        <div class="lg:col-span-3 lg:col-start-2 bg-base-800 p-6 rounded-3xl">
-          <Wrapper variant="prose"><slot /></Wrapper>
+        <div class="flex flex-wrap items-center gap-1 mt-8 justify-center">
+          {
+            frontmatter.tags.map((tag) => (
+              <>
+                <Button
+                  isLink
+                  title={tag}
+                  size="sm"
+                  variant="muted"
+                  aria-label={tag}
+                  href={`/blog/tags/${tag}`}
+                  class="text-accent-500  font-medium text-xs hover:text-base-900   capitalize  "
+                >
+                  {tag}
+                </Button>
+              </>
+            ))
+          }
         </div>
       </div>
+      <div class="p-8 bg-base-50 rounded-lg mt-12">
+        <Image
+          width={1400}
+          height={1400}
+          loading="lazy"
+          decoding="async"
+          src={frontmatter.image.url}
+          alt={frontmatter.image.url}
+          class="size-full aspect-8/5 object-top rounded shadow object-cover"
+        />
+      </div>
+      <Wrapper variant="narrow" class="mt-12"
+        ><Wrapper variant="prose"><slot /></Wrapper></Wrapper
+      >
     </Wrapper>
   </section>
-
-  <SubscribeCta />
   <section>
     <Wrapper variant="standard" class="py-12">
-      <div
-        class="grid grid-cols-1 gap-px md:grid-cols-2 xl:grid-cols-4 mt-8 group"
-      >
-        {allPosts.slice(0, 4).map((post) => <Insights post={post} />)}
+      <div class="flex flex-wrap gap-4 justify-between items-center">
+        <Text
+          tag="h2"
+          variant="displaySM"
+          class="text-base-900 font-display font-thin">Latest posts</Text
+        >
+        <Button isLink size="sm" variant="muted" href="/blog/">
+          See all posts
+        </Button>
+      </div>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-8">
+        {allPosts.slice(0, 3).map((post) => <BlogCard post={post} />)}
       </div>
     </Wrapper>
   </section>

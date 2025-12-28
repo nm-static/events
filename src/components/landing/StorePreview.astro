@@ -1,0 +1,29 @@
+---
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Button from "@/components/fundations/elements/Button.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Components
+import StoreCard from "@/components/store/StoreCard.astro";
+// Store
+import { getCollection } from "astro:content";
+const allProducts = await getCollection("store");
+---
+
+<section>
+  <Wrapper variant="standard" class="py-24">
+    <div class="flex flex-wrap gap-4 justify-between items-center">
+      <Text
+        tag="h2"
+        variant="displaySM"
+        class="text-base-900 font-display font-thin">Our latest templates</Text
+      >
+      <Button isLink size="sm" variant="muted" href="/store/">
+        See them all!
+      </Button>
+    </div>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-12">
+      {allProducts.slice(0, 3).map((post) => <StoreCard post={post} />)}
+    </div>
+  </Wrapper>
+</section>

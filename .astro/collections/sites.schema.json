@@ -16,6 +16,9 @@
         "description": {
           "type": "string"
         },
+        "isNew": {
+          "type": "boolean"
+        },
         "details": {
           "type": "array",
           "items": {
@@ -34,22 +37,6 @@
             ],
             "additionalProperties": false
           }
-        },
-        "logo": {
-          "type": "object",
-          "properties": {
-            "url": {
-              "type": "string"
-            },
-            "alt": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "url",
-            "alt"
-          ],
-          "additionalProperties": false
         },
         "thumbnail": {
           "type": "object",
@@ -89,7 +76,6 @@
         "title",
         "tagline",
         "description",
-        "logo",
         "thumbnail"
       ],
       "additionalProperties": false

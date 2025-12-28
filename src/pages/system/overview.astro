@@ -3,14 +3,6 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Widget components
-import SubmitModal from "@/components/sites/SubmitModal.astro";
-import BookmarksModal from "@/components/sites/BookmarksModal.astro";
-import SubscribeModal from "@/components/forms/SubscribeModal.astro";
-import DeleteAccountModal from "@/components/sites/dashboard/DeleteAccountModal.astro";
-import EditCollectionModal from "@/components/sites/dashboard/EditCollectionModal.astro";
-import CreateCollectionModal from "@/components/sites/dashboard/CreateCollectionModal.astro";
-import RemoveCollectionModal from "@/components/sites/dashboard/RemoveCollectionModal.astro";
 // Array with links to all pages
 const pages = [
   {
@@ -25,16 +17,6 @@ const pages = [
         ],
       },
       {
-        title: "Dashboard",
-        links: [
-          { href: "/dashboard/settings", text: "Settings" },
-          { href: "/dashboard/collections", text: "Collections" },
-          { href: "/dashboard/collection-details", text: "Collection Details" },
-          { href: "/dashboard/submissions", text: "Submissions" },
-          { href: "/dashboard/profile", text: "Profile" },
-        ],
-      },
-      {
         title: "Advertise",
         links: [
           { href: "/pricing", text: "Membership" },
@@ -44,9 +26,10 @@ const pages = [
       {
         title: "Forms",
         links: [
-          { href: "/forms/signin", text: "Sing in" },
-          { href: "/forms/signup", text: "Sing up" },
-          { href: "/forms/reset", text: "Reset" },
+          { href: "/signin", text: "Sing in" },
+          { href: "/signup", text: "Sing up" },
+
+          { href: "/submit", text: "Submit" },
         ],
       },
       {
@@ -61,7 +44,7 @@ const pages = [
             text: "License",
           },
           {
-            href: "https://lexingtonthemes.com/legal/support/",
+            href: "https://lexingtonthemes.com/legal/support",
             text: "Support",
           },
           {
@@ -78,173 +61,80 @@ const pages = [
       {
         title: "Directory",
         links: [
-          { href: "/sites/home", text: "All sites" },
-          { href: "/sites/site/12", text: "Site details" },
+          { href: "/sites/", text: "Home" },
+          { href: "/sites/site/1", text: "Details" },
           { href: "/sites/tags", text: "Tag index" },
           { href: "/sites/tags/design", text: "Tag category" },
-          { href: "/sites/submit", text: "Submit" },
         ],
       },
       {
         title: "Blog",
         links: [
-          { href: "/blog/home", text: "Blog home" },
-          { href: "/blog/posts/1", text: "Blog post" },
+          { href: "/blog/", text: "Home" },
+          { href: "/blog/posts/1", text: "Details" },
           { href: "/blog/tags", text: "Tag index" },
-          { href: "/blog/tags/Design", text: "Tag category" },
+          { href: "/blog/tags/3d", text: "Tag category" },
           { href: "/rss.xml", text: "RSS" },
         ],
       },
       {
         title: "Store",
         links: [
-          { href: "/store/home", text: "Store Home" },
-          { href: "/store/1", text: "Store details" },
+          { href: "/store/", text: "Home" },
+          { href: "/store/1", text: "Details" },
         ],
       },
       {
-        title: "Utility pages",
+        title: "Legal",
         links: [
-          { href: "/infopages/terms", text: "Terms" },
-          { href: "/infopages/privacy", text: "Privacy" },
+          { href: "/legal/terms", text: "Terms" },
+          { href: "/legal/privacy", text: "Privacy" },
         ],
       },
     ],
   },
 ];
+const modalIds = {
+  submit: "submit-modal",
+  bookmarks: "bookmarks-modal",
+  createCollection: "create-collection-modal",
+  editCollection: "edit-collection-modal",
+  removeCollection: "remove-collection-modal",
+  subscribe: "subscribe-modal",
+  deleteAccount: "delete-account-modal",
+  editAccount: "edit-account-modal",
+  createAccount: "create-account-modal",
+};
 ---
 
 <BaseLayout>
-  <section class="relative overflow-hidden">
-    <Wrapper variant="standard" class="py-12">
+  <section>
+    <Wrapper variant="standard" class="py-24 lg:pt-48">
       <Text
         tag="h1"
-        variant="displayXL"
-        class="text-white font-medium lg:w-1/3"
+        variant="displayLG"
+        class="text-base-900 font-display font-thin"
       >
         Overview
       </Text>
-    </Wrapper>
-  </section>
-  <section>
-    <Wrapper variant="standard" class="pb-8">
-      <div class="flex flex-col divide-y divide-base-900">
-        <div class="col-span-full py-4">
-          <Text tag="p" variant="textBase" class="text-base-400 text-balance">
-            Widgets
-          </Text>
-          <div class="mt-4">
-            <Text
-              tag="p"
-              variant="textBase"
-              class="mt-4 text-white text-balance"
-            >
-              Modals
-            </Text>
-            <div
-              class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 gap-y-4 mt-4"
-            >
-              <div x-data="{ open: false }">
-                <button
-                  class="text-base-300 hover:text-accent-500"
-                  x-on:click="open = true"
-                >
-                  Submit
-                </button>
-                <SubmitModal />
-              </div>
-              <div x-data="{ open: false }">
-                <button
-                  class="text-base-300 hover:text-accent-500"
-                  x-on:click="open = true"
-                >
-                  Bookmarks
-                </button>
-                <BookmarksModal />
-              </div>
-              <div x-data="{ open: false }">
-                <button
-                  class="text-base-300 hover:text-accent-500"
-                  x-on:click="open = true"
-                >
-                  New Collection
-                </button>
-                <CreateCollectionModal />
-              </div>
-              <div x-data="{ open: false }">
-                <button
-                  class="text-base-300 hover:text-accent-500"
-                  x-on:click="open = true"
-                >
-                  Edit Collection
-                </button>
-                <EditCollectionModal />
-              </div>
-              <div x-data="{ open: false }">
-                <button
-                  class="text-base-300 hover:text-accent-500"
-                  x-on:click="open = true"
-                >
-                  Remove collection
-                </button>
-                <RemoveCollectionModal />
-              </div>
-              <div x-data="{ open: false }">
-                <button
-                  class="text-base-300 hover:text-accent-500"
-                  x-on:click="open = true"
-                >
-                  Subscribe
-                </button>
-                <SubscribeModal />
-              </div>
-              <div x-data="{ open: false }">
-                <button
-                  class="text-base-300 hover:text-accent-500"
-                  x-on:click="open = true"
-                >
-                  Delete account
-                </button>
-                <DeleteAccountModal />
-              </div>
-              <div x-data="{ open: false }">
-                <button
-                  class="text-base-300 hover:text-accent-500"
-                  x-on:click="open = true"
-                >
-                  Edit account
-                </button>
-                <EditCollectionModal />
-              </div>
-              <div x-data="{ open: false }">
-                <button
-                  class="text-base-300 hover:text-accent-500"
-                  x-on:click="open = true"
-                >
-                  Create account
-                </button>
-                <CreateCollectionModal />
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="space-y-12 mt-12">
         {
           pages.map((section) => (
-            <div class="py-4">
+            <div>
               <Text
                 tag="p"
-                variant="textBase"
-                class=" text-base-400 text-balance"
+                variant="displayMD"
+                class="text-base-900  text-balance font-display font-thin"
               >
                 {section.title}
               </Text>
-              <div class="mt-4  grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 gap-y-4">
+              <div class="mt-8  grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 gap-y-4">
                 {section.categories.map((category) => (
                   <div class="flex flex-col gap-2 ">
                     <Text
                       tag="p"
                       variant="textBase"
-                      class="text-white font-medium"
+                      class="text-base-900 font-medium"
                     >
                       {category.title}
                     </Text>
@@ -253,9 +143,9 @@ const pages = [
                         <li>
                           <Text
                             tag="a"
-                            variant="textBase"
+                            variant="textSM"
                             href={link.href}
-                            class="text-base-300 hover:text-accent-500"
+                            class="text-base-600 hover:text-accent-500"
                           >
                             {link.text}
                           </Text>

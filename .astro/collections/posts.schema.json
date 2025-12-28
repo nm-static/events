@@ -26,26 +26,7 @@
         "description": {
           "type": "string"
         },
-        "author": {
-          "type": "string"
-        },
         "image": {
-          "type": "object",
-          "properties": {
-            "url": {
-              "type": "string"
-            },
-            "alt": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "url",
-            "alt"
-          ],
-          "additionalProperties": false
-        },
-        "avatar": {
           "type": "object",
           "properties": {
             "url": {
@@ -75,9 +56,7 @@
         "title",
         "pubDate",
         "description",
-        "author",
         "image",
-        "avatar",
         "tags"
       ],
       "additionalProperties": false

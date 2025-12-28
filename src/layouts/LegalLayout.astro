@@ -1,0 +1,34 @@
+---
+// Layout
+import BaseLayout from "./BaseLayout.astro";
+// Fundation
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Frontmatter
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="py-24 lg:pt-48">
+      <div class="flex flex-col gap-12 lg:flex-row">
+        <div class="text-balance lg:w-1/3">
+          <Text
+            tag="h1"
+            variant="displayLG"
+            class="text-base-900 font-display font-thin"
+          >
+            {frontmatter.page}
+          </Text>
+          <Text tag="p" variant="textBase" class="text-base-600 mt-4">
+            Last upadated on {frontmatter.pubDate.toString().slice(0, 10)}
+          </Text>
+        </div>
+
+        <div class="lg:w-1/2">
+          <Wrapper variant="prose"><slot /></Wrapper></div
+        >
+      </div>
+    </Wrapper>
+  </section>
+</BaseLayout>

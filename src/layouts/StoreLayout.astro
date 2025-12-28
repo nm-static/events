@@ -1,197 +1,145 @@
 ---
 // Assets
 import { Image } from "astro:assets";
-// Layout
-import BaseLayout from "./BaseLayout.astro";
 // Fundation
+import BaseLayout from "./BaseLayout.astro";
 import Text from "@/components/fundations/elements/Text.astro";
-import Link from "@/components/fundations/components/Link.astro";
+import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+// Icons
+import Checkout from "@/components/fundations/icons/Checkout.astro";
+// Components
+import StoreCard from "@/components/store/StoreCard.astro";
+// Retrieve all posts from the "store" collection
+import { getCollection } from "astro:content";
+const allstore = await getCollection("store");
 // Frontmatter
 const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout>
   <section>
-    <Wrapper variant="standard" class="py-8">
-      <div class="grid grid-cols-1 gap-1 lg:grid-cols-4">
-        <div class="lg:col-span-1 lg:sticky lg:top-8 lg:self-start">
-          <div class="p-6 bg-base-800 rounded-3xl">
+    <Wrapper variant="standard" class="py-24 lg:pt-48">
+      <div>
+        <div class="flex flex-wrap justify-between gap-4">
+          <div class="max-w-xl text-balance">
             <Text
               tag="h1"
-              variant="textXL"
-              class="text-white font-medium flex items-center gap-2 w-full justify-between"
-              >{frontmatter.title}
-              <span>${frontmatter.price}</span>
+              variant="displayLG"
+              class="text-base-900 font-display font-thin"
+            >
+              {frontmatter.title}
             </Text>
-            <Text
-              tag="p"
-              variant="textSM"
-              class="mt-2 text-base-400 text-balance"
-            >
-              {frontmatter.description}</Text
-            >
-
-            <!-- Accordion sections -->
-            <div class="divide-y divide-base-900 border-y border-base-900 mt-8">
-              <details class="group cursor-pointer">
-                <summary
-                  class="text-sm leading-normal text-white font-medium flex items-center justify-between w-full py-4 text-left select-none hover:text-accent-500 focus:text-accent-500"
-                >
-                  Details<svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-plus size-4 duration-300 ease-out transform group-open:-rotate-45"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M12 5l0 14"></path>
-                    <path d="M5 12l14 0"></path>
-                  </svg>
-                </summary>
-                <div class="pb-4">
-                  <Text tag="p" variant="textSM" class="text-base-400">
-                    This product is crafted from high-quality materials designed
-                    for durability and comfort. It features modern design
-                    elements and is perfect for everyday use.
-                  </Text>
-                  <ul role="list" class="mt-4">
-                    {
-                      frontmatter.highlights.map((highlight) => (
-                        <li>
-                          <Text
-                            tag="p"
-                            variant="textSM"
-                            class="text-base-400 text-balance  font-medium"
-                          >
-                            {highlight}
-                          </Text>
-                        </li>
-                      ))
-                    }
-                  </ul>
-                </div>
-              </details>
-              <details class="group cursor-pointer">
-                <summary
-                  class="text-sm leading-normal text-white font-medium flex items-center justify-between w-full py-4 text-left select-none hover:text-accent-500 focus:text-accent-500"
-                >
-                  Key points<svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-plus size-4 duration-300 ease-out transform group-open:-rotate-45"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M12 5l0 14"></path>
-                    <path d="M5 12l14 0"></path>
-                  </svg>
-                </summary>
-                <div class="pb-4">
-                  <Text tag="p" variant="textSM" class="text-base-400">
-                    We offer free standard shipping on all orders above $50.
-                    Express shipping options are available at checkout for an
-                    additional fee.
-                  </Text>
-                  <dl
-                    class="flex flex-col gap-4 mt-8 md:col-span-2 lg:col-span-1"
-                  >
-                    {
-                      frontmatter.features.map((feature) => (
-                        <div>
-                          <dt>
-                            <Text
-                              tag="span"
-                              variant="textSM"
-                              class="text-white "
-                            >
-                              {feature.title}
-                            </Text>
-                          </dt>
-                          <dd class="mt-1 text-base-400">
-                            <Text tag="span" variant="textSM">
-                              {feature.description}
-                            </Text>
-                          </dd>
-                        </div>
-                      ))
-                    }
-                  </dl>
-                </div>
-              </details>
-              <details class="group cursor-pointer">
-                <summary
-                  class="text-sm leading-normal text-white font-medium flex items-center justify-between w-full py-4 text-left select-none hover:text-accent-500 focus:text-accent-500"
-                >
-                  License<svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-plus size-4 duration-300 ease-out transform group-open:-rotate-45"
-                  >
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                    <path d="M12 5l0 14"></path>
-                    <path d="M5 12l14 0"></path>
-                  </svg>
-                </summary>
-                <div class="pb-4">
-                  <Text
-                    tag="p"
-                    variant="textSM"
-                    class="text-base-400 text-balance"
-                  >
-                    {frontmatter.license}
-                  </Text>
-                </div>
-              </details>
-            </div>
-            <div class="mt-8 flex flex-col gap-px">
-              <Link
-                size="xl"
-                variant="accent"
-                animated={true}
-                withArrow={true}
-                href={frontmatter.checkout}
-                class="w-full"
-              >
-                Buy {frontmatter.title} for ${frontmatter.price}
-              </Link>
-              <Link
-                size="xl"
-                variant="default"
-                animated={true}
-                withArrow={true}
-                href={frontmatter.preview}
-                class="w-full"
-              >
-                Preview demo
-              </Link>
-            </div>
+            <Text tag="p" variant="textBase" class="text-base-600 mt-4">
+              {frontmatter.description}
+            </Text>
           </div>
+          <Button
+            iconOnly
+            size="xs"
+            variant="default"
+            href={frontmatter.live}
+            title={frontmatter.title}
+          >
+            <Checkout slot="icon" class="size-4" />
+          </Button>
         </div>
-        <div
-          class="outline outline-base-900 lg:col-span-3 lg:col-start-2 bg-base-800 p-6 rounded-3xl"
-        >
+        <div class="p-8 bg-base-50 rounded-lg mt-12">
           <Image
-            width="700"
-            height="700"
+            width={1400}
+            height={1400}
+            loading="lazy"
+            decoding="async"
             src={frontmatter.image.url}
-            alt={frontmatter.image.alt ?? "Fallback alt text if none provided"}
-            class="object-cover aspect-16/10 w-full bg-base-100 rounded-2xl"
+            alt={frontmatter.image.alt ?? frontmatter.title}
+            class="size-full aspect-8/5 object-top rounded shadow"
           />
         </div>
+        <dl class="mt-4 divide-y divide-base-100">
+          {
+            frontmatter.features.map((feature) => (
+              <div class="flex itmes-center gap-2 justify-between py-2">
+                <dt>
+                  <Text
+                    tag="h3"
+                    variant="textSM"
+                    class="text-base-900 font-medium"
+                  >
+                    {feature.title}
+                  </Text>
+                </dt>
+                <dd class="mt-1">
+                  <Text tag="p" variant="textSM" class="text-base-600">
+                    {feature.description}
+                  </Text>
+                </dd>
+              </div>
+            ))
+          }
+          <dl class="divide-y divide-base-100">
+            <div class="flex itmes-center gap-2 justify-between py-2">
+              <dt>
+                <Text
+                  tag="h3"
+                  variant="textSM"
+                  class="text-base-900 font-medium"
+                >
+                  <span>Details</span>
+                </Text>
+              </dt>
+              <dd>
+                <ul role="list">
+                  {
+                    frontmatter.highlights.map((highlight) => (
+                      <li>
+                        <Text tag="p" variant="textSM" class="text-base-600">
+                          {highlight}
+                        </Text>
+                      </li>
+                    ))
+                  }
+                </ul>
+              </dd>
+            </div>
+          </dl>
+          <Text tag="p" variant="textSM" class="text-base-600 mt-4">
+            {frontmatter.license}
+          </Text>
+        </dl>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {
+          frontmatter.gallery.map((img) => (
+            <div class="p-8 bg-base-50 rounded-lg mt-12">
+              <Image
+                width={1400}
+                height={1400}
+                loading="lazy"
+                decoding="async"
+                src={img.url}
+                alt={img.alt ?? frontmatter.title}
+                class="size-full aspect-8/5 object-top rounded shadow"
+              />
+            </div>
+          ))
+        }
+      </div>
+    </Wrapper>
+  </section>
+  <section>
+    <Wrapper variant="standard" class="py-24">
+      <div class="flex flex-wrap gap-4 justify-between items-center">
+        <Text
+          tag="h2"
+          variant="displaySM"
+          class="text-base-900 font-display font-thin">More products</Text
+        >
+        <Button isLink size="sm" variant="muted" href="/store/">
+          See all products
+        </Button>
+      </div>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 mt-8">
+        {allstore.slice(0, 3).map((post) => <StoreCard post={post} />)}
       </div>
     </Wrapper>
   </section>

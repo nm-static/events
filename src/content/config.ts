@@ -1,6 +1,6 @@
 import { defineCollection, z } from "astro:content";
 
-const infopages = defineCollection({
+const legal = defineCollection({
   schema: z.object({
     page: z.string(),
     pubDate: z.date(),
@@ -27,6 +27,14 @@ const store = defineCollection({
         url: image(),
         alt: z.string(),
       }),
+      gallery: z
+        .array(
+          z.object({
+            url: image(),
+            alt: z.string(),
+          })
+        )
+        .optional(),
     }),
 });
 
@@ -38,6 +46,7 @@ const sites = defineCollection({
       title: z.string(),
       tagline: z.string(),
       description: z.string(),
+      isNew: z.boolean().optional(),
       details: z
         .array(
           z.object({
@@ -46,10 +55,6 @@ const sites = defineCollection({
           })
         )
         .optional(),
-      logo: z.object({
-        url: image(), 
-        alt: z.string(),
-      }),
       thumbnail: z.object({
         url: image(), 
         alt: z.string(),
@@ -58,21 +63,18 @@ const sites = defineCollection({
     }),
 });
 
-const postsCollection = defineCollection({
+const posts = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
       pubDate: z.date(),
       description: z.string(),
-      author: z.string(),
+
       image: z.object({
         url: image(), 
         alt: z.string(),
       }),
-      avatar: z.object({
-        url: image(), 
-        alt: z.string(),
-      }),
+     
       tags: z.array(z.string()),
     }),
 });
@@ -80,6 +82,6 @@ const postsCollection = defineCollection({
 export const collections = {
   store,
   sites,
-  posts: postsCollection,
-  infopages,
+  posts,
+  legal,
 };

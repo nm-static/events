@@ -7,13 +7,12 @@ const { variant = "standard", class: extraClass = "" } = Astro.props;
 // Map each variant to its specific classes
 const variantClasses = {
   // Wrappers for standard sections
-  standard:
-    "mx-auto px-4 lg:px-8 max-w-screen 2xl:max-w-[120rem] 2xl:lg:px-24   ",
+  standard: "mx-auto px-8   max-w-7xl 2xl:max-w-[110rem]    ",
   // Wrapper for narrow sections
-  narrow: "mx-auto px-4 lg:px-8 max-w-xl",
+  narrow: "mx-auto px-8  max-w-xl",
   // Wrappers for prose sections
   prose:
-    "prose text-base-400 prose-headings:text-white prose-pre:border-0  prose-blockquote:text-accent-400 prose-a:text-accent-400 hover:prose-a:text-accent-500 prose-a:duration-200  max-w-none prose-pre:text-sm prose-strong:text-white prose-pre:rounded-2xl",
+    "prose ext-base-600 prose-headings:text-base-900  prose-pre:border-0  prose-blockquote:text-accent-600 prose-a:text-accent-600 prose-a:hover:text-accent-500 prose-a:duration-200  max-w-none prose-pre:text-sm prose-strong:text-base-900  prose-pre:rounded-2xl",
 };
 // Combine the classes for the specified variant with any extra classes
 const classes = `${variantClasses[variant]} ${extraClass}`.trim();

@@ -1,6 +1,6 @@
 # Carbon
 
-![Theme preview](https://lexingtonthemes.com/OpenGraph/carbon/twitter.png)
+![Theme preview](https://assets.lexingtonthemes.com/OpenGraph/carbon/twitter.png)
 
 
 ## Links

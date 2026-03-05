@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout events site
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.VAULT_TOKEN }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -23,6 +25,9 @@ jobs:
 
       - name: Run parser
         run: node parse.mjs --vault .vault-cache/events
+
+      - name: Clean up vault cache
+        run: rm -rf .vault-cache
 
       - name: Check for changes
         id: changes

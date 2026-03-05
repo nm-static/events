@@ -7,10 +7,12 @@ import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
   const events = await getCollection("events");
-  return events.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
-  }));
+  return events
+    .filter((entry) => entry.data.publishStatus !== -1 && entry.data.publishStatus !== 0)
+    .map((entry) => ({
+      params: { slug: entry.slug },
+      props: { entry },
+    }));
 }
 
 const { entry } = Astro.props;

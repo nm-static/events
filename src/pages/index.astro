@@ -6,8 +6,8 @@ import { getCollection } from "astro:content";
 
 const allEvents = await getCollection("events");
 
-// Filter to only main pages (no sub-pages)
-const mainEvents = allEvents.filter((e) => !e.data.parentSlug);
+// Filter to only main pages (no sub-pages), exclude hidden events (publishStatus: -1)
+const mainEvents = allEvents.filter((e) => !e.data.parentSlug && e.data.publishStatus !== -1);
 
 const sortedEvents = mainEvents.sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
@@ -82,22 +82,24 @@ const roleIcons: Record<string, string> = {
       <div class="max-w-4xl mx-auto" id="events-list">
         {
           sortedEvents.map((event) => {
-            const { title, tagline, date, type, role, status, externalUrl } = event.data;
+            const { title, tagline, date, type, role, status, externalUrl, publishStatus } = event.data;
             const year = new Date(date).getFullYear();
             const emoji = typeIcons[type] || "\u{1F4C5}";
             const roleEmoji = Object.entries(roleIcons).find(([k]) =>
               role.toLowerCase().includes(k)
             )?.[1] || "\u{1F464}";
             const hasExternal = !!externalUrl;
+            const isLinked = publishStatus !== 0;
+            const Tag = isLinked ? "a" : "div";
 
             return (
               <div
                 class="event-item border-b border-base-100 last:border-b-0"
                 data-year={year}
               >
-                <a
-                  href={`/events/${event.slug}/`}
-                  class="group flex items-center gap-4 py-4 px-2 hover:bg-base-50/50 rounded-lg transition-colors duration-150 -mx-2"
+                <Tag
+                  {...(isLinked ? { href: `/events/${event.slug}/` } : {})}
+                  class={`group flex items-center gap-4 py-4 px-2 rounded-lg transition-colors duration-150 -mx-2 ${isLinked ? "hover:bg-base-50/50" : "opacity-75 cursor-default"}`}
                 >
                   {/* Link / external icon */}
                   <span class="shrink-0 w-6 text-center text-base-300 group-hover:text-accent-500 transition-colors">
@@ -147,7 +149,7 @@ const roleIcons: Record<string, string> = {
                   ) : (
                     <span class="shrink-0 w-10" />
                   )}
-                </a>
+                </Tag>
               </div>
             );
           })

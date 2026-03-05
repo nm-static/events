@@ -10,6 +10,7 @@ const events = defineCollection({
     type: z.enum(["workshop", "school", "event", "conference", "seminar"]),
     role: z.string(),
     status: z.enum(["upcoming", "archived"]),
+    publishStatus: z.number().default(1), // -1: hidden, 0: listed but not linked, 1: fully published
     tags: z.array(z.string()).optional(),
     thumbnail: z.string().optional(),
     externalUrl: z.string().optional(),

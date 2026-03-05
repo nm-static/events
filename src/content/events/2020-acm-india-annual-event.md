@@ -9,6 +9,7 @@ role: "Co-Organizer"
 status: archived
 tags: ["acm", "event", "iitgn", "2020"]
 thumbnail: ""
+publishStatus: 0
 ---
 
 ## ACM-India Annual Event 2020

@@ -10,6 +10,7 @@ status: archived
 tags: ["acm", "game-theory", "summer-school", "iitgn", "2019"]
 thumbnail: ""
 externalUrl: "http://events.iitgn.ac.in/2019/ACMSummerSchool/"
+publishStatus: 0
 ---
 
 ## ACM-W Summer School on Algorithmic Game Theory

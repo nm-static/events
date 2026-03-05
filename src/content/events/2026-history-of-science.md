@@ -9,6 +9,7 @@ role: "Organizer"
 status: upcoming
 tags: ["history", "science", "workshop", "iitgn", "2026"]
 thumbnail: ""
+publishStatus: 0
 ---
 
 ## Workshop on Doing History of Science and Engineering in India

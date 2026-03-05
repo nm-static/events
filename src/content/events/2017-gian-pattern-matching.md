@@ -14,6 +14,7 @@ tags:
   - iitgn
 thumbnail: ""
 externalUrl: http://events.iitgn.ac.in/2017/patternmatching/
+publishStatus: 0
 ---
 
 ## GIAN Course on Pattern Matching Algorithms

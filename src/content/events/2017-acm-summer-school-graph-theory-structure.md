@@ -16,6 +16,7 @@ tags:
 nav: Structure
 order: 1
 parentSlug: 2017-acm-summer-school-graph-theory
+publishStatus: 0
 ---
 
 ## 📋 Program Structure

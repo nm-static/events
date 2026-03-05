@@ -10,6 +10,7 @@ status: archived
 tags: ["complexity", "theory", "workshop", "iitgn", "2016"]
 thumbnail: ""
 externalUrl: "http://sites.iitgn.ac.in/events/2016/nmi/"
+publishStatus: 0
 ---
 
 ## NMI Workshop on Complexity Theory

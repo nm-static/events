@@ -1,0 +1,44 @@
+name: Parse Obsidian Content
+
+on:
+  repository_dispatch:
+    types: [obsidian-update]
+  workflow_dispatch:
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout events site
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Clone obsidian vault
+        run: |
+          git clone --depth 1 https://x-access-token:${{ secrets.VAULT_TOKEN }}@github.com/nm-obsidian/service.git .vault-cache
+
+      - name: Run parser
+        run: node parse.mjs --vault .vault-cache/events
+
+      - name: Check for changes
+        id: changes
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push to staging
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B staging
+          git commit -m "Update content from obsidian vault"
+          git push --force origin staging

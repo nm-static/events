@@ -1,15 +1,33 @@
 // Receives Fizzy webhook payloads and triggers a GitHub Actions workflow
 // to merge staging → main when a card is closed (Done).
 
+import { createHmac } from "node:crypto";
+
+async function verifySignature(req, body) {
+  const secret = process.env.FIZZY_WEBHOOK_SECRET;
+  if (!secret) return true; // skip verification if no secret configured
+
+  const signature = req.headers.get("x-webhook-signature");
+  if (!signature) return false;
+
+  const expected = createHmac("sha256", secret).update(body).digest("hex");
+  return signature === expected;
+}
+
 export default async (req) => {
   if (req.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
   }
 
-  const payload = await req.json();
+  const rawBody = await req.text();
+
+  if (!(await verifySignature(req, rawBody))) {
+    return new Response("Invalid signature", { status: 401 });
+  }
+
+  const payload = JSON.parse(rawBody);
 
   // Fizzy sends card data — check if the card was closed
-  // The webhook fires on card changes; we look for closed: true
   if (!payload.closed) {
     return new Response("Not a closure event, ignoring", { status: 200 });
   }

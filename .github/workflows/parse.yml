@@ -46,4 +46,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout -B staging
           git commit -m "Update content from obsidian vault"
+          git remote set-url origin https://x-access-token:${{ secrets.PUSH_TOKEN }}@github.com/nm-static/events.git
           git push --force origin staging

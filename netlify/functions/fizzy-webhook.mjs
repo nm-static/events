@@ -1,17 +1,31 @@
 // Receives Fizzy webhook payloads and triggers a GitHub Actions workflow
 // to merge staging → main when a card is closed (Done).
 
-import { createHmac } from "node:crypto";
+import { createHmac, timingSafeEqual } from "node:crypto";
 
 function verifySignature(req, body) {
   const secret = Netlify.env.get("FIZZY_WEBHOOK_SECRET");
   if (!secret) return true;
 
   const signature = req.headers.get("x-webhook-signature");
-  if (!signature) return false;
+  if (!signature) {
+    console.log("No X-Webhook-Signature header found");
+    return false;
+  }
 
-  const expected = createHmac("sha256", secret).update(body).digest("hex");
-  return signature === expected;
+  const hmac = createHmac("sha256", secret).update(body);
+  const expectedHex = hmac.digest("hex");
+
+  // Try matching as plain hex, or with sha256= prefix
+  const sigToCompare = signature.replace(/^sha256=/, "");
+  console.log("Received signature:", signature.slice(0, 20) + "...");
+  console.log("Expected hex:", expectedHex.slice(0, 20) + "...");
+
+  try {
+    return timingSafeEqual(Buffer.from(sigToCompare), Buffer.from(expectedHex));
+  } catch {
+    return false;
+  }
 }
 
 export default async (req) => {

@@ -1,0 +1,31 @@
+name: Merge Staging to Main
+
+on:
+  repository_dispatch:
+    types: [fizzy-approve]
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.PUSH_TOKEN }}
+          fetch-depth: 0
+
+      - name: Create PR and merge
+        env:
+          GH_TOKEN: ${{ secrets.PUSH_TOKEN }}
+        run: |
+          pr_url=$(gh pr create --base main --head staging \
+            --title "Publish: content update from obsidian vault" \
+            --body "Auto-approved via Fizzy card closure." 2>&1 || true)
+
+          # If PR already exists, find it
+          if echo "$pr_url" | grep -q "already exists"; then
+            pr_url=$(gh pr list --head staging --base main --json url --jq '.[0].url')
+          fi
+
+          echo "PR: $pr_url"
+          gh pr merge --merge --auto "$pr_url" || gh pr merge --merge "$pr_url"

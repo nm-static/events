@@ -48,3 +48,49 @@ jobs:
           git commit -m "Update content from obsidian vault"
           git remote set-url origin https://x-access-token:${{ secrets.PUSH_TOKEN }}@github.com/nm-static/events.git
           git push --force origin staging
+
+      - name: Create Fizzy card
+        if: steps.changes.outputs.changed == 'true'
+        id: fizzy
+        run: |
+          STAGING_URL="https://staging--nm-events.netlify.app"
+          CARD_RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+            -H "Authorization: Bearer ${{ secrets.FIZZY_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -H "Accept: application/json" \
+            -d "{\"card\": {\"title\": \"Events site update — review staging\", \"description\": \"<p>New content pushed from obsidian vault.</p><p><a href='${STAGING_URL}'>Preview on staging</a></p>\"}}" \
+            "https://fizzy.neeldhara.cloud/7/boards/03fpaqw83uniura72xoqywg0w/cards")
+
+          HTTP_CODE=$(echo "$CARD_RESPONSE" | tail -1)
+          BODY=$(echo "$CARD_RESPONSE" | sed '$d')
+          echo "Fizzy response ($HTTP_CODE): $BODY"
+
+          # Get card location from response header, or parse from body
+          CARD_NUMBER=$(echo "$BODY" | jq -r '.number // empty' 2>/dev/null || true)
+          if [ -n "$CARD_NUMBER" ]; then
+            CARD_URL="https://fizzy.neeldhara.cloud/7/cards/${CARD_NUMBER}"
+          else
+            CARD_URL="https://fizzy.neeldhara.cloud/7/boards/03fpaqw83uniura72xoqywg0w"
+          fi
+
+          # Triage card into Under Review column
+          if [ -n "$CARD_NUMBER" ]; then
+            curl -s -X POST \
+              -H "Authorization: Bearer ${{ secrets.FIZZY_TOKEN }}" \
+              -H "Content-Type: application/json" \
+              -d '{"column_id": "03fpaqx7659jlprlznse264lh"}' \
+              "https://fizzy.neeldhara.cloud/7/cards/${CARD_NUMBER}/triage"
+          fi
+
+          echo "card_url=${CARD_URL}" >> "$GITHUB_OUTPUT"
+          echo "card_number=${CARD_NUMBER}" >> "$GITHUB_OUTPUT"
+
+      - name: Notify Mattermost
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          STAGING_URL="https://staging--nm-events.netlify.app"
+          CARD_URL="${{ steps.fizzy.outputs.card_url }}"
+          curl -s -X POST \
+            -H "Content-Type: application/json" \
+            -d "{\"text\": \"### Events site update ready for review\n\n:rocket: New content has been deployed to staging.\n\n:mag: **[Preview on staging](${STAGING_URL})**\n:clipboard: **[Review card on Fizzy](${CARD_URL})**\n\nClose the Fizzy card to publish to production.\"}" \
+            "${{ secrets.MATTERMOST_WEBHOOK }}"

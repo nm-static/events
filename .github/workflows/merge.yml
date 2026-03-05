@@ -29,3 +29,10 @@ jobs:
 
           echo "PR: $pr_url"
           gh pr merge --merge --auto "$pr_url" || gh pr merge --merge "$pr_url"
+
+      - name: Notify Mattermost
+        run: |
+          curl -s -X POST \
+            -H "Content-Type: application/json" \
+            -d "{\"text\": \"### Events site published :white_check_mark:\n\nThe latest content update has been merged to production.\n\n:globe_with_meridians: **[View live site](https://events.neeldhara.com)**\"}" \
+            "${{ secrets.MATTERMOST_WEBHOOK }}"

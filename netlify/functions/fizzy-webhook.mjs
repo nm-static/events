@@ -3,8 +3,8 @@
 
 import { createHmac } from "node:crypto";
 
-async function verifySignature(req, body) {
-  const secret = process.env.FIZZY_WEBHOOK_SECRET;
+function verifySignature(req, body) {
+  const secret = Netlify.env.get("FIZZY_WEBHOOK_SECRET");
   if (!secret) return true;
 
   const signature = req.headers.get("x-webhook-signature");
@@ -21,7 +21,7 @@ export default async (req) => {
 
   const rawBody = await req.text();
 
-  if (!(await verifySignature(req, rawBody))) {
+  if (!verifySignature(req, rawBody)) {
     return new Response("Invalid signature", { status: 401 });
   }
 
@@ -37,7 +37,7 @@ export default async (req) => {
     return new Response("Not a closure event, ignoring", { status: 200 });
   }
 
-  const ghToken = process.env.GITHUB_DISPATCH_TOKEN;
+  const ghToken = Netlify.env.get("GITHUB_DISPATCH_TOKEN");
   if (!ghToken) {
     return new Response("Missing GITHUB_DISPATCH_TOKEN", { status: 500 });
   }

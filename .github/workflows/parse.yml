@@ -39,6 +39,18 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Get change summary
+        if: steps.changes.outputs.changed == 'true'
+        id: summary
+        run: |
+          SUMMARY=$(git diff --cached --stat | tail -1)
+          FILES=$(git diff --cached --name-only | head -10 | sed 's/^/- /')
+          echo "summary<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$SUMMARY" >> "$GITHUB_OUTPUT"
+          echo "" >> "$GITHUB_OUTPUT"
+          echo "$FILES" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
       - name: Commit and push to staging
         if: steps.changes.outputs.changed == 'true'
         run: |
@@ -54,12 +66,17 @@ jobs:
         id: fizzy
         run: |
           STAGING_URL="https://staging--nm-events.netlify.app"
+          CHANGE_SUMMARY=$(cat <<'ENDSUMMARY'
+          ${{ steps.summary.outputs.summary }}
+          ENDSUMMARY
+          )
+          ESCAPED_SUMMARY=$(echo "$CHANGE_SUMMARY" | sed 's/"/\\"/g' | sed 's/$/\\n/' | tr -d '\n')
           HEADERS=$(mktemp)
           curl -s -D "$HEADERS" -X POST \
             -H "Authorization: Bearer ${{ secrets.FIZZY_TOKEN }}" \
             -H "Content-Type: application/json" \
             -H "Accept: application/json" \
-            -d "{\"card\": {\"title\": \"Events site update — review staging\", \"description\": \"<p>New content pushed from obsidian vault.</p><p><a href='${STAGING_URL}'>Preview on staging</a></p>\"}}" \
+            -d "{\"card\": {\"title\": \"Events site update — review staging\", \"description\": \"<p>New content pushed from obsidian vault.</p><p><a href='${STAGING_URL}'>Preview on staging</a></p><p><strong>Changes:</strong></p><pre>${ESCAPED_SUMMARY}</pre>\"}}" \
             "https://fizzy.neeldhara.cloud/7/boards/03fpaqw83uniura72xoqywg0w/cards"
 
           # Extract card path from Location header (e.g. /7/cards/5.json)
@@ -75,6 +92,7 @@ jobs:
             curl -s -X POST \
               -H "Authorization: Bearer ${{ secrets.FIZZY_TOKEN }}" \
               -H "Content-Type: application/json" \
+              -H "Accept: application/json" \
               -d '{"column_id": "03fpaqx7659jlprlznse264lh"}' \
               "https://fizzy.neeldhara.cloud/7/cards/${CARD_NUMBER}/triage"
           else

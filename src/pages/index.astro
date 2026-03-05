@@ -113,12 +113,12 @@ const roleIconSvgs: Record<string, string> = {
                   </span>
 
                   {/* Type icon */}
-                  <span class="shrink-0 w-8 flex justify-center text-base-400" title={type}>
+                  <span class="tooltip shrink-0 w-8 flex justify-center text-base-400" data-tip={type}>
                     <Fragment set:html={typeIcon} />
                   </span>
 
                   {/* Role icon */}
-                  <span class="shrink-0 w-8 flex justify-center text-base-400" title={role}>
+                  <span class="tooltip shrink-0 w-8 flex justify-center text-base-400" data-tip={role}>
                     <Fragment set:html={roleIcon} />
                   </span>
 

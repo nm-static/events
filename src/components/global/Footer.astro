@@ -1,56 +1,20 @@
 ---
-// Assets
-import Logo from "@/components/assets/Logo.astro";
-import Symbol from "@/components/assets/Symbol.astro";
-// Fundation
 import Text from "@/components/fundations/elements/Text.astro";
-import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 ---
 
 <footer class="bg-base-50 overflow-hidden">
-  <Wrapper class="py-24">
-    <div class="max-w-2xl mx-auto">
-      <div class="text-center text-balance">
-        <Symbol class="inline-block size-12 text-base-900" />
-        <Text
-          tag="h3"
-          variant="displayLG"
-          class="text-base-900 font-display font-light mt-12"
-        >
-          Stay connected to the future of Carbon
-        </Text>
-      </div>
-      <form
-        class="flex flex-col gap-2 max-w-md mx-auto items-start sm:items-center mt-8"
-      >
-        <label class="sr-only" for="footer-email">Email address</label>
-        <input
-          id="footer-email"
-          name="email"
-          type="email"
-          autocomplete="email"
-          placeholder="you@example.com"
-          class="block w-full px-4 py-2 text-xs leading-tight align-middle bg-white border border-transparent transition duration-300 ease-in-out focus:z-10 h-9 rounded-md text-base-500 ring-1 ring-base-200 placeholder-base-400 focus:border-accent-500 focus:ring-accent-100 focus:ring-2 focus:outline-none shadow-sm"
-          required
-        />
-        <Button
-          size="sm"
-          variant="accent"
-          animated={true}
-          withArrow={true}
-          type="submit"
-          class="w-full"
-        >
-          Subscribe
-        </Button>
-      </form>
-      <div class="flex flex-wrap gap-4 mt-12 justify-center">
-        <a href="#_" class="text-base-600 hover:text-accent-600">Twitter</a>
-        <a href="#_" class="text-base-600 hover:text-accent-600">Pinterest</a>
-        <a href="#_" class="text-base-600 hover:text-accent-600">Instagram</a>
+  <Wrapper class="py-12">
+    <div class="max-w-2xl mx-auto text-center">
+      <Text tag="p" variant="textSM" class="text-base-400">
+        Events organized by <a href="https://www.neeldhara.com" class="text-base-600 hover:text-accent-600 transition-colors duration-200">Neeldhara Misra</a>
+      </Text>
+      <div class="flex flex-wrap gap-4 mt-4 justify-center text-xs text-base-400">
+        <a href="/" class="hover:text-accent-600">Home</a>
+        <a href="/faq/" class="hover:text-accent-600">FAQ</a>
+        <a href="/about/" class="hover:text-accent-600">About</a>
+        <a href="/contact/" class="hover:text-accent-600">Contact</a>
       </div>
     </div>
   </Wrapper>
-  <Logo class="text-base-100 mt-8 -mx-24 -mb-24" />
 </footer>

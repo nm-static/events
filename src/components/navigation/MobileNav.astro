@@ -1,29 +1,21 @@
 ---
-// Assets
-import Logo from "@/components/assets/Logo.astro";
-// Fundations
 import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
-// Icons
 import Burger from "@/components/fundations/icons/Burger.astro";
 
 const links = [
-  { href: "/", text: "Websites" },
-  { href: "/pricing/", text: "Pricing" },
-  { href: "/blog/", text: "Blog" },
-  { href: "/store/", text: "Store" },
-  { href: "/submit/", text: "Submit" },
-  { href: "/advertise/", text: "Sponsors" },
-  { href: "/system/overview", text: "Overview" },
-  { href: "https://lexingtonthemes.com/templates/carbon", text: "Buy Carbon" },
+  { href: "/", text: "Home" },
+  { href: "/faq/", text: "FAQ" },
+  { href: "/about/", text: "About" },
+  { href: "/contact/", text: "Contact" },
 ];
 ---
 
-<nav class="fixed inset-x-0 top-0 z-40 bg-white md:hidden">
+<nav class="fixed inset-x-0 top-0 z-40 bg-white md:hidden border-b border-base-100">
   <Wrapper variant="standard" class="py-3">
     <div class="flex items-center justify-between">
-      <a href="/" aria-label="Go to homepage">
-        <Logo class="h-4 text-base-900" />
+      <a href="/" class="font-display text-lg text-base-900" aria-label="Go to homepage">
+        Events
       </a>
       <Button
         iconOnly
@@ -51,18 +43,6 @@ const links = [
             </a>
           ))
         }
-      </div>
-      <div class="mt-8 flex items-center gap-2">
-        <Button isLink size="xs" variant="muted" href="/signin" class="shrink-0"
-          >Sign in</Button
-        >
-        <Button
-          isLink
-          size="xs"
-          variant="default"
-          href="/signup"
-          class="shrink-0">Sign up</Button
-        >
       </div>
     </Wrapper>
   </div>

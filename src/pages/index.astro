@@ -1,16 +1,188 @@
 ---
-// Layout
 import BaseLayout from "@/layouts/BaseLayout.astro";
-// Sections
-import Hero from "@/components/landing/Hero.astro";
-import SitesPreview from "@/components/landing/SitesPreview.astro";
-import StorePreview from "@/components/landing/StorePreview.astro";
-import BlogPreview from "@/components/landing/BlogPreview.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { getCollection } from "astro:content";
+
+const allEvents = await getCollection("events");
+
+// Filter to only main pages (no sub-pages)
+const mainEvents = allEvents.filter((e) => !e.data.parentSlug);
+
+const sortedEvents = mainEvents.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+
+// Extract unique years
+const years = [...new Set(sortedEvents.map((e) => new Date(e.data.date).getFullYear()))].sort(
+  (a, b) => b - a
+);
+
+// Type icons (emoji)
+const typeIcons: Record<string, string> = {
+  workshop: "\u{1F6E0}\u{FE0F}",
+  school: "\u{1F393}",
+  event: "\u{2728}",
+  conference: "\u{1F3DB}\u{FE0F}",
+  seminar: "\u{1F4AC}",
+};
+
+// Role icons
+const roleIcons: Record<string, string> = {
+  organizer: "\u{1F464}",
+  "co-organizer": "\u{1F465}",
+  "program committee": "\u{1F4CB}",
+  "invited speaker": "\u{1F3A4}",
+  chair: "\u{1F451}",
+};
 ---
 
-<BaseLayout showSearch={true}>
-  <Hero />
-  <SitesPreview />
-  <BlogPreview />
-  <StorePreview />
+<BaseLayout>
+  <section>
+    <Wrapper variant="standard" class="pt-24 lg:pt-48">
+      <div class="text-balance max-w-3xl mx-auto text-center">
+        <Text
+          tag="h1"
+          variant="displayLG"
+          class="text-base-900 font-display font-light"
+        >
+          Events
+        </Text>
+        <Text tag="p" variant="textBase" class="text-base-600 mt-4">
+          Workshops, summer schools, conferences, and seminars organized by
+          Neeldhara Misra — at IIT Gandhinagar and beyond.
+        </Text>
+      </div>
+    </Wrapper>
+  </section>
+
+  <section>
+    <Wrapper variant="standard" class="py-12">
+      <!-- Year filter buttons -->
+      <div class="flex items-center gap-2 flex-wrap justify-center mb-10" id="year-filters">
+        <button
+          class="year-btn text-xs px-3 py-1.5 rounded-full border transition-colors duration-200 bg-base-900 text-white border-base-900"
+          data-year="all"
+        >
+          All
+        </button>
+        {
+          years.map((year) => (
+            <button
+              class="year-btn text-xs px-3 py-1.5 rounded-full border border-base-200 text-base-600 hover:border-base-400 transition-colors duration-200"
+              data-year={year}
+            >
+              {year}
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- Clean list layout -->
+      <div class="max-w-4xl mx-auto" id="events-list">
+        {
+          sortedEvents.map((event) => {
+            const { title, tagline, date, type, role, status, externalUrl } = event.data;
+            const year = new Date(date).getFullYear();
+            const emoji = typeIcons[type] || "\u{1F4C5}";
+            const roleEmoji = Object.entries(roleIcons).find(([k]) =>
+              role.toLowerCase().includes(k)
+            )?.[1] || "\u{1F464}";
+            const hasExternal = !!externalUrl;
+
+            return (
+              <div
+                class="event-item border-b border-base-100 last:border-b-0"
+                data-year={year}
+              >
+                <a
+                  href={`/events/${event.slug}/`}
+                  class="group flex items-center gap-4 py-4 px-2 hover:bg-base-50/50 rounded-lg transition-colors duration-150 -mx-2"
+                >
+                  {/* Link / external icon */}
+                  <span class="shrink-0 w-6 text-center text-base-300 group-hover:text-accent-500 transition-colors">
+                    {hasExternal ? (
+                      <svg class="w-4 h-4 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m9.86-4.122a4.5 4.5 0 00-1.242-7.244l4.5-4.5a4.5 4.5 0 016.364 6.364l-1.757 1.757" />
+                      </svg>
+                    ) : (
+                      <svg class="w-4 h-4 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                      </svg>
+                    )}
+                  </span>
+
+                  {/* Title + optional tagline */}
+                  <div class="flex-1 min-w-0">
+                    <span class="text-base-900 text-sm font-medium group-hover:text-accent-600 transition-colors duration-200">
+                      {title}
+                    </span>
+                    {tagline && tagline !== title && (
+                      <span class="block text-xs text-base-400 mt-0.5 truncate italic">
+                        {tagline}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Year */}
+                  <span class="shrink-0 text-sm text-base-500 font-medium tabular-nums w-12 text-center">
+                    {year}
+                  </span>
+
+                  {/* Type icon */}
+                  <span class="shrink-0 w-8 text-center text-lg" title={type}>
+                    {emoji}
+                  </span>
+
+                  {/* Role icon */}
+                  <span class="shrink-0 w-8 text-center text-lg" title={role}>
+                    {roleEmoji}
+                  </span>
+
+                  {/* Upcoming badge */}
+                  {status === "upcoming" ? (
+                    <span class="shrink-0 text-xs px-2 py-0.5 rounded-full bg-accent-50 text-accent-700 font-medium">
+                      soon
+                    </span>
+                  ) : (
+                    <span class="shrink-0 w-10" />
+                  )}
+                </a>
+              </div>
+            );
+          })
+        }
+      </div>
+    </Wrapper>
+  </section>
 </BaseLayout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".year-btn");
+    const items = document.querySelectorAll(".event-item");
+
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const year = btn.getAttribute("data-year");
+
+        // Update button styles
+        buttons.forEach((b) => {
+          b.classList.remove("bg-base-900", "text-white", "border-base-900");
+          b.classList.add("border-base-200", "text-base-600");
+        });
+        btn.classList.add("bg-base-900", "text-white", "border-base-900");
+        btn.classList.remove("border-base-200", "text-base-600");
+
+        // Filter events
+        items.forEach((item) => {
+          if (year === "all" || item.getAttribute("data-year") === year) {
+            (item as HTMLElement).style.display = "";
+          } else {
+            (item as HTMLElement).style.display = "none";
+          }
+        });
+      });
+    });
+  });
+</script>

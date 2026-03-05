@@ -1,59 +1,29 @@
 ---
-// Layout
 import BaseLayout from "@/layouts/BaseLayout.astro";
-// Fundation
 import Text from "@/components/fundations/elements/Text.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 ---
 
 <BaseLayout>
   <section>
-    <Wrapper variant="standard" class="py-24 lg:pt-48">
-      <Wrapper variant="narrow">
-        <Text
-          tag="h1"
-          variant="displayLG"
-          class="text-base-900 font-display font-thin max-"
-        >
-          Who we are
+    <Wrapper variant="standard" class="pt-24 lg:pt-48 pb-24">
+      <div class="max-w-2xl mx-auto">
+        <Text tag="h1" variant="displayLG" class="text-base-900 font-display font-light text-center">
+          About
         </Text>
-        <Wrapper variant="prose" class="mt-12">
-          <p>
-            Carbon is a community-driven platform for designers, developers, and
-            creative professionals who take their craft seriously. It’s a place
-            to stay current — from design systems and typography to modern
-            front-end tools and workflows.
-          </p>
 
+        <div class="mt-12 prose prose-base-600 prose-headings:text-base-900 prose-a:text-accent-600 mx-auto">
           <p>
-            Beyond resources, Carbon functions as a living creative index.
-            Members share work, exchange ideas, and learn from real-world
-            experience. Curated collections, focused articles, tutorials, and
-            trend breakdowns are built to improve decision-making, not just
-            inspire it.
+            This site is a collection of workshops, summer schools, conferences, seminars, and other academic events organized or co-organized by <a href="https://www.neeldhara.com">Neeldhara Misra</a>, primarily at <a href="https://iitgn.ac.in">IIT Gandhinagar</a>.
           </p>
-
           <p>
-            Good work doesn’t happen in isolation. Carbon is designed to connect
-            forward-thinking creatives, encourage critical thinking, and push
-            standards higher. Join the community and use it to sharpen your
-            skills, expand your perspective, and build better work.
+            Events span a range of topics including parameterized algorithms, computational social choice, CS education, graph theory, game theory, and the history of mathematics in India.
           </p>
-        </Wrapper>
-        <div class="mt-12">
-          <Text class="text-base-600 italic">
-            "Innovation is born from connection. Together, we create the future
-            of design."
-          </Text>
-          <Text
-            tag="p"
-            variant="textBase"
-            class="text-base-900 mt-2 font-semibold"
-          >
-            — Jordan Miller, Founder of Carbon
-          </Text>
+          <p>
+            The site is generated from an Obsidian vault using a custom parser and the <a href="https://astro.build">Astro</a> framework with the Carbon theme by <a href="https://lexingtonthemes.com">Lexington Themes</a>.
+          </p>
         </div>
-      </Wrapper>
+      </div>
     </Wrapper>
   </section>
 </BaseLayout>

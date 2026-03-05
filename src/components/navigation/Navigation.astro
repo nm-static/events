@@ -1,6 +1,4 @@
 ---
-// Assets
-import Logo from "@/components/assets/Logo.astro";
 // Fundations
 import Button from "@/components/fundations/elements/Button.astro";
 import Wrapper from "@/components/fundations/containers/Wrapper.astro";
@@ -8,53 +6,37 @@ import Wrapper from "@/components/fundations/containers/Wrapper.astro";
 import MobileNav from "./MobileNav.astro";
 // Quick access links
 const links = [
-  { href: "/system/overview", text: "Overview" },
-  { href: "/", text: "Websites" },
-  { href: "/pricing/", text: "Pricing" },
-  { href: "/blog/", text: "Blog" },
-  { href: "/store/", text: "Store" },
-  { href: "/submit/", text: "Submit" },
-  { href: "/advertise/", text: "Sponsors" },
-  { href: "https://lexingtonthemes.com/templates/carbon", text: "Buy Carbon" },
+  { href: "/", text: "Home" },
+  { href: "/faq/", text: "FAQ" },
+  { href: "/about/", text: "About" },
+  { href: "/contact/", text: "Contact" },
 ];
 ---
 
 <MobileNav />
-<nav class="fixed w-full top-0 z-20 bg-white py-4 hidden md:block">
+<nav class="fixed w-full top-0 z-20 bg-white py-4 hidden md:block border-b border-base-100">
   <Wrapper variant="standard">
     <div
-      class="grid grid-cols-2 md:grid-cols-2 items-center w-full gap-3 relative"
+      class="flex items-center justify-between w-full gap-3 relative"
     >
       <a
         href="/"
-        class="shrink-0 foucs:outline-none"
+        class="shrink-0 focus:outline-none font-display text-lg text-base-900"
         aria-label="Go to homepage"
       >
-        <Logo class="h-4 text-base-900" />
+        Events
       </a>
-      <div class="flex items-center gap-2 lg:gap-2 ml-auto">
-        <div class="flex items-center gap-4">
-          {
-            links.map((link) => (
-              <a
-                class="text-base-600 hover:text-base-900 text-xs whitespace-nowrap"
-                href={link.href}
-              >
-                {link.text}
-              </a>
-            ))
-          }
-        </div>
-        <Button isLink size="xs" variant="muted" href="/signin" class="shrink-0"
-          >Sign in</Button
-        >
-        <Button
-          isLink
-          size="xs"
-          variant="default"
-          href="/signup"
-          class="shrink-0">Sign up</Button
-        >
+      <div class="flex items-center gap-6">
+        {
+          links.map((link) => (
+            <a
+              class="text-base-600 hover:text-base-900 text-sm whitespace-nowrap transition-colors duration-200"
+              href={link.href}
+            >
+              {link.text}
+            </a>
+          ))
+        }
       </div>
     </div>
   </Wrapper>

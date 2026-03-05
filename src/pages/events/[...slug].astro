@@ -1,0 +1,377 @@
+---
+import "@/styles/global.css";
+import BaseHead from "@/components/fundations/head/BaseHead.astro";
+import Text from "@/components/fundations/elements/Text.astro";
+import Wrapper from "@/components/fundations/containers/Wrapper.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const events = await getCollection("events");
+  return events.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { title, tagline, date, endDate, venue, type, role, status, tags, externalUrl, parentSlug, nav: navLabel } = entry.data;
+
+const allEvents = await getCollection("events");
+
+// Determine if this is a sub-page or main page
+const isSubPage = !!parentSlug;
+const mainSlug = isSubPage ? parentSlug : entry.slug;
+
+// Find sibling pages (sub-pages of same parent)
+const subPages = allEvents
+  .filter((e) => e.data.parentSlug === mainSlug)
+  .sort((a, b) => (a.data.order || 99) - (b.data.order || 99));
+
+const hasSubPages = subPages.length > 0;
+
+// Build nav items: "Home" + sub-pages
+const navItems: { label: string; href: string; active: boolean }[] = [];
+if (hasSubPages || isSubPage) {
+  navItems.push({
+    label: "Home",
+    href: `/events/${mainSlug}/`,
+    active: !isSubPage,
+  });
+  for (const sp of subPages) {
+    navItems.push({
+      label: sp.data.nav || sp.slug.split("-").pop() || "Page",
+      href: `/events/${sp.slug}/`,
+      active: sp.slug === entry.slug,
+    });
+  }
+}
+
+const startStr = new Date(date).toLocaleDateString("en-IN", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+const endStr = new Date(endDate).toLocaleDateString("en-IN", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+const dateDisplay = startStr === endStr ? startStr : `${startStr} — ${endStr}`;
+
+const typeEmojis: Record<string, string> = {
+  workshop: "\u{1F6E0}\u{FE0F}",
+  school: "\u{1F393}",
+  event: "\u{2728}",
+  conference: "\u{1F3DB}\u{FE0F}",
+  seminar: "\u{1F4AC}",
+};
+const typeEmoji = typeEmojis[type] || "\u{1F4C5}";
+
+const typeColors: Record<string, string> = {
+  workshop: "bg-blue-50 text-blue-700",
+  school: "bg-green-50 text-green-700",
+  event: "bg-purple-50 text-purple-700",
+  conference: "bg-amber-50 text-amber-700",
+  seminar: "bg-rose-50 text-rose-700",
+};
+const typeColor = typeColors[type] || "bg-base-50 text-base-700";
+---
+
+<html
+  lang="en"
+  class="scroll-smooth selection:bg-accent-50 selection:text-accent-500"
+>
+  <head>
+    <BaseHead />
+  </head>
+  <body class="bg-white flex flex-col min-h-screen">
+    <!-- Event-specific navigation -->
+    <nav class="fixed inset-x-0 top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-base-100">
+      <Wrapper variant="standard" class="py-3">
+        <div class="flex items-center justify-between gap-4">
+          <a
+            href={`/events/${mainSlug}/`}
+            class="font-display text-base lg:text-lg text-base-900 truncate"
+          >
+            {typeEmoji} {title}
+          </a>
+          <div class="hidden md:flex items-center gap-1 shrink-0">
+            {navItems.length > 0 ? (
+              /* Multi-page: show page tabs */
+              navItems.map((item) => (
+                <a
+                  href={item.href}
+                  class={`text-sm px-3 py-1.5 rounded-full transition-colors ${
+                    item.active
+                      ? "bg-base-900 text-white"
+                      : "text-base-500 hover:text-accent-600 hover:bg-base-50"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))
+            ) : (
+              /* Single-page: show section anchors */
+              <>
+                <a href="#overview" class="text-sm px-3 py-1.5 text-base-500 hover:text-accent-600 transition-colors">Overview</a>
+                <a href="#content" class="text-sm px-3 py-1.5 text-base-500 hover:text-accent-600 transition-colors">Details</a>
+              </>
+            )}
+            {externalUrl && (
+              <a
+                href={externalUrl}
+                class="text-sm px-3 py-1.5 text-accent-600 hover:text-accent-500"
+                target="_blank"
+                rel="noopener"
+              >
+                External &nearr;
+              </a>
+            )}
+            <span class="w-px h-4 bg-base-200 mx-1"></span>
+            <a
+              href="/"
+              class="text-xs px-2.5 py-1 rounded-full border border-base-200 text-base-400 hover:border-accent-300 hover:text-accent-600 transition-colors"
+            >
+              All Events
+            </a>
+          </div>
+          <!-- Mobile menu button -->
+          <button
+            class="md:hidden text-base-500 hover:text-base-900 p-1"
+            data-event-nav-toggle
+            aria-label="Toggle menu"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+        <!-- Mobile dropdown -->
+        <div class="hidden md:hidden mt-3 pb-1 border-t border-base-100 pt-3 flex flex-col gap-1" data-event-nav-panel>
+          {navItems.length > 0 ? (
+            navItems.map((item) => (
+              <a
+                href={item.href}
+                class={`text-sm py-1.5 px-2 rounded ${
+                  item.active ? "bg-base-50 text-base-900 font-medium" : "text-base-600 hover:text-accent-600"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))
+          ) : (
+            <>
+              <a href="#overview" class="text-sm text-base-600 hover:text-accent-600 py-1.5 px-2">Overview</a>
+              <a href="#content" class="text-sm text-base-600 hover:text-accent-600 py-1.5 px-2">Details</a>
+            </>
+          )}
+          {externalUrl && (
+            <a href={externalUrl} class="text-sm text-accent-600 hover:text-accent-500 py-1.5 px-2" target="_blank" rel="noopener">
+              External site &nearr;
+            </a>
+          )}
+          <hr class="border-base-100 my-1" />
+          <a href="/" class="text-sm text-base-400 hover:text-accent-600 py-1.5 px-2">
+            &larr; All Events
+          </a>
+        </div>
+      </Wrapper>
+    </nav>
+
+    <main class="grow">
+      <article>
+        <Wrapper variant="standard" class="pt-20 lg:pt-24 pb-12">
+          {/* Show full header only on main page, not sub-pages */}
+          {!isSubPage && (
+            <div class="max-w-3xl mx-auto" id="overview">
+              <div class="flex items-center gap-2 mb-4">
+                <span class={`text-xs px-2 py-0.5 rounded-full font-medium capitalize ${typeColor}`}>
+                  {typeEmoji} {type}
+                </span>
+                {status === "upcoming" && (
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-accent-50 text-accent-700 font-medium">
+                    Upcoming
+                  </span>
+                )}
+              </div>
+
+              <Text
+                tag="h1"
+                variant="displayLG"
+                class="text-base-900 font-display font-light"
+              >
+                {title}
+              </Text>
+
+              <Text tag="p" variant="textBase" class="text-base-500 mt-2">
+                {tagline}
+              </Text>
+
+              <div class="flex flex-wrap items-center gap-4 mt-6 text-sm text-base-500">
+                <span>📅 {dateDisplay}</span>
+                <span class="text-base-200">·</span>
+                <span>📍 {venue}</span>
+                {externalUrl && (
+                  <>
+                    <span class="text-base-200">·</span>
+                    <a href={externalUrl} class="text-accent-600 hover:text-accent-500 underline" target="_blank" rel="noopener">
+                      🔗 External site
+                    </a>
+                  </>
+                )}
+              </div>
+
+              <hr class="border-base-100 mt-8" />
+            </div>
+          )}
+
+          {/* Sub-page: show nav label as heading */}
+          {isSubPage && navLabel && (
+            <div class="max-w-3xl mx-auto mb-2">
+              <Text tag="p" variant="textSM" class="text-base-400">
+                <a href={`/events/${mainSlug}/`} class="hover:text-accent-600 transition-colors">{title}</a>
+              </Text>
+            </div>
+          )}
+
+          <!-- Content -->
+          <div id="content" class="max-w-3xl mx-auto mt-8 prose prose-base-600 prose-headings:text-base-900 prose-headings:font-display prose-headings:font-light prose-a:text-accent-600 hover:prose-a:text-accent-500 prose-a:transition-colors prose-a:duration-200 prose-strong:text-base-900 prose-pre:border-0 prose-pre:rounded-2xl prose-pre:text-sm prose-blockquote:text-accent-600">
+            <Content />
+          </div>
+
+          {/* Sub-page navigation (prev/next) */}
+          {isSubPage && navItems.length > 1 && (() => {
+            const currentIdx = navItems.findIndex((n) => n.active);
+            const prev = currentIdx > 0 ? navItems[currentIdx - 1] : null;
+            const next = currentIdx < navItems.length - 1 ? navItems[currentIdx + 1] : null;
+            return (
+              <div class="max-w-3xl mx-auto mt-12 flex items-center justify-between text-sm">
+                {prev ? (
+                  <a href={prev.href} class="text-base-500 hover:text-accent-600 transition-colors">
+                    &larr; {prev.label}
+                  </a>
+                ) : <span />}
+                {next ? (
+                  <a href={next.href} class="text-base-500 hover:text-accent-600 transition-colors">
+                    {next.label} &rarr;
+                  </a>
+                ) : <span />}
+              </div>
+            );
+          })()}
+        </Wrapper>
+      </article>
+    </main>
+
+    <!-- Minimal event footer -->
+    <footer class="border-t border-base-100 py-8 mt-8">
+      <Wrapper variant="standard">
+        <div class="flex items-center justify-between text-xs text-base-400">
+          <a href="/" class="hover:text-accent-600 transition-colors">
+            &larr; All Events
+          </a>
+          <span>
+            Organized by <a href="https://www.neeldhara.com" class="text-base-500 hover:text-accent-600 transition-colors">Neeldhara Misra</a>
+          </span>
+        </div>
+      </Wrapper>
+    </footer>
+
+    <!-- Modal overlay for abstracts and bios -->
+    <div id="modal-overlay" class="fixed inset-0 z-50 hidden bg-black/40 backdrop-blur-sm items-center justify-center p-4">
+      <div id="modal-content" class="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 relative">
+        <button id="modal-close" class="absolute top-4 right-4 text-base-400 hover:text-base-900 text-2xl leading-none">
+          &times;
+        </button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <script is:inline>
+      (() => {
+        // ── Mobile event nav toggle ──
+        const toggle = document.querySelector("[data-event-nav-toggle]");
+        const panel = document.querySelector("[data-event-nav-panel]");
+        if (toggle && panel) {
+          toggle.addEventListener("click", () => {
+            panel.classList.toggle("hidden");
+          });
+          panel.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => panel.classList.add("hidden"));
+          });
+        }
+
+        // ── Modal for talks and speakers ──
+        const overlay = document.getElementById("modal-overlay");
+        const body = document.getElementById("modal-body");
+        const closeBtn = document.getElementById("modal-close");
+
+        if (overlay && body && closeBtn) {
+          document.querySelectorAll(".talk-trigger, .speaker-trigger").forEach((el) => {
+            el.addEventListener("click", (e) => {
+              e.preventDefault();
+              const content = el.getAttribute("data-modal-content");
+              if (content) {
+                body.innerHTML = content;
+                overlay.classList.remove("hidden");
+                overlay.classList.add("flex");
+                document.body.style.overflow = "hidden";
+              }
+            });
+          });
+
+          closeBtn.addEventListener("click", () => {
+            overlay.classList.add("hidden");
+            overlay.classList.remove("flex");
+            document.body.style.overflow = "";
+          });
+
+          overlay.addEventListener("click", (e) => {
+            if (e.target === overlay) {
+              overlay.classList.add("hidden");
+              overlay.classList.remove("flex");
+              document.body.style.overflow = "";
+            }
+          });
+
+          document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && !overlay.classList.contains("hidden")) {
+              overlay.classList.add("hidden");
+              overlay.classList.remove("flex");
+              document.body.style.overflow = "";
+            }
+          });
+        }
+
+        // ── Expandable FAQ callouts ──
+        document.querySelectorAll(".callout-question").forEach((el) => {
+          el.addEventListener("click", () => {
+            el.classList.toggle("expanded");
+          });
+        });
+
+        // ── Schedule day tabs ──
+        document.querySelectorAll(".schedule-tabs").forEach((tabBar) => {
+          const container = tabBar.parentElement;
+          if (!container) return;
+          const tabs = tabBar.querySelectorAll(".schedule-tab");
+          const panels = container.querySelectorAll(".schedule-panel");
+
+          tabs.forEach((tab) => {
+            tab.addEventListener("click", () => {
+              const target = tab.getAttribute("data-tab");
+              tabs.forEach(t => t.classList.remove("active"));
+              panels.forEach(p => p.classList.remove("active"));
+              tab.classList.add("active");
+              const panel = container.querySelector(`.schedule-panel[data-panel="${target}"]`);
+              if (panel) panel.classList.add("active");
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

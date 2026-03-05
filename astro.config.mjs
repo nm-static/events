@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from "@astrojs/sitemap";
-import mdx from "@astrojs/mdx"; 
+import mdx from "@astrojs/mdx";
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
@@ -12,11 +12,6 @@ export default defineConfig({
       theme: "min-light"
     }
   },
-  shikiConfig: {
-    wrap: true,
-    skipInline: false,
-    drafts: true
-  },
-  site: 'https://yourdomain.com',
+  site: 'https://events.neeldhara.com',
   integrations: [sitemap(), mdx()]
 });

@@ -2,14 +2,13 @@
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 @plugin "tailwind-scrollbar-hide";
-/*  Define your custom theme variables */
+
 @theme {
-  /* Typography */
-  --font-sans: "InterVariable", sans-serif;
+  --font-sans: "Imprima", sans-serif;
   --font-display: "Hedvig Letters Serif", serif;
   --color-white: oklch(0.986 0.002 67.8);
-  /* Colors*/
- --color-accent-50: oklch(96.37% 0.014 34.3);
+
+  --color-accent-50: oklch(96.37% 0.014 34.3);
   --color-accent-100: oklch(92.11% 0.031 32.56);
   --color-accent-200: oklch(85.18% 0.06 35);
   --color-accent-300: oklch(77.67% 0.096 34.47);
@@ -20,9 +19,8 @@
   --color-accent-800: oklch(35.02% 0.102 35.05);
   --color-accent-900: oklch(22.26% 0.055 35.39);
   --color-accent-950: oklch(16.51% 0.033 41.46);
-  /* Base palette */
 
- --color-base-50: oklch(0.964 0.003 84.4);
+  --color-base-50: oklch(0.964 0.003 84.4);
   --color-base-100: oklch(0.922 0.007 88.56);
   --color-base-200: oklch(0.836 0.012 89.69);
   --color-base-300: oklch(0.751 0.01 87.44);
@@ -34,12 +32,106 @@
   --color-base-900: oklch(0.223 0.002 67.71);
   --color-base-950: oklch(0.177 0.002 106.5);
 }
-@supports (font-variation-settings: normal) {
-  :root {
-    font-family: InterVariable, sans-serif;
-  }
-}
+
 :root {
-  /* Typography */
-  font-feature-settings:  "tnum" 1; /* Open 4 */
+  font-family: "Imprima", sans-serif;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Callout styles */
+.callout {
+  border-left: 4px solid;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+.callout-title {
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+.callout-body {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.callout-info { background: oklch(96.37% 0.014 34.3); border-color: oklch(64.47% 0.167 35.21); }
+.callout-info .callout-title { color: oklch(55.96% 0.174 34.81); }
+.callout-warning { background: #fefce8; border-color: #eab308; }
+.callout-warning .callout-title { color: #a16207; }
+.callout-important { background: #fef2f2; border-color: #ef4444; }
+.callout-important .callout-title { color: #b91c1c; }
+.callout-tip { background: #f0fdf4; border-color: #22c55e; }
+.callout-tip .callout-title { color: #15803d; }
+.callout-note { background: #f8fafc; border-color: #94a3b8; }
+.callout-note .callout-title { color: #475569; }
+
+/* FAQ accordion on event pages */
+.callout-question {
+  background: transparent;
+  border-left: none;
+  border: 1px solid var(--color-base-100);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.callout-question:hover { background: var(--color-base-50); }
+.callout-question .callout-title {
+  color: var(--color-base-800);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.callout-question .callout-title::after {
+  content: "+";
+  font-size: 1.25rem;
+  font-weight: 300;
+  transition: transform 0.2s;
+}
+.callout-question.expanded .callout-title::after {
+  transform: rotate(45deg);
+}
+.callout-question .callout-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.callout-question.expanded .callout-body {
+  max-height: 500px;
+}
+
+/* Schedule day tabs */
+.schedule-tabs {
+  display: flex;
+  gap: 0.25rem;
+  border-bottom: 2px solid oklch(0.922 0.007 88.56);
+  margin-bottom: 1.5rem;
+}
+.schedule-tab {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: oklch(0.569 0.008 88.63);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+.schedule-tab:hover { color: oklch(0.309 0.004 84.54); }
+.schedule-tab.active {
+  color: oklch(55.96% 0.174 34.81);
+  border-bottom-color: oklch(55.96% 0.174 34.81);
+}
+.schedule-panel { display: none; }
+.schedule-panel.active { display: block; }
+
+/* Schedule tables: consistent column widths */
+.schedule-panel table,
+.prose table {
+  table-layout: fixed;
+  width: 100%;
+}
+.schedule-panel table th:first-child,
+.schedule-panel table td:first-child {
+  width: 8rem;
+  white-space: nowrap;
 }

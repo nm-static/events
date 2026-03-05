@@ -5,7 +5,7 @@ import { createHmac } from "node:crypto";
 
 async function verifySignature(req, body) {
   const secret = process.env.FIZZY_WEBHOOK_SECRET;
-  if (!secret) return true; // skip verification if no secret configured
+  if (!secret) return true;
 
   const signature = req.headers.get("x-webhook-signature");
   if (!signature) return false;
@@ -26,9 +26,14 @@ export default async (req) => {
   }
 
   const payload = JSON.parse(rawBody);
+  console.log("Fizzy webhook payload:", JSON.stringify(payload).slice(0, 500));
 
-  // Fizzy sends card data — check if the card was closed
-  if (!payload.closed) {
+  // Check for closure at top level or nested under card/data
+  const card = payload.card || payload.data || payload;
+  const isClosed = card.closed === true || payload.event === "card.closed" || payload.kind === "closure";
+
+  if (!isClosed) {
+    console.log("Not a closure event, ignoring");
     return new Response("Not a closure event, ignoring", { status: 200 });
   }
 
@@ -37,7 +42,6 @@ export default async (req) => {
     return new Response("Missing GITHUB_DISPATCH_TOKEN", { status: 500 });
   }
 
-  // Dispatch to GitHub Actions
   const res = await fetch("https://api.github.com/repos/nm-static/events/dispatches", {
     method: "POST",
     headers: {
@@ -48,11 +52,13 @@ export default async (req) => {
     body: JSON.stringify({
       event_type: "fizzy-approve",
       client_payload: {
-        card_title: payload.title || "Unknown card",
-        card_number: payload.number || 0,
+        card_title: card.title || payload.title || "Unknown card",
+        card_number: card.number || payload.number || 0,
       },
     }),
   });
+
+  console.log("GitHub dispatch status:", res.status);
 
   if (res.ok || res.status === 204) {
     return new Response("Dispatched merge workflow", { status: 200 });

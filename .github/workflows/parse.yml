@@ -54,34 +54,34 @@ jobs:
         id: fizzy
         run: |
           STAGING_URL="https://staging--nm-events.netlify.app"
-          CARD_RESPONSE=$(curl -s -w "\n%{http_code}" -X POST \
+          HEADERS=$(mktemp)
+          curl -s -D "$HEADERS" -X POST \
             -H "Authorization: Bearer ${{ secrets.FIZZY_TOKEN }}" \
             -H "Content-Type: application/json" \
             -H "Accept: application/json" \
             -d "{\"card\": {\"title\": \"Events site update — review staging\", \"description\": \"<p>New content pushed from obsidian vault.</p><p><a href='${STAGING_URL}'>Preview on staging</a></p>\"}}" \
-            "https://fizzy.neeldhara.cloud/7/boards/03fpaqw83uniura72xoqywg0w/cards")
+            "https://fizzy.neeldhara.cloud/7/boards/03fpaqw83uniura72xoqywg0w/cards"
 
-          HTTP_CODE=$(echo "$CARD_RESPONSE" | tail -1)
-          BODY=$(echo "$CARD_RESPONSE" | sed '$d')
-          echo "Fizzy response ($HTTP_CODE): $BODY"
+          # Extract card path from Location header (e.g. /7/cards/5.json)
+          LOCATION=$(grep -i '^location:' "$HEADERS" | tr -d '\r' | awk '{print $2}')
+          echo "Location header: $LOCATION"
+          CARD_NUMBER=$(echo "$LOCATION" | grep -oE '/cards/[0-9]+' | grep -oE '[0-9]+')
+          echo "Card number: $CARD_NUMBER"
 
-          # Get card location from response header, or parse from body
-          CARD_NUMBER=$(echo "$BODY" | jq -r '.number // empty' 2>/dev/null || true)
           if [ -n "$CARD_NUMBER" ]; then
             CARD_URL="https://fizzy.neeldhara.cloud/7/cards/${CARD_NUMBER}"
-          else
-            CARD_URL="https://fizzy.neeldhara.cloud/7/boards/03fpaqw83uniura72xoqywg0w"
-          fi
 
-          # Triage card into Under Review column
-          if [ -n "$CARD_NUMBER" ]; then
+            # Triage card into Under Review column
             curl -s -X POST \
               -H "Authorization: Bearer ${{ secrets.FIZZY_TOKEN }}" \
               -H "Content-Type: application/json" \
               -d '{"column_id": "03fpaqx7659jlprlznse264lh"}' \
               "https://fizzy.neeldhara.cloud/7/cards/${CARD_NUMBER}/triage"
+          else
+            CARD_URL="https://fizzy.neeldhara.cloud/7/boards/03fpaqw83uniura72xoqywg0w"
           fi
 
+          rm -f "$HEADERS"
           echo "card_url=${CARD_URL}" >> "$GITHUB_OUTPUT"
           echo "card_number=${CARD_NUMBER}" >> "$GITHUB_OUTPUT"
 

@@ -35,24 +35,17 @@ export default async (req) => {
 
   const rawBody = await req.text();
 
-  const sigValid = verifySignature(req, rawBody);
-  console.log("Signature valid:", sigValid);
-  // Skip enforcement for now to debug payload format
-  // if (!sigValid) {
-  //   return new Response("Invalid signature", { status: 401 });
-  // }
+  if (!verifySignature(req, rawBody)) {
+    console.log("Signature verification failed");
+    return new Response("Invalid signature", { status: 401 });
+  }
 
   const payload = JSON.parse(rawBody);
   console.log("Fizzy webhook payload:", JSON.stringify(payload).slice(0, 500));
 
-  // Check for closure at top level or nested under card/data
+  // We only subscribe to "Card moved to Done" in Fizzy,
+  // so every webhook we receive is a closure event.
   const card = payload.card || payload.data || payload;
-  const isClosed = card.closed === true || payload.event === "card.closed" || payload.kind === "closure";
-
-  if (!isClosed) {
-    console.log("Not a closure event, ignoring");
-    return new Response("Not a closure event, ignoring", { status: 200 });
-  }
 
   const ghToken = Netlify.env.get("GITHUB_DISPATCH_TOKEN");
   if (!ghToken) {

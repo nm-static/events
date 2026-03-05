@@ -32,4 +32,6 @@ pnpm-debug.log*
 # Temporary/system files
 *.swp
 *.tmp
-Thumbs.db.vault-cache/
+Thumbs.db
+.vault-cache/
+public/events/

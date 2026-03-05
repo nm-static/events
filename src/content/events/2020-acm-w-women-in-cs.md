@@ -9,6 +9,7 @@ role: "Co-Organizer"
 status: archived
 tags: ["acm", "women-in-cs", "workshop", "iitgn", "2020"]
 thumbnail: ""
+publishStatus: 0
 ---
 
 ## ACM-W India Workshop: Women in Computer Science and Research

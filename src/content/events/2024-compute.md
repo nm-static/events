@@ -9,6 +9,7 @@ role: "Local Organizer"
 status: archived
 tags: ["compute", "education", "acm", "conference", "iitgn", "2024"]
 thumbnail: ""
+publishStatus: 0
 ---
 
 ## COMPUTE 2024

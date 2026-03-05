@@ -9,6 +9,7 @@ role: "Organizer"
 status: archived
 tags: ["seminar", "iitgn", "cse", "2024"]
 thumbnail: ""
+publishStatus: 0
 ---
 
 ## CSE Department Seminars — Spring 2024

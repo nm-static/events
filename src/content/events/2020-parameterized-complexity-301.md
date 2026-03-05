@@ -10,6 +10,7 @@ status: archived
 tags: ["parameterized", "algorithms", "virtual", "workshop", "2020"]
 thumbnail: ""
 externalUrl: "https://sites.google.com/view/parameterized-algorithms-301/home"
+publishStatus: 0
 ---
 
 ## Workshop on Parameterized Complexity 301 (Virtual)

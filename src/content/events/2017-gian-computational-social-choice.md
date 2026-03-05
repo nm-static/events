@@ -14,6 +14,7 @@ tags:
   - iitgn
 thumbnail: ""
 externalUrl: http://events.iitgn.ac.in/2017/comsoc/
+publishStatus: 0
 ---
 
 ## GIAN Course on Computational Social Choice

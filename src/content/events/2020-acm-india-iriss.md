@@ -9,6 +9,7 @@ role: "PC Chair and Organizing Committee"
 status: archived
 tags: ["acm", "research", "seminar", "iitgn", "2020"]
 thumbnail: ""
+publishStatus: 0
 ---
 
 ## ACM-India IRISS 2020

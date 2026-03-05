@@ -9,6 +9,7 @@ role: "Chair"
 status: archived
 tags: ["education", "research", "workshop", "iitgn", "2024"]
 thumbnail: "cricket-poster.png"
+publishStatus: 0
 ---
 
 ## Computing Research in Curricula: Knowledge, Education & Training

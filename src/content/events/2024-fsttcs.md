@@ -9,6 +9,7 @@ role: "Local Organizer"
 status: archived
 tags: ["fsttcs", "theory", "conference", "iitgn", "2024"]
 thumbnail: ""
+publishStatus: 0
 ---
 
 ## FSTTCS 2024

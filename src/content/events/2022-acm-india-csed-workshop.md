@@ -9,6 +9,7 @@ role: "Local Organizer"
 status: archived
 tags: ["education", "acm", "workshop", "iitgn", "2022"]
 thumbnail: ""
+publishStatus: 0
 ---
 
 ## ACM-India CS Education Workshop

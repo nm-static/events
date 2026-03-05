@@ -1,13 +1,18 @@
 ---
-title: "Workshop on Doing History of Science and Engineering in India"
-tagline: "Social history perspectives on Indian science and engineering"
+title: Workshop on Doing History of Science and Engineering in India
+tagline: Social history perspectives on Indian science and engineering
 date: 2026-02-23
 endDate: 2026-02-24
-venue: "Academic Block 1/201, IIT Gandhinagar"
+venue: Academic Block 1/201, IIT Gandhinagar
 type: workshop
-role: "Organizer"
-status: upcoming
-tags: ["history", "science", "workshop", "iitgn", "2026"]
+role: Organizer
+status: archived
+tags:
+  - history
+  - science
+  - workshop
+  - iitgn
+  - "2026"
 thumbnail: ""
 publishStatus: 0
 ---
